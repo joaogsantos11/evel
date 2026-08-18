@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libras Básico - EVEL</title>
+</head>
+
+<body>
+
+    <h1>Libras Básico</h1>
+
+    <p>Bem-vindo ao curso de Libras Básico!</p>
+
+    <h2>Aula 1</h2>
+
+    <p>Aprenda os primeiros sinais de Libras.</p>
+
+    <br>
+
+    <a href="/cursos/cursos.html">Voltar para cursos</a>
+
+    <h2>Teste da Aula 1</h2>
+    <p> Qual sinal você aprendeu primeiro?</p>
+    
+    <input type="text" id="resposta" placeholder="Digite a sua resposta">
+
+    <button id="botao1" onclick="verificarResposta()">Verificar</button>
+
+    <p id="resultado"></p>
+    
+    <p id="pontuacao"></p>
+
+    <h2>Questão 2</h2>
+    <p>Qual é a língua de sinais usada no Brasil?</p>
+
+    <input type="text" id="resposta2" placeholder="Digite a sua resposta">
+
+    <button id="botao2" onclick="verificarResposta2()">Verificar</button>
+
+    <p id="resultado2"></p>
+    <p id="pontuacao2"></p>
+
+    <h2>Questão 3</h2>
+    <p>Digite uma nova palavra que você aprendeu em Libras:</p>
+
+    <input type="text" id="resposta3" placeholder="Digite sua resposta">
+
+    <button id="botao3" onclick="enviarResposta()">Enviar</button>
+
+    <p id="resultado3"></p>
+
+    <p id="pontuacaototal"></p>
+    <button onclick="mostrarPontuacaototal()">Mostrar pontuação total</button>
+
+    <script src="/cursos/basico/basico.js"></script>
+
+
+</body>
+
+</html>

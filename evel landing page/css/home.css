@@ -1,0 +1,56 @@
+a {
+    font-weight: 600;
+    color: blue;
+    text-decoration: none;
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+}
+
+.logo {
+    font-size: clamp(2rem, 2.5vw, 2.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+nav {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(92, 85, 85, 0.08);
+    height: 12vh;
+    min-height: 90px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 clamp(30px, 5vw, 80px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: clamp(28px, 3vw, 50px);
+}
+
+.nav-list li {
+    margin-left: 0;
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 12px;
+    color: #fff;
+    padding: 14px 24px;
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-login img {
+    height: 22px;
+    margin-right: 8px;
+}
+
+.btn-login:hover {
+    background-color: rgb(116, 0, 0);
+}
