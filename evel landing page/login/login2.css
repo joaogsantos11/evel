@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0077ff, #00b4ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* CARD PRINCIPAL */
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 400px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    overflow: hidden;
+}
+
+/* FORMULÁRIO */
+
+.form {
+    width: 100%;
+
+    animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* TÍTULO */
+
+.form h1 {
+    text-align: center;
+    color: #0077ff;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+/* CAMPOS */
+
+.input-box {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 14px 45px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* EFEITO AO CLICAR NO CAMPO */
+
+.input-box input:focus {
+
+    border-color: #0077ff;
+
+    box-shadow: 0 0 5px rgba(0, 119, 255, 0.2);
+}
+
+/* ÍCONE DA ESQUERDA */
+
+.input-box i:first-child {
+
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    pointer-events: none;
+}
+
+/* ÍCONE DO OLHO */
+
+.input-box .olho {
+
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.input-box .olho:hover {
+
+    color: #0077ff;
+}
+
+/* BOTÃO */
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: #005fd6;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 119, 255, 0.3);
+}
+
+/* TEXTO ABAIXO DO BOTÃO */
+
+.form p {
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+/* LINK FAZER LOGIN */
+
+.form span {
+
+    color: #0077ff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.form span:hover {
+
+    color: #005fd6;
+
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+
+    .form h1 {
+
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    .input-box input {
+
+        padding: 13px 42px;
+        font-size: 14px;
+    }
+
+    button {
+
+        padding: 13px;
+        font-size: 15px;
+    }
+}

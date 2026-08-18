@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat, sans-serif;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+body {
+    background: #ffffff;
+    height: 100%;
+
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 1;
+    font-family: Montserrat, sans-serif;
+    color: rgb(3, 3, 160);
+
+}
+
+/*Cabeçalho ↓ */
+
+a {
+    font-weight: 600;
+    color: blue;
+    text-decoration: none;
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+}
+
+.logo {
+    font-size: clamp(2rem, 2.5vw, 2.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+nav {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(92, 85, 85, 0.08);
+    height: 12vh;
+    min-height: 90px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 clamp(30px, 5vw, 80px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: clamp(28px, 3vw, 50px);
+}
+
+.nav-list li {
+    margin-left: 0;
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 12px;
+    color: #fff;
+    padding: 14px 24px;
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-login img {
+    height: 22px;
+    margin-right: 8px;
+}
+
+.btn-login:hover {
+    background-color: rgb(116, 0, 0);
+}
+
+.primeiratela {
+    background-color: rgb(248, 248, 248);
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 80px;
+    background-image: url(/img/bg.png);
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 700px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content h1 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.content h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.2;
+}
+
+.content p {
+    margin-top: 20px;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    line-height: 1.6;
+    font-weight: 500;
+    color: rgb(3, 3, 160);
+}
+
+.botoes {
+    display: flex;
+    gap: 24px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.btn-traduz,
+.btn-apren {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 28px;
+    border-radius: 18px;
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-traduz {
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+    border: none;
+}
+
+.btn-traduz:hover {
+    background-color: rgb(116, 0, 0);
+}
+
+.btn-apren {
+    background-color: #fff;
+    color: #0303a0;
+    border: 2px solid rgb(3, 3, 160);
+}
+
+.btn-apren:hover {
+    background-color: #9ca2b9;
+}
+
+.btn-img {
+    height: 30px;
+    margin-right: 14px;
+}
+
+.tamanho-igual {
+    flex: 1;
+    height: 72px;
+    width: 100%;
+}
+
+.destaques {
+    color: red;
+}
+
+.segundatela {
+    height: 100vh;
+    background-color: aliceblue;
+    padding: 40px;
+
+}
+
+.segundatela h2 {
+    justify-self: center;
+}
+
+.container-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card-bloco {
+    margin: 20px;
+    background: #fff;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgb(70, 50, 50);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bloco-info {
+    font-family: 'montserrat', sans-serif;
+    text-align: left;
+    color: #000000;
+    padding: 16px;
+}
+
+.card-bloco img {
+    width: 50px;
+
+}
+
+.bloco-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bloco-info h3 {
+    font-size: 30px;
+}
+
+.bloco-info p {
+    font-size: 20px;
+}
+
+.vermelho {
+    background-color: red;
+}
+
+.card-bloco:hover {
+    
+}

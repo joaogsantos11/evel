@@ -1,0 +1,176 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0077ff,#00b4ff);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:400px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    overflow:hidden;
+    position:relative;
+    padding:40px;
+}
+
+.form{
+    display:none;
+    animation:fade .5s;
+}
+
+.login-form{
+    display:block;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+h1{
+    text-align:center;
+    color:#0077ff;
+    margin-bottom:10px;
+}
+
+.form p{
+    text-align:center;
+    color:#555;
+    margin-bottom:25px;
+}
+
+.input-box{
+
+    position:relative;
+    margin-bottom:20px;
+
+}
+
+.input-box input{
+
+    width:100%;
+    padding:14px 45px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+
+}
+
+.input-box input:focus{
+
+    border-color:#0077ff;
+
+}
+
+.input-box i:first-child{
+
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#777;
+
+}
+
+.olho{
+
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#777;
+
+}
+
+button{
+
+    width:100%;
+    padding:14px;
+    background:#0077ff;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+    margin-bottom:20px;
+
+}
+
+button:hover{
+
+    background:#005fd6;
+
+}
+
+a{
+
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    color:#0077ff;
+    margin-bottom:20px;
+    transition:.3s;
+
+}
+
+a:hover{
+
+    color:#005fd6;
+
+}
+
+span{
+
+    color:#0077ff;
+    cursor:pointer;
+    font-weight:bold;
+
+}
+
+span:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:500px){
+
+    .card{
+
+        width:100%;
+        padding:30px 20px;
+
+    }
+
+}
