@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    min-height: 100vh;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #3157a4;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+body > p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+}
+
+/* Container dos cards */
+.cursos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Card */
+.card-curso {
+    background: white;
+    padding: 30px 25px;
+    min-height: 300px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.card-curso:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-curso h2 {
+    color: #3157a4;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.card-curso p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.card-curso p:nth-of-type(2) {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.card-curso a {
+    background: #3157a4;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 24px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.card-curso a:hover {
+    background: #244486;
+    transform: scale(1.05);
+}
+
+/* Voltar */
+body > a {
+    display: inline-block;
+    margin-top: 30px;
+
+    color: #3157a4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body > a:hover {
+    text-decoration: underline;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .cursos-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .cursos-container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
