@@ -1,0 +1,30 @@
+<!-- Tradutor de Libras -->
+<h2>Tradutor de Libras</h2>
+
+<p>Digite o texto que deseja traduzir:</p>
+
+<textarea id="inputText" placeholder="Digite aqui..."></textarea>
+
+<p>Depois, abra o VLibras para realizar a tradução.</p>
+
+<p>
+    Digite o texto acima e depois use o botão do VLibras para traduzir.
+</p>
+
+<div vw class="enabled">
+<div vw-access-button class="active"></div>
+
+<div vw-plugin-wrapper>
+<div class="vw-plugin-top-wrapper"></div>
+</div>
+</div>
+
+<script src="../paginas js/script.js"></script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script>
+new window.VLibras.Widget(
+"https://vlibras.gov.br/app"
+);
+</script>
