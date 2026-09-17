@@ -1,32 +1,71 @@
-async function cadastrar() {
+function entrar() {
 
-    const nome = document.getElementById("cadNome").value;
-    const email = document.getElementById("cadEmail").value;
-    const senha = document.getElementById("cadSenha").value;
-    const senha2 = document.getElementById("cadSenha2").value;
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
 
-    if (senha !== senha2) {
-        alert("As senhas não são iguais!");
-        return;
+    // LOGIN EMERGENCIAL
+    if (senha === "123456" && email === "admin@evel.com") {
+
+        document.getElementById("resultado").innerText =
+            "Seu login está correto";
+
+        window.location.href = "inicio.html";
+
+    } else {
+
+        // LOGIN DE USUÁRIO CADASTRADO
+        fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: senha
+            })
+        })
+        .then(resposta => resposta.json())
+        .then(dados => {
+
+            document.getElementById("resultado").innerText =
+                dados.mensagem;
+
+            if (dados.mensagem === "Login realizado com sucesso!") {
+                window.location.href = "inicio.html";
+            }
+
+        })
+        .catch(erro => {
+
+            document.getElementById("resultado").innerText =
+                "Erro ao conectar com o servidor.";
+
+        });
+
     }
 
-    const resposta = await fetch("http://localhost:3000/usuarios", {
+}
+
+// LOGOUT
+function sair() {
+
+    window.location.href = "login.html";
+
+}
+
+//tradução
+function traduzir() {
+    let texto = document.getElementById("inputText").value;
+
+    fetch("http://localhost:3000/traduzir", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nome: nome,
-            email: email,
-            senha: senha
+            texto: texto
         })
-    });
-
-    const dados = await resposta.json();
-
-    if (resposta.ok) {
-        alert("Cadastro realizado com sucesso!");
-    } else {
-        alert(dados.erro);
-    }
+    })
+    .then(resposta => resposta.json())
+    console.log(dados);
 }
