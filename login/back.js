@@ -31,13 +31,21 @@ app.post("/cadastro", (req, res) => {
 
         if (erro) {
 
-            console.log(erro);
+    if (erro.code === "ER_DUP_ENTRY") {
 
-            res.status(500).json({
-                mensagem: "Erro ao cadastrar"
-            });
+        return res.status(400).json({
+            mensagem: "Este e-mail já está cadastrado."
+        });
 
-        } else {
+    }
+
+    console.log(erro);
+
+    res.status(500).json({
+        mensagem: "Erro ao cadastrar"
+    });
+
+} else {
 
             res.json({
                 mensagem: "Usuário cadastrado com sucesso!"
