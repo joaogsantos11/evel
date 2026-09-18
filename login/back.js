@@ -31,27 +31,26 @@ app.post("/cadastro", (req, res) => {
 
         if (erro) {
 
-    if (erro.code === "ER_DUP_ENTRY") {
+            console.log("ERRO NO CADASTRO:");
+            console.log(erro);
 
-        return res.status(400).json({
-            mensagem: "Este e-mail já está cadastrado."
-        });
+            if (erro.code === "ER_DUP_ENTRY") {
 
-    }
+                return res.status(400).json({
+                    mensagem: "Este e-mail já está cadastrado."
+                });
 
-    console.log(erro);
+            }
 
-    res.status(500).json({
-        mensagem: "Erro ao cadastrar"
-    });
-
-} else {
-
-            res.json({
-                mensagem: "Usuário cadastrado com sucesso!"
+            return res.status(500).json({
+                mensagem: "Erro ao cadastrar."
             });
 
         }
+
+        res.json({
+            mensagem: "Usuário cadastrado com sucesso!"
+        });
 
     });
 
@@ -76,23 +75,23 @@ app.post("/login", (req, res) => {
             console.log("ERRO NO LOGIN:");
             console.log(erro);
 
-            res.status(500).json({
-                mensagem: "Erro ao fazer login"
-            });
-
-        } else if (resultado.length > 0) {
-
-            res.json({
-                mensagem: "Login realizado com sucesso!"
-            });
-
-        } else {
-
-            res.status(401).json({
-                mensagem: "Email ou senha incorretos."
+            return res.status(500).json({
+                mensagem: "Erro ao fazer login."
             });
 
         }
+
+        if (resultado.length > 0) {
+
+            return res.json({
+                mensagem: "Login realizado com sucesso!"
+            });
+
+        }
+
+        return res.status(401).json({
+            mensagem: "Email ou senha incorretos."
+        });
 
     });
 

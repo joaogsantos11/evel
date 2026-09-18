@@ -19,9 +19,21 @@ function cadastrar() {
     })
     .then(resposta => resposta.json())
     .then(dados => {
+
         document.getElementById("resultado").innerText = dados.mensagem;
 
-        window.location.href ="../index.html";
+        if (dados.mensagem === "Usuário cadastrado com sucesso!") {
+            window.location.href = "../index.html";
+        }
+
+    })
+    .catch(erro => {
+
+        console.log("Erro:", erro);
+
+        document.getElementById("resultado").innerText =
+            "Erro ao conectar com o servidor.";
+
     });
 
 }
