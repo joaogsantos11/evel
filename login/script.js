@@ -46,12 +46,7 @@ function entrar() {
 
 }
 
-// LOGOUT
-function sair() {
 
-    window.location.href = "login.html";
-
-}
 
 //tradução
 function traduzir() {
