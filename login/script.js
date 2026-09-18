@@ -9,7 +9,7 @@ function entrar() {
         document.getElementById("resultado").innerText =
             "Seu login está correto";
 
-        window.location.href = "inicio.html";
+        window.location.href = "../index.html";
 
     } else {
 
@@ -31,7 +31,7 @@ function entrar() {
                 dados.mensagem;
 
             if (dados.mensagem === "Login realizado com sucesso!") {
-                window.location.href = "inicio.html";
+                window.location.href = "../index.html";
             }
 
         })

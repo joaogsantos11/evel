@@ -21,7 +21,7 @@ function cadastrar() {
     .then(dados => {
         document.getElementById("resultado").innerText = dados.mensagem;
 
-        window.location.href ="inicio.html";
+        window.location.href ="../index.html";
     });
 
 }
