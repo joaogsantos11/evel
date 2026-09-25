@@ -5,36 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - EVEL</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
 
-    <h1>EVEL</h1>
 
-    <p>Entre na sua conta</p>
+    <div class="card">
+        <h1>EVEL</h1>
 
-    <input type="text" id="email" placeholder="Digite seu e-mail">
+        <p>Entre na sua conta</p>
 
-    <input type="password" id="senha" placeholder="Digite sua senha">
+        <div class="input-box">
+            <input type="text" id="email" placeholder=" ">
+            <label for="email">Email *</label>
+        </div>
 
-    <button onclick="window.location.href='../index.html'">
-        Entrar
-    </button>
+        <div class="input-box">
+            <input type="password" id="senha" placeholder=" ">
+            <label for="senha">Sua senha *</label>
+        </div>
 
-    <p id="resultado"></p>
+        <button onclick="window.location.href='../index.html'">
+            Entrar
+        </button>
 
-    <p>Ainda não tem uma conta?</p>
 
-    <button onclick="window.location.href='cadastro.html'">
-        Cadastrar
-    </button>
+        <a class="cadastrop" href="">Esqueceu a senha?</a>
 
-    
-    <p><a href="#">Meu perfil</a></p>
+        <p class="cadastrop">Ainda não tem uma conta?<a href="cadastro.html"> Cadastre-se</a></p>
 
-    <button onclick="window.location.href='../index.html'">
-        Entrar como convidado
-    </button>
+    </div>
+
 
     <script src="script.js"></script>
 
