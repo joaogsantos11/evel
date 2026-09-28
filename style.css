@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-family: Montserrat, sans-serif;
     box-sizing: border-box;
 }
@@ -11,18 +11,21 @@ p {
     margin: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #ffffff;
-    height: 100%;
-
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 h1 {
-    font-size: 50px;
+    font-size: clamp(2.5rem, 5vw, 5rem);
     line-height: 1;
     font-family: Montserrat, sans-serif;
     color: rgb(3, 3, 160);
-
 }
 
 /*Cabeçalho ↓ */
@@ -31,11 +34,11 @@ a {
     font-weight: 600;
     color: blue;
     text-decoration: none;
-    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
 }
 
 .logo {
-    font-size: clamp(2rem, 2.5vw, 2.8rem);
+    font-size: clamp(1.7rem, 2.5vw, 2.8rem);
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -43,19 +46,20 @@ a {
 nav {
     background-color: white;
     box-shadow: 0 4px 12px rgba(92, 85, 85, 0.08);
-    height: 12vh;
-    min-height: 90px;
+    min-height: clamp(70px, 8vh, 100px);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 clamp(30px, 5vw, 80px);
+    padding: 0 clamp(20px, 5vw, 80px);
+    gap: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav-list {
     display: flex;
+    align-items: center;
     list-style: none;
-    gap: clamp(28px, 3vw, 50px);
+    gap: clamp(16px, 3vw, 50px);
 }
 
 .nav-list li {
@@ -69,14 +73,16 @@ nav {
     background-color: red;
     border-radius: 12px;
     color: #fff;
-    padding: 14px 24px;
-    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    padding: clamp(10px, 1vw, 14px) clamp(16px, 1.8vw, 24px);
+    font-size: clamp(0.9rem, 1.2vw, 1.3rem);
     font-weight: 600;
+    white-space: nowrap;
     transition: 0.3s ease;
 }
 
 .btn-login img {
-    height: 22px;
+    width: clamp(18px, 1.7vw, 22px);
+    height: auto;
     margin-right: 8px;
 }
 
@@ -85,54 +91,52 @@ nav {
 }
 
 .primeiratela {
-    background-color: rgb(248, 248, 248);
-    height: 88vh;
+    position: relative;
+    min-height: calc(100vh - clamp(70px, 8vh, 100px));
     display: flex;
     align-items: center;
-    padding: 60px 80px;
+    padding: clamp(30px, 5vw, 80px);
+    background-color: rgb(248, 248, 248);
     background-image: url(/img/bg.png);
-    background-size: 100vh;
+    background-size: clamp(400px, 45vw, 800px);
     background-repeat: no-repeat;
-    background-position: right;
-    .primeiratela {
-    position: relative;
-}
+    background-position: right center;
 }
 
 .content {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    max-width: 700px;
-    width: 100%;
-    box-sizing: border-box;
+    justify-content: center;
+    width: min(100%, 700px);
+    padding: clamp(10px, 2vw, 30px) 0;
+    z-index: 1;
 }
 
 .content h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(2.5rem, 5vw, 5rem);
     line-height: 1.1;
     font-weight: 700;
 }
 
 .content h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 3rem);
     line-height: 1.2;
 }
 
 .content p {
-    margin-top: 20px;
-    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
-    line-height: 1.6;
+    margin-top: clamp(12px, 2vw, 20px);
+    font-size: clamp(1rem, 1.5vw, 1.6rem);
+    line-height: 1.5;
     font-weight: 500;
     color: rgb(3, 3, 160);
+    max-width: 650px;
 }
 
 .botoes {
     display: flex;
-    gap: 24px;
-    margin-top: 50px;
-    width: 100%;
+    gap: clamp(12px, 2vw, 24px);
+    margin-top: clamp(25px, 4vw, 50px);
+    width: min(100%, 650px);
 }
 
 .btn-traduz,
@@ -140,12 +144,15 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 22px 28px;
-    border-radius: 18px;
-    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    flex: 1;
+    min-height: clamp(52px, 5vw, 72px);
+    padding: clamp(12px, 1.5vw, 22px) clamp(16px, 2vw, 28px);
+    border-radius: clamp(12px, 1.5vw, 18px);
+    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s ease;
+    white-space: nowrap;
 }
 
 .btn-traduz {
@@ -169,13 +176,14 @@ nav {
 }
 
 .btn-img {
-    height: 30px;
-    margin-right: 14px;
+    width: clamp(20px, 2vw, 30px);
+    height: auto;
+    margin-right: clamp(6px, 1vw, 14px);
 }
 
 .tamanho-igual {
     flex: 1;
-    height: 72px;
+    min-height: clamp(52px, 5vw, 72px);
     width: 100%;
 }
 
@@ -184,77 +192,275 @@ nav {
 }
 
 .segundatela {
-    height: 100vh;
+    min-height: 100vh;
     background-color: aliceblue;
-    padding: 40px;
-
+    padding: clamp(30px, 5vw, 60px);
 }
 
 .segundatela h2 {
-    justify-self: center;
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: clamp(25px, 4vw, 50px);
+    color: rgb(3, 3, 160);
 }
 
 .container-grid {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    gap: clamp(15px, 2vw, 30px);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .card-bloco {
-    margin: 20px;
+    margin: 0;
     background: #fff;
     border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 4px 12px rgb(70, 50, 50);
+    width: min(100%, 300px);
+    box-shadow: 0 4px 12px rgba(70, 50, 50, 0.25);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card-bloco:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(70, 50, 50, 0.3);
+}
+
 .bloco-info {
-    font-family: 'montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-align: left;
     color: #000000;
-    padding: 16px;
+    padding: clamp(14px, 2vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.5vw, 16px);
 }
 
 .card-bloco img {
-    width: 50px;
-
-}
-
-.bloco-info {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    width: clamp(40px, 5vw, 50px);
+    height: auto;
 }
 
 .bloco-info h3 {
-    font-size: 30px;
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
 }
 
 .bloco-info p {
-    font-size: 20px;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.5;
 }
 
 .vermelho {
     background-color: red;
 }
 
-.card-bloco:hover {
-    
-}
-
 .btn-emergencia {
     position: absolute;
-    bottom: -70px;
-    right: 30px;
-
+    bottom: clamp(20px, 4vw, 70px);
+    right: clamp(20px, 4vw, 30px);
     background-color: red;
     color: white;
-    padding: 15px 25px;
+    padding: clamp(10px, 1.5vw, 15px) clamp(16px, 2vw, 25px);
     border: none;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-emergencia:hover {
+    background-color: rgb(116, 0, 0);
+}
+
+@media (max-width: 900px) {
+    nav {
+        padding: 0 25px;
+    }
+
+    .primeiratela {
+        background-size: 380px;
+        background-position: right bottom;
+    }
+
+    .content {
+        max-width: 600px;
+    }
+
+    .content p {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        min-height: 70px;
+        padding: 12px 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .nav-list {
+        gap: 14px;
+    }
+
+    .nav-list a {
+        font-size: 0.85rem;
+    }
+
+    .btn-login {
+        padding: 9px 14px;
+        border-radius: 10px;
+    }
+
+    .btn-login img {
+        display: none;
+    }
+
+    .primeiratela {
+        min-height: calc(100vh - 70px);
+        padding: 35px 20px;
+        align-items: flex-start;
+        background-size: 320px;
+        background-position: right bottom;
+    }
+
+    .content {
+        padding-top: 20px;
+        max-width: 100%;
+    }
+
+    .content h1 {
+        font-size: clamp(2.3rem, 10vw, 4rem);
+    }
+
+    .content h2 {
+        font-size: clamp(1.4rem, 6vw, 2.3rem);
+    }
+
+    .content p {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        max-width: 90%;
+    }
+
+    .botoes {
+        width: 100%;
+        max-width: 550px;
+        gap: 12px;
+    }
+
+    .btn-traduz,
+    .btn-apren {
+        min-height: 55px;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-img {
+        width: 22px;
+        margin-right: 7px;
+    }
+}
+
+@media (max-width: 500px) {
+    nav {
+        min-height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .nav-list {
+        gap: 10px;
+    }
+
+    .nav-list li:nth-child(3) {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .btn-login {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .primeiratela {
+        min-height: calc(100vh - 70px);
+        padding: 25px 18px;
+        background-size: 250px;
+        background-position: right bottom;
+    }
+
+    .content {
+        padding-top: 10px;
+    }
+
+    .content h1 {
+        font-size: clamp(2.1rem, 11vw, 3rem);
+    }
+
+    .content h2 {
+        font-size: clamp(1.3rem, 6vw, 1.8rem);
+    }
+
+    .content p {
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    .botoes {
+        flex-direction: column;
+        width: min(100%, 350px);
+        margin-top: 25px;
+    }
+
+    .btn-traduz,
+    .btn-apren {
+        width: 100%;
+        min-height: 52px;
+    }
+
+    .segundatela {
+        padding: 30px 18px;
+    }
+
+    .container-grid {
+        gap: 18px;
+    }
+
+    .card-bloco {
+        width: min(100%, 340px);
+    }
+
+    .btn-emergencia {
+        position: static;
+        display: block;
+        margin: 25px auto 0;
+    }
+}
+
+@media (max-height: 700px) and (min-width: 701px) {
+    .primeiratela {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .content h1 {
+        font-size: clamp(2.5rem, 4vw, 4rem);
+    }
+
+    .content p {
+        margin-top: 10px;
+        line-height: 1.4;
+    }
+
+    .botoes {
+        margin-top: 25px;
+    }
 }
