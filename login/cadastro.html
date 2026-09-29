@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<link rel="stylesheet" href="cadastro.css">
 
 <head>
     <meta charset="UTF-8">
@@ -10,20 +11,34 @@
 </head>
 
 <body>
+    <div class="card">
+        <h1>EVEL</h1>
 
-    <h1>EVEL</h1>
+        <p>Crie sua conta</p>
 
-    <p>Crie sua conta</p>
+        <div class="input-box">
+            <input type="text" id="email" placeholder=" ">
+            <label for="email">Email <span>*</span></label>
+        </div>
 
-    <input type="text" id="nome" placeholder="Digite seu nome">
+        <div class="input-box">
+            <input type="text" id="senha" placeholder=" ">
+            <label for="email">Digite sua senha <span>*</span></label>
+        </div>
 
-    <input type="text" id="email" placeholder="Digite seu e-mail">
+         <div class="input-box">
+            <input type="text" id="senhaconf" placeholder=" ">
+            <label for="email">Confirme sua senha <span>*</span></label>
+        </div>
+        
 
-    <input type="password" id="senha" placeholder="Digite sua senha">
+        <button onclick="cadastrar()">
+            Cadastrar
+        </button>
 
-    <button onclick="cadastrar()">
-        Cadastrar
-    </button>
+         <p class="loginp">Já tem uma conta?<a href="login.html"> Entrar</a></p>
+    </div>
+
 
     <p id="resultado"></p>
 
