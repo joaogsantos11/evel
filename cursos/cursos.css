@@ -1,20 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
+:root {
+    --azul-evel: #0303a0;
+    --vermelho-evel: #ff0000;
+    --fundo: #f8f8f8;
+    --texto: #333;
+    --branco: #fff;
+}
+
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f2f7fb;
-    color: #263238;
+    font-family: Montserrat,sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
 }
 
 
 /* CABEÇALHO */
 
 header {
-    background: #315c8c;
-    color: white;
+    background: var(--azul-evel);
+    color: var(--branco);
     padding: 28px 20px;
     text-align: center;
 }
@@ -31,7 +42,7 @@ header p {
 /* MENU */
 
 nav {
-    background: white;
+    background: -vermel;
     display: flex;
     justify-content: center;
     gap: 8px;
@@ -55,7 +66,7 @@ nav button,
 
     cursor: pointer;
 
-    background: #315c8c;
+    background: var(--azul-evel);
 
     color: white;
 
