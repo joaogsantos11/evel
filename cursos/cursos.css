@@ -1,130 +1,227 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f7fb;
-    color: #333;
-    min-height: 100vh;
-    padding: 50px 20px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f7fb;
+    color: #263238;
+}
+
+
+/* CABEÇALHO */
+
+header {
+    background: #315c8c;
+    color: white;
+    padding: 28px 20px;
     text-align: center;
 }
 
-h1 {
-    color: #3157a4;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+header h1 {
+    margin: 0 0 8px;
 }
 
-body > p {
-    color: #666;
-    font-size: 1.1rem;
-    margin-bottom: 35px;
+header p {
+    margin: 0;
 }
 
-/* Container dos cards */
-.cursos-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
+/* MENU */
 
-/* Card */
-.card-curso {
+nav {
     background: white;
-    padding: 30px 25px;
-    min-height: 300px;
-
-    border-radius: 18px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px;
 
-    transition: 0.3s;
+    box-shadow: 0 2px 8px #00000012;
+
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
-.card-curso:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.card-curso h2 {
-    color: #3157a4;
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-}
-
-.card-curso p {
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-.card-curso p:nth-of-type(2) {
-    font-weight: bold;
-    color: #444;
-    margin-bottom: 25px;
-}
-
-.card-curso a {
-    background: #3157a4;
-    color: white;
-
-    text-decoration: none;
-
-    padding: 12px 24px;
+nav button,
+.btn {
+    border: none;
 
     border-radius: 8px;
 
-    font-weight: bold;
+    padding: 11px 16px;
 
-    transition: 0.3s;
-}
+    cursor: pointer;
 
-.card-curso a:hover {
-    background: #244486;
-    transform: scale(1.05);
-}
+    background: #315c8c;
 
-/* Voltar */
-body > a {
-    display: inline-block;
-    margin-top: 30px;
+    color: white;
 
-    color: #3157a4;
-    text-decoration: none;
     font-weight: bold;
 }
 
-body > a:hover {
-    text-decoration: underline;
+nav button:hover,
+.btn:hover {
+    opacity: 0.9;
 }
 
-/* Tablet */
-@media (max-width: 900px) {
-    .cursos-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+
+/* CONTEÚDO */
+
+main {
+    max-width: 900px;
+
+    margin: 28px auto;
+
+    padding: 0 18px 40px;
 }
 
-/* Celular */
+
+/* CARTÕES */
+
+.card {
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 24px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 3px 14px #00000012;
+}
+
+.card h2 {
+    color: #315c8c;
+
+    margin-top: 0;
+}
+
+.card li {
+    margin: 9px 0;
+}
+
+
+/* AULAS */
+
+.lesson {
+    display: none;
+}
+
+.lesson.active {
+    display: block;
+}
+
+
+/* QUESTÕES */
+
+.question {
+    border-top: 1px solid #e2e8ee;
+
+    padding-top: 18px;
+
+    margin-top: 20px;
+}
+
+
+/* ALTERNATIVAS */
+
+.option {
+    display: block;
+
+    width: 100%;
+
+    text-align: left;
+
+    margin: 8px 0;
+
+    padding: 12px;
+
+    border: 1px solid #cbd5df;
+
+    background: #f8fafc;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #eef4f9;
+}
+
+.option:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.7;
+}
+
+
+/* RESULTADO */
+
+.result {
+    font-weight: bold;
+
+    min-height: 22px;
+
+    margin-top: 10px;
+}
+
+.correct {
+    color: #19733a;
+}
+
+.wrong {
+    color: #b42318;
+}
+
+
+/* PONTUAÇÃO */
+
+#pontuacao {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+#mensagemFinal {
+    text-align: center;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+}
+
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+
+    padding: 20px;
+
+    color: #607080;
+}
+
+
+/* CELULAR */
+
 @media (max-width: 600px) {
-    .cursos-container {
-        grid-template-columns: 1fr;
+
+    header h1 {
+        font-size: 25px;
     }
 
-    h1 {
-        font-size: 2rem;
+    nav button {
+        width: 100%;
     }
+
+    .card {
+        padding: 18px;
+    }
+
 }

@@ -1,41 +1,498 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/cursos/cursos.css">
-    <title>Cursos - EVEL</title>
+    <title>Aprendendo Libras</title>
+<link rel="stylesheet" href="cursos.css">
 </head>
 
 <body>
 
-    <div class="cursos-container">
+<header>
+    <h1>🤟 Aprendendo Libras</h1>
+    <p>
+        Um site de aulas e quizzes para conhecer a Língua Brasileira de Sinais
+    </p>
+</header>
 
-    <div class="card-curso">
-        <h2>Libras Básico</h2>
-        <p>Aprenda os primeiros sinais em Libras.</p>
-        <p>Nível: Iniciante</p>
-        <a href="/cursos/basico/basico.html">Começar curso</a>
-    </div>
+<nav>
+    <button onclick="mostrarAula('inicio')">Início</button>
+    <button onclick="mostrarAula('aula1')">Aula 1</button>
+    <button onclick="mostrarAula('aula2')">Aula 2</button>
+    <button onclick="mostrarAula('aula3')">Aula 3</button>
+    <button onclick="mostrarAula('aula4')">Aula 4</button>
+    <button onclick="mostrarAula('final')">Quiz Final</button>
+</nav>
 
-    <div class="card-curso">
-        <h2>Libras Intermediário</h2>
-        <p>Aprenda novos sinais e frases.</p>
-        <p>Nível: Intermediário</p>
-        <a href="/cursos/medio/medio.html">Começar curso</a>
-    </div>
+<main>
 
-    <div class="card-curso">
-        <h2>Libras Avançado</h2>
-        <p>Aprofunde seus conhecimentos em Libras.</p>
-        <p>Nível: Avançado</p>
-        <a href="/cursos/avançado/avançado.html">Começar curso</a>
-    </div>
+    <!-- INÍCIO -->
+    <section id="inicio" class="lesson active">
 
-</div>
-    <a href="/landing-page/index.html">Voltar para início</a>
+        <div class="card">
+
+            <h2>Bem-vindo!</h2>
+
+            <p>
+                Este site foi criado para ensinar conceitos básicos
+                sobre Libras de forma simples e interativa.
+            </p>
+
+            <h3>📚 O que você vai aprender?</h3>
+
+            <ul>
+                <li>O que é Libras;</li>
+                <li>Cultura e comunidade surda;</li>
+                <li>Comunicação em Libras;</li>
+                <li>Libras no Brasil;</li>
+                <li>Conhecimentos sobre acessibilidade.</li>
+            </ul>
+
+            <button class="btn" onclick="mostrarAula('aula1')">
+                Começar a aula
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- AULA 1 -->
+    <section id="aula1" class="lesson">
+
+        <div class="card">
+
+            <h2>📖 Aula 1 — Conhecendo Libras</h2>
+
+            <p>
+                <strong>Libras</strong> significa Língua Brasileira
+                de Sinais.
+            </p>
+
+            <p>
+                É uma língua visual-espacial utilizada principalmente
+                pela comunidade surda brasileira.
+            </p>
+
+            <p>
+                Libras possui estrutura e regras próprias e não é
+                simplesmente uma tradução palavra por palavra do português.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📝 Quiz da Aula 1</h2>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        1. O que significa Libras?
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r1')">
+                    A) Língua Brasileira de Sinais
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r1')">
+                    B) Linguagem Brasileira de Sons
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r1')">
+                    C) Língua Brasileira de Gestos
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r1')">
+                    D) Linguagem Universal de Sinais
+                </button>
+
+                <div id="r1" class="result"></div>
+
+            </div>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        2. Libras é:
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r2')">
+                    A) Apenas um conjunto de gestos
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r2')">
+                    B) Uma língua com estrutura própria
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r2')">
+                    C) Uma língua universal
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r2')">
+                    D) Apenas uma forma de mímica
+                </button>
+
+                <div id="r2" class="result"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AULA 2 -->
+    <section id="aula2" class="lesson">
+
+        <div class="card">
+
+            <h2>🤝 Aula 2 — Comunidade Surda e Acessibilidade</h2>
+
+            <p>
+                A comunidade surda reúne pessoas que compartilham
+                experiências relacionadas à surdez e, em muitos casos,
+                à utilização de línguas de sinais.
+            </p>
+
+            <p>
+                A acessibilidade busca garantir que pessoas surdas
+                possam participar das atividades sociais, educacionais
+                e culturais com igualdade de oportunidades.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📝 Quiz da Aula 2</h2>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        3. O que é importante ao se comunicar
+                        com uma pessoa surda?
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r3')">
+                    A) Ignorar sua forma de comunicação
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r3')">
+                    B) Respeitar sua forma de comunicação
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r3')">
+                    C) Falar sempre mais alto
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r3')">
+                    D) Evitar a comunicação
+                </button>
+
+                <div id="r3" class="result"></div>
+
+            </div>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        4. A acessibilidade busca:
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r4')">
+                    A) Facilitar participação e comunicação
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r4')">
+                    B) Separar pessoas surdas e ouvintes
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r4')">
+                    C) Impedir o uso de Libras
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r4')">
+                    D) Substituir todas as línguas
+                </button>
+
+                <div id="r4" class="result"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AULA 3 -->
+    <section id="aula3" class="lesson">
+
+        <div class="card">
+
+            <h2>🖐️ Aula 3 — Comunicação em Libras</h2>
+
+            <p>
+                A comunicação em Libras envolve sinais realizados
+                pelas mãos e também pode utilizar expressões faciais
+                e corporais importantes para transmitir informações.
+            </p>
+
+            <p>
+                Aprender uma língua de sinais envolve estudo,
+                prática e contato respeitoso com a comunidade
+                que utiliza essa língua.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📝 Quiz da Aula 3</h2>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        5. As expressões faciais em Libras:
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r5')">
+                    A) Nunca são importantes
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r5')">
+                    B) Podem fazer parte da comunicação e da gramática
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r5')">
+                    C) Servem somente para diversão
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r5')">
+                    D) Substituem todos os sinais
+                </button>
+
+                <div id="r5" class="result"></div>
+
+            </div>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        6. Uma pessoa ouvinte pode aprender Libras?
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r6')">
+                    A) Sim
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r6')">
+                    B) Não
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r6')">
+                    C) Somente se for intérprete
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r6')">
+                    D) Somente na infância
+                </button>
+
+                <div id="r6" class="result"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AULA 4 -->
+    <section id="aula4" class="lesson">
+
+        <div class="card">
+
+            <h2>🇧🇷 Aula 4 — Libras no Brasil</h2>
+
+            <p>
+                Libras é a Língua Brasileira de Sinais utilizada
+                no Brasil.
+            </p>
+
+            <p>
+                Ela possui características próprias e faz parte da
+                realidade linguística e cultural da comunidade
+                surda brasileira.
+            </p>
+
+            <p>
+                Conhecer Libras contribui para ampliar as possibilidades
+                de comunicação e acessibilidade.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📝 Quiz da Aula 4</h2>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        7. Libras é uma língua universal?
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r7')">
+                    A) Sim, todas as pessoas surdas usam a mesma língua
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r7')">
+                    B) Não, existem diferentes línguas de sinais
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r7')">
+                    C) Sim, em todos os países
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r7')">
+                    D) Somente na América
+                </button>
+
+                <div id="r7" class="result"></div>
+
+            </div>
+
+
+            <div class="question">
+
+                <p>
+                    <strong>
+                        8. Qual atitude ajuda na inclusão?
+                    </strong>
+                </p>
+
+                <button class="option"
+                    onclick="responder(this, true, 'r8')">
+                    A) Aprender formas de comunicação acessíveis
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r8')">
+                    B) Evitar pessoas surdas
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r8')">
+                    C) Impedir o uso de Libras
+                </button>
+
+                <button class="option"
+                    onclick="responder(this, false, 'r8')">
+                    D) Não oferecer acessibilidade
+                </button>
+
+                <div id="r8" class="result"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ FINAL -->
+    <section id="final" class="lesson">
+
+        <div class="card">
+
+            <h2>🏆 Quiz Final</h2>
+
+            <p>
+                Agora veja quantas questões você acertou
+                durante as aulas.
+            </p>
+
+            <p id="pontuacao">
+                Acertos: 0 de 8
+            </p>
+
+            <button class="btn" onclick="mostrarPontuacao()">
+                Ver minha pontuação
+            </button>
+
+            <button class="btn" onclick="reiniciar()">
+                Reiniciar quiz
+            </button>
+
+            <p id="mensagemFinal"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    Site educativo de introdução à Libras
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
