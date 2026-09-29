@@ -3,6 +3,8 @@ function entrar() {
     let email = document.getElementById("email").value;
     let senha = document.getElementById("senha").value;
 
+    alert("ENTRAR FOI CHAMADO");
+
     // LOGIN EMERGENCIAL
     if (senha === "123456" && email === "admin@evel.com") {
 
