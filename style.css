@@ -18,7 +18,7 @@ html {
 body {
     background: #ffffff;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 h1 {
@@ -27,8 +27,6 @@ h1 {
     font-family: Montserrat, sans-serif;
     color: rgb(3, 3, 160);
 }
-
-/*Cabeçalho ↓ */
 
 a {
     font-weight: 600;
@@ -82,7 +80,7 @@ nav {
 
 .btn-login img {
     width: clamp(18px, 1.7vw, 22px);
-    height: auto;
+    height: 100%;
     margin-right: 8px;
 }
 
@@ -94,21 +92,17 @@ nav {
     position: relative;
     min-height: calc(100vh - clamp(70px, 8vh, 100px));
     display: flex;
-    align-items: center;
-    padding: clamp(30px, 5vw, 80px);
+    align-items: stretch;
     background-color: rgb(248, 248, 248);
-    background-image: url(/img/bg.png);
-    background-size: clamp(400px, 45vw, 800px);
-    background-repeat: no-repeat;
-    background-position: right center;
+    padding: 0;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: min(100%, 700px);
-    padding: clamp(10px, 2vw, 30px) 0;
+    width: 55%;
+    padding: clamp(30px, 5vw, 80px);
     z-index: 1;
 }
 
@@ -130,6 +124,23 @@ nav {
     font-weight: 500;
     color: rgb(3, 3, 160);
     max-width: 650px;
+}
+
+.imagem-principal {
+    width: 45%;
+    min-height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.imagem-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .botoes {
@@ -278,13 +289,13 @@ nav {
         padding: 0 25px;
     }
 
-    .primeiratela {
-        background-size: 380px;
-        background-position: right bottom;
+    .content {
+        width: 55%;
+        padding: 30px;
     }
 
-    .content {
-        max-width: 600px;
+    .imagem-principal {
+        width: 45%;
     }
 
     .content p {
@@ -322,15 +333,17 @@ nav {
 
     .primeiratela {
         min-height: calc(100vh - 70px);
+        flex-direction: column;
         padding: 35px 20px;
-        align-items: flex-start;
-        background-size: 320px;
-        background-position: right bottom;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
     }
 
     .content {
-        padding-top: 20px;
-        max-width: 100%;
+        width: 100%;
+        padding: 20px 0 0;
+        max-width: 600px;
     }
 
     .content h1 {
@@ -344,6 +357,20 @@ nav {
     .content p {
         font-size: clamp(1rem, 4vw, 1.3rem);
         max-width: 90%;
+    }
+
+    .imagem-principal {
+        width: 100%;
+        min-height: auto;
+        max-width: 500px;
+        justify-content: center;
+    }
+
+    .imagem-principal img {
+        width: 100%;
+        height: auto;
+        max-height: 350px;
+        object-fit: contain;
     }
 
     .botoes {
@@ -392,8 +419,7 @@ nav {
     .primeiratela {
         min-height: calc(100vh - 70px);
         padding: 25px 18px;
-        background-size: 250px;
-        background-position: right bottom;
+        gap: 25px;
     }
 
     .content {
@@ -426,6 +452,15 @@ nav {
         min-height: 52px;
     }
 
+    .imagem-principal {
+        width: 100%;
+    }
+
+    .imagem-principal img {
+        max-width: 320px;
+        max-height: 280px;
+    }
+
     .segundatela {
         padding: 30px 18px;
     }
@@ -447,6 +482,10 @@ nav {
 
 @media (max-height: 700px) and (min-width: 701px) {
     .primeiratela {
+        min-height: calc(100vh - clamp(70px, 8vh, 100px));
+    }
+
+    .content {
         padding-top: 25px;
         padding-bottom: 25px;
     }
