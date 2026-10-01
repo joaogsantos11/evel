@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-require("dotenv").config({ path: "login/aiven.env" });
+require("dotenv").config({
+    path: require("path").join(__dirname, "..", "aiven.env")
+});
 
 const app = express();
 
@@ -14,9 +16,6 @@ const db = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    ssl: {
-        rejectUnauthorized: false
-    }
 });
 
 
