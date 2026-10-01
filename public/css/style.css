@@ -39,14 +39,43 @@ body {
     justify-content: center;
 
     background: rgba(0, 0, 0, 0.5);
-
     z-index: 1000;
 }
+
+
+/* CARD DO MODAL */
 
 .modal-login .card,
 .modal-cadastro .card {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    background-color: var(--branco);
+
+    width: 70%;
+    max-width: 500px;
+    min-height: 70vh;
+
+    padding: clamp(1.2rem, 5vw, 2.5rem);
+
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(70, 50, 50, 0.12);
 }
+
+
+/* TÍTULO */
+
+.modal-login .card h1,
+.modal-cadastro .card h1 {
+    color: var(--azul-evel);
+}
+
+
+/* BOTÃO FECHAR */
 
 .fechar-login,
 .fechar-cadastro {
@@ -62,169 +91,219 @@ body {
     cursor: pointer;
 }
 
-.card .fechar-login:hover,
-.card .fechar-cadastro:hover {
+.fechar-login:hover,
+.fechar-cadastro:hover {
     background: transparent;
     color: #000;
     transform: none;
     box-shadow: none;
 }
 
-.pagina-login, 
-.pagina-cadastro {
-    font-weight: 700;
-    display: flex;
-    background-color: var(--fundo);
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
 
-.input-box {
+/* INPUTS */
+
+.modal-login .input-box,
+.modal-cadastro .input-box {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.input-box label {
-    font-family: Arial, Helvetica, sans-serif;
+
+/* LABEL FLUTUANTE */
+
+.modal-login .input-box label,
+.modal-cadastro .input-box label {
     position: absolute;
     left: 12px;
     top: 50%;
+
+    font-family: Arial, Helvetica, sans-serif;
     color: #808080;
+
     transform: translateY(-50%);
     transition: 0.2s ease;
+
     pointer-events: none;
 }
 
-.input-box label span {
+.modal-login .input-box label span,
+.modal-cadastro .input-box label span {
     color: rgb(230, 106, 106);
 }
 
-.input-box input {
-    border-radius: 12px;
+
+/* INPUT */
+
+.modal-login .input-box input,
+.modal-cadastro .input-box input {
     width: 100%;
-    border: 2px solid #ccc;
-    outline: none;
+
     margin-top: 10px;
     padding: 18px 12px 8px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    border: 2px solid #ccc;
+    border-radius: 12px;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.input-box input:focus + label,
-.input-box input:not(:placeholder-shown) + label {
+
+/* LABEL QUANDO ATIVO/PREENCHIDO */
+
+.modal-login .input-box input:focus + label,
+.modal-login .input-box input:not(:placeholder-shown) + label,
+.modal-cadastro .input-box input:focus + label,
+.modal-cadastro .input-box input:not(:placeholder-shown) + label {
     top: 12px;
+
     font-size: 11px;
     color: var(--azul-evel);
+
     transform: translateY(0);
 }
 
-.input-box input:hover {
+
+/* HOVER DO INPUT */
+
+.modal-login .input-box input:hover,
+.modal-cadastro .input-box input:hover {
     border-color: var(--azul-evel);
 }
 
-.input-box input:focus {
+
+/* FOCO DO INPUT */
+
+.modal-login .input-box input:focus,
+.modal-cadastro .input-box input:focus {
     border-color: var(--azul-evel);
-    box-shadow: 0 0 0 3px rgba(3, 3, 160, 0.10);
+
+    box-shadow:
+        0 0 0 3px rgba(3, 3, 160, 0.10);
 }
 
-.pagina-cadastro .card,
-.pagina-login .card,
-.modal-login .card,
-.modal-cadastro .card {
-    display: flex;
-    background-color: var(--branco);
-    flex-direction: column;
-    gap: 20px;
-    border-radius: 16px;
-    width: 70%;
-    max-width: 500px;
-    min-height: 70vh;
-    padding: clamp(1.2rem, 5vw, 2.5rem);
-    box-shadow: 0 8px 25px rgba(70, 50, 50, 0.12);
-}
 
-.card h1 {
-    color: var(--azul-evel);
-}
+/* BOTÃO */
 
-.card button {
+.modal-login .card button,
+.modal-cadastro .card button {
     width: 100%;
-    font-weight: 700;
+
     padding: 10px;
-    border-radius: 12px;
-    background-color:var(--azul-evel);
-    color: var(--branco);
+
     border: none;
+    border-radius: 12px;
+
+    background-color: var(--azul-evel);
+    color: var(--branco);
+
     font-size: 1rem;
+    font-weight: 700;
+
     cursor: pointer;
+
     transition: 0.3s ease;
     overflow: hidden;
 }
 
-.card button:hover {
+.modal-login .card button:hover,
+.modal-cadastro .card button:hover {
     background-color: var(--vermelho-evel);
     transform: translateY(-2px);
 }
 
-.card button:focus-visible {
+.modal-login .card button:focus-visible,
+.modal-cadastro .card button:focus-visible {
     outline: 3px solid rgba(3, 3, 160, 0.25);
     outline-offset: 3px;
 }
 
-.card button:active {
+.modal-login .card button:active,
+.modal-cadastro .card button:active {
     transform: translateY(0);
 }
 
-.cadastrop,
-.loginp {
+
+/* TEXTOS DOS MODAIS */
+
+.modal-login .cadastrop,
+.modal-cadastro .loginp {
     font-size: 0.8rem;
     text-align: center;
     font-weight: 500;
     color: #555;
 }
 
-.cadastrop a:hover,
-.loginp a:hover {
+
+/* LINKS */
+
+.modal-login .cadastrop,
+.modal-login .cadastrop a,
+.modal-cadastro .loginp,
+.modal-cadastro .loginp a {
+    font-size: 0.8rem;
+    transition: 0.2s ease;
+}
+
+.modal-login .cadastrop a:hover,
+.modal-cadastro .loginp a:hover {
     color: var(--vermelho-evel);
 }
 
-#resultado {
+
+/* RESULTADOS */
+
+#resultadoLogin,
+#resultadoCadastro {
     color: var(--vermelho-evel);
     font-size: 0.8rem;
     text-align: left;
 }
 
+
+/* RESPONSIVIDADE */
+
 @media (max-width: 600px) {
-    .card {
-        min-height: auto;
+
+    .modal-login .card,
+    .modal-cadastro .card {
         width: 92%;
+        min-height: auto;
         padding: 1.5rem;
     }
 
-    .input-box input {
+    .modal-login .input-box input,
+    .modal-cadastro .input-box input {
         padding: 12px;
     }
 }
 
+
 @media (max-height: 500px) {
-    .card {
+
+    .modal-login .card,
+    .modal-cadastro .card {
         height: 85vh;
         min-height: 0;
         padding: 0.8rem 1.5rem;
         gap: 8px;
     }
 
-    h1 {
+    .modal-login .card h1,
+    .modal-cadastro .card h1 {
         font-size: 1.5rem;
     }
 
-    .input-box input {
+    .modal-login .input-box input,
+    .modal-cadastro .input-box input {
         padding: 8px;
         margin-top: 6px;
     }
 }
-
 
 
 /*---- Cursos ----*/
