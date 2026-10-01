@@ -29,6 +29,47 @@ body {
 
 /*---- Login/Cadastro ----*/
 
+.modal-login,
+.modal-cadastro {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 1000;
+}
+
+.modal-login .card,
+.modal-cadastro .card {
+    position: relative;
+}
+
+.fechar-login,
+.fechar-cadastro {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+
+    color: #333;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.card .fechar-login:hover,
+.card .fechar-cadastro:hover {
+    background: transparent;
+    color: #000;
+    transform: none;
+    box-shadow: none;
+}
+
 .pagina-login, 
 .pagina-cadastro {
     font-weight: 700;
@@ -87,8 +128,10 @@ body {
     box-shadow: 0 0 0 3px rgba(3, 3, 160, 0.10);
 }
 
-.pagina-cadastro .card, 
-.pagina-login .card {
+.pagina-cadastro .card,
+.pagina-login .card,
+.modal-login .card,
+.modal-cadastro .card {
     display: flex;
     background-color: var(--branco);
     flex-direction: column;
@@ -99,6 +142,10 @@ body {
     min-height: 70vh;
     padding: clamp(1.2rem, 5vw, 2.5rem);
     box-shadow: 0 8px 25px rgba(70, 50, 50, 0.12);
+}
+
+.card h1 {
+    color: var(--azul-evel);
 }
 
 .card button {

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>EVEL</title>
 
-    
+
 </head>
 
 <body class="pagina-inicio">
@@ -24,7 +24,7 @@
             </ul>
 
 
-            <a class="btn-login" href="login.html"><img src="img/do-utilizador.png">Login</a>
+            <a class="btn-login" href="#" id="abrirLogin"><img src="img/do-utilizador.png">Login</a>
 
         </nav>
 
@@ -36,9 +36,10 @@
             <p>Eu, você e Libras</p>
 
             <div class="botoes">
-                <a class="btn-traduz tamanho-igual" href="login.html"><img class="btn-img" src="img/libras.png">Traduzir
+                <a class="btn-traduz tamanho-igual" href="#" id="abrirLoginTraduz"><img class="btn-img"
+                        src="img/libras.png">Traduzir
                     agora</a>
-                <a class="btn-apren tamanho-igual" href="login.html"><img class="btn-img"
+                <a class="btn-apren tamanho-igual" href="#" id="abrirLoginAprender"><img class="btn-img"
                         src="img/diplomado.png">Aprender
                     Libras</a>
             </div>
@@ -50,51 +51,90 @@
 
     </section>
 
-    <!--Segunda tela. Serviços e etc
-    <section class="segundatela">
-        <h2>O que o <span class="destaques">Evel</span> oferece.</h2>
+    <div class="modal-login" id="modalLogin">
 
-        div do container
-        <div class="container-grid">
+        <div class="card">
 
-            cards
-            <article class="card-bloco">
-                <div class="bloco-info">
-                    <img src="img/libras.png">
-                    <h3>Tradução<br> de Libras</h3>
-                    <p>Tradução em tempo real e vídeos em libras para tornar a comunicação acessível para todos.</p>
-                </div>
-            </article>
+            <span class="fechar-login" id="fecharLogin">&times;</span>
 
-            <article class="card-bloco vermelho">
-                <div class="bloco-info">
-                    <img src="img/diplomado.png">
-                    <h3>Ensino<br> de Libras</h3>
-                    <p>Cursos completos para todos os níveis. Aprenda Libras de forma prática e acessível.</p>
-                </div>
-            </article>
+            <h1>EVEL</h1>
 
+            <p>Entre na sua conta</p>
 
-            <article class="card-bloco">
+            <div class="input-box">
+                <input type="text" id="loginEmail" placeholder=" ">
+                <label for="loginEmail">Email <span>*</span></label>
+            </div>
 
-                <div class="bloco-info">
+            <div class="input-box">
+                <input type="password" id="loginSenha" placeholder=" ">
+                <label for="loginSenha">Sua senha <span>*</span></label>
+            </div>
 
-                    <h3>Biblioteca de sinais</h3>
-                    <p>Aprenda e guarde todos os sinais de Libras.</p>
-                </div>
-            </article>
+            <button onclick="entrar()">
+                Entrar
+            </button>
 
-            <article class="card-bloco vermelho">
-                <div class="bloco-info">
-                    <h3>Aprendizado ordenado</h3>
-                    <p> </p>
-                </div>
-            </article>
+            <p id="resultadoLogin"></p>
+
+            <a class="cadastrop" href="">Esqueceu a senha?</a>
+
+            <p class="cadastrop">
+                Ainda não tem uma conta?
+                <a href="#" id="abrirCadastro">Cadastre-se</a>
+            </p>
+
         </div>
 
+    </div>
 
-    </section>
-    --
+    <div class="modal-cadastro" id="modalCadastro">
+
+        <div class="card">
+
+            <span class="fechar-cadastro" id="fecharCadastro">&times;</span>
+
+            <h1>EVEL</h1>
+
+            <p>Crie sua conta</p>
+
+            <div class="input-box">
+                <input type="text" id="cadNome" placeholder=" ">
+                <label for="cadNome">Nome <span>*</span></label>
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="cadEmail" placeholder=" ">
+                <label for="cadEmail">Email <span>*</span></label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="cadSenha" placeholder=" ">
+                <label for="cadSenha">Digite sua senha <span>*</span></label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="cadSenhaConf" placeholder=" ">
+                <label for="cadSenhaConf">Confirme sua senha <span>*</span></label>
+            </div>
+
+            <button onclick="cadastrar()">
+                Cadastrar
+            </button>
+
+            <p id="resultadoCadastro"></p>
+
+            <p class="loginp">
+                Já tem uma conta?
+                <a href="#" id="voltarLogin"> Entrar</a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
 
 
 
