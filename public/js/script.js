@@ -1,3 +1,7 @@
+// ====================
+// ELEMENTOS
+// ====================
+
 const modalLogin = document.getElementById("modalLogin");
 const modalCadastro = document.getElementById("modalCadastro");
 
@@ -17,6 +21,10 @@ const voltarLogin = document.getElementById("voltarLogin");
 // ====================
 
 function mostrarLogin() {
+    if (!modalCadastro || !modalLogin) {
+        return;
+    }
+
     modalCadastro.style.display = "none";
     modalLogin.style.display = "flex";
 }
@@ -27,6 +35,10 @@ function mostrarLogin() {
 // ====================
 
 function mostrarCadastro() {
+    if (!modalLogin || !modalCadastro) {
+        return;
+    }
+
     modalLogin.style.display = "none";
     modalCadastro.style.display = "flex";
 }
@@ -36,61 +48,72 @@ function mostrarCadastro() {
 // ABRIR LOGIN
 // ====================
 
-abrirLogin.addEventListener("click", function(event) {
-    event.preventDefault();
-    mostrarLogin();
-});
+if (abrirLogin) {
+    abrirLogin.addEventListener("click", function(event) {
+        event.preventDefault();
+        mostrarLogin();
+    });
+}
 
 
-abrirLoginTraduz.addEventListener("click", function(event) {
-    event.preventDefault();
-    mostrarLogin();
-});
+if (abrirLoginTraduz) {
+    abrirLoginTraduz.addEventListener("click", function(event) {
+        event.preventDefault();
+        mostrarLogin();
+    });
+}
 
 
-abrirLoginAprender.addEventListener("click", function(event) {
-    event.preventDefault();
-    mostrarLogin();
-});
-
+if (abrirLoginAprender) {
+    abrirLoginAprender.addEventListener("click", function(event) {
+        event.preventDefault();
+        mostrarLogin();
+    });
+}
 
 // ====================
 // FECHAR LOGIN
 // ====================
 
-fecharLogin.addEventListener("click", function() {
-    modalLogin.style.display = "none";
-});
+if (fecharLogin) {
+    fecharLogin.addEventListener("click", function() {
+        modalLogin.style.display = "none";
+    });
+}
 
 
 // ====================
 // FECHAR CADASTRO
 // ====================
 
-fecharCadastro.addEventListener("click", function() {
-    modalCadastro.style.display = "none";
-});
-
+if (fecharCadastro) {
+    fecharCadastro.addEventListener("click", function() {
+        modalCadastro.style.display = "none";
+    });
+}
 
 // ====================
 // IR PARA CADASTRO
 // ====================
 
-abrirCadastro.addEventListener("click", function(event) {
-    event.preventDefault();
-    mostrarCadastro();
-});
+if (abrirCadastro) {
+    abrirCadastro.addEventListener("click", function(event) {
+        event.preventDefault();
+        mostrarCadastro();
+    });
+}
 
 
 // ====================
 // VOLTAR PARA LOGIN
 // ====================
 
-voltarLogin.addEventListener("click", function(event) {
-    event.preventDefault();
-    mostrarLogin();
-});
-
+if (voltarLogin) {
+    voltarLogin.addEventListener("click", function(event) {
+        event.preventDefault();
+        mostrarLogin();
+    });
+}
 
 // ====================
 // CADASTRO
@@ -98,13 +121,20 @@ voltarLogin.addEventListener("click", function(event) {
 
 async function cadastrar() {
 
-    let nome = document.getElementById("cadNome").value;
-    let email = document.getElementById("cadEmail").value;
-    let senha = document.getElementById("cadSenha").value;
-    let senhaConf = document.getElementById("cadSenhaConf").value;
+    const campoNome = document.getElementById("cadNome");
+    const campoEmail = document.getElementById("cadEmail");
+    const campoSenha = document.getElementById("cadSenha");
+    const campoSenhaConf = document.getElementById("cadSenhaConf");
+    const resultado = document.getElementById("resultadoCadastro");
 
-    let resultado = document.getElementById("resultadoCadastro");
+    if (!campoNome || !campoEmail || !campoSenha || !campoSenhaConf || !resultado) {
+        return;
+    }
 
+    let nome = campoNome.value;
+    let email = campoEmail.value;
+    let senha = campoSenha.value;
+    let senhaConf = campoSenhaConf.value;
 
     // Verificar campos vazios
 
@@ -183,10 +213,16 @@ async function cadastrar() {
 
 async function entrar() {
 
-    let email = document.getElementById("loginEmail").value;
-    let senha = document.getElementById("loginSenha").value;
+    const campoEmail = document.getElementById("loginEmail");
+    const campoSenha = document.getElementById("loginSenha");
+    const resultado = document.getElementById("resultadoLogin");
 
-    let resultado = document.getElementById("resultadoLogin");
+    if (!campoEmail || !campoSenha || !resultado) {
+        return;
+    }
+
+    let email = campoEmail.value;
+    let senha = campoSenha.value;
 
 
     // Verificar campos vazios
@@ -247,3 +283,22 @@ async function entrar() {
     }
 
 }
+
+// ====================
+// MOSTRAR/OCULTAR SENHA
+// ====================
+
+function mostrarSenha(IdInput, botao){
+    var inputPass = document.getElementById(IdInput)
+    
+
+    if(inputPass.type === 'password'){
+        inputPass.type = 'text'
+        botao.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+    }
+    else {
+        inputPass.type = 'password'
+        botao.classList.replace('bi-eye-slash-fill','bi-eye-fill')
+    }
+}
+
