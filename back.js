@@ -1,9 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-require("dotenv").config({
-    path: require("path").join(__dirname, "aiven.env")
-});
+require("dotenv").config();
 
 const app = express();
 
@@ -125,9 +123,11 @@ db.connect((erro) => {
 // SERVIDOR
 // ====================
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
 
-    console.log("Servidor rodando na porta 3000");
+app.listen(PORT, () => {
+
+    console.log(`Servidor rodando na porta ${PORT}`);
 
 });
 

@@ -1,3 +1,4 @@
 login/aiven.env
 aiven.envaiven.env
-aiven.env
+node_modules/
+.env
