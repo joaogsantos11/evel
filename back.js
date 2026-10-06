@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
 require("dotenv").config({
-    path: require("path").join(__dirname, "..", "aiven.env")
+    path: require("path").join(__dirname, "aiven.env")
 });
 
 const app = express();
