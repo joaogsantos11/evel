@@ -1,582 +1,148 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>EVEL</title>
 
-    <title>Tradutor de Libras</title>
-
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        body {
-            margin: 0;
-
-            font-family: Arial, sans-serif;
-
-            background: #f8f8f8;
-
-            color: #444;
-        }
-
-
-        .container {
-
-            width: 700px;
-
-            max-width: 90%;
-
-            margin: 100px auto;
-
-        }
-
-
-        h1 {
-
-            color: #1019a5;
-
-            font-size: 40px;
-
-            margin-bottom: 10px;
-
-        }
-
-
-        .linha {
-
-            width: 65px;
-
-            height: 5px;
-
-            background: red;
-
-            border-radius: 10px;
-
-            margin-bottom: 20px;
-
-        }
-
-
-        .descricao {
-
-            font-size: 18px;
-
-            margin-bottom: 20px;
-
-        }
-
-
-        /*
-         * ==================================================
-         * CAIXA ONDE O USUÁRIO DIGITA
-         * ==================================================
-         *
-         * Não é textarea.
-         *
-         * É um elemento da própria página.
-         */
-
-        #texto {
-
-            width: 100%;
-
-            min-height: 175px;
-
-            padding: 18px;
-
-            border: 2px solid #d2d3e3;
-
-            border-radius: 14px;
-
-            background: white;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 18px;
-
-            line-height: 1.5;
-
-            outline: none;
-
-            white-space: pre-wrap;
-
-            overflow-wrap: break-word;
-
-            cursor: text;
-
-        }
-
-
-        /*
-         * Borda quando estiver digitando
-         */
-
-        #texto:focus {
-
-            border-color: #1351b4;
-
-        }
-
-
-        /*
-         * Placeholder
-         */
-
-        #texto:empty::before {
-
-            content: attr(data-placeholder);
-
-            color: #999;
-
-            pointer-events: none;
-
-        }
-
-
-        /*
-         * ==================================================
-         * BOTÕES
-         * ==================================================
-         */
-
-        .botoes {
-
-            display: flex;
-
-            gap: 12px;
-
-            margin-top: 15px;
-
-        }
-
-
-        button {
-
-            padding: 13px 22px;
-
-            border: none;
-
-            border-radius: 8px;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-        }
-
-
-        #btnTraduzir {
-
-            background: #1351b4;
-
-            color: white;
-
-        }
-
-
-        #btnTraduzir:hover {
-
-            background: #0b3f8c;
-
-        }
-
-
-        #btnLimpar {
-
-            background: #777;
-
-            color: white;
-
-        }
-
-
-        #btnLimpar:hover {
-
-            background: #555;
-
-        }
-
-
-        #status {
-
-            margin-top: 15px;
-
-            font-size: 15px;
-
-            color: #555;
-
-        }
-
-    </style>
 
 </head>
 
-
-<body>
-
-
-    <main class="container">
-
-
-        <h1>
-            Tradutor de Libras
-        </h1>
-
-
-        <div class="linha"></div>
-
-
-        <p class="descricao">
-            Digite o texto que deseja traduzir:
-        </p>
+<body class="pagina-inicio">
+    <header>
+        <nav>
+            <a class="logo" href="/">Evel</a>
+            <ul class="nav-list">
+                <li><a href="Início.html">Início</span></a></li>
+                <li><a href="traducao.html">Tradução</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="sobre.html">Sobre nós</a></li>
+                <li><a href="Blog">Blog</a></li>
+                <li><a href="Contato">Contato</a></li>
+            </ul>
 
 
-        <!--
-            ==================================================
-            AQUI O USUÁRIO DIGITA
-            ==================================================
+            <a class="btn-login" href="#" id="abrirLogin"><img src="img/do-utilizador.png">Login</a>
 
-            O texto digitado aparece diretamente
-            neste elemento da página.
-        -->
+        </nav>
 
-        <div
-            id="texto"
-            contenteditable="true"
-            role="textbox"
-            aria-multiline="true"
-            data-placeholder="Digite aqui..."
-        ></div>
+    </header>
+    <section class="primeiratela">
+        <div class="content">
+            <h1>Conectando <span class="destaques">pessoas,</span> rompendo barreiras.</h1>
+            <p>Tradução e ensino de Libras para<br> mais inclusão, comunicação e<br> acessibilidade.</p>
+            <p>Eu, você e Libras</p>
 
+            <div class="botoes">
+                <a class="btn-traduz tamanho-igual" href="#" id="abrirLoginTraduz"><img class="btn-img"
+                        src="img/libras.png">Traduzir
+                    agora</a>
+                <a class="btn-apren tamanho-igual" href="#" id="abrirLoginAprender"><img class="btn-img"
+                        src="img/diplomado.png">Aprender
+                    Libras</a>
+            </div>
+        </div>
 
-        <div class="botoes">
+        <div class="imagem-principal">
+            <img src="img/bg.png" alt="Descrição da imagem">
+        </div>
 
+    </section>
 
-            <button
-                id="btnTraduzir"
-                type="button"
-            >
+    <div class="modal-login" id="modalLogin">
 
-                🤟 Traduzir para Libras
+        <div class="card">
 
+            <span class="fechar-login" id="fecharLogin">&times;</span>
+
+            <h1>EVEL</h1>
+
+            <p>Entre na sua conta</p>
+
+            <div class="input-box">
+                <input type="text" id="loginEmail" placeholder=" ">
+                <label for="loginEmail">Email <span>*</span></label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="loginSenha" placeholder=" ">
+                <label for="loginSenha">Sua senha <span>*</span></label>
+                <i class="bi bi-eye-fill" onclick="mostrarSenha('loginSenha', this)"></i>
+
+            </div>
+
+            <button onclick="entrar()">
+                Entrar
             </button>
 
+            <p id="resultadoLogin"></p>
 
-            <button
-                id="btnLimpar"
-                type="button"
-            >
+            <a class="cadastrop" href="">Esqueceu a senha?</a>
 
-                Limpar
-
-            </button>
-
+            <p class="cadastrop">
+                Ainda não tem uma conta?
+                <a href="#" id="abrirCadastro">Cadastre-se</a>
+            </p>
 
         </div>
 
+    </div>
 
-        <div id="status"></div>
+    <div class="modal-cadastro" id="modalCadastro">
 
+        <div class="card">
 
-    </main>
+            <span class="fechar-cadastro" id="fecharCadastro">&times;</span>
 
+            <h1>EVEL</h1>
 
-    <!-- ==================================================
-         VLibras
-         ================================================== -->
+            <p>Crie sua conta</p>
 
-    <div vw class="enabled">
+            <div class="input-box">
+                <input type="text" id="cadNome" placeholder=" ">
+                <label for="cadNome">Nome <span>*</span></label>
+            </div>
 
-        <div vw-access-button class="active"></div>
+            <div class="input-box">
+                <input type="text" id="cadEmail" placeholder=" ">
+                <label for="cadEmail">Email <span>*</span></label>
+            </div>
 
-        <div vw-plugin-wrapper>
+            <div class="input-box">
+                <input type="password" id="cadSenha" placeholder=" ">
+                <label for="cadSenha">Digite sua senha <span>*</span></label>
+                 <i class="bi bi-eye-fill" onclick="mostrarSenha('cadSenha', this)"></i>
+            </div>
 
-            <div class="vw-plugin-top-wrapper"></div>
+            <div class="input-box">
+                <input type="password" id="cadSenhaConf" placeholder=" ">
+                <label for="cadSenhaConf">Confirme sua senha <span>*</span></label>
+                 <i class="bi bi-eye-fill" onclick="mostrarSenha('cadSenhaConf', this)"></i>
+            </div>
+
+            <button onclick="cadastrar()">
+                Cadastrar
+            </button>
+
+            <p id="resultadoCadastro"></p>
+
+            <p class="loginp">
+                Já tem uma conta?
+                <a href="#" id="voltarLogin"> Entrar</a>
+            </p>
 
         </div>
 
     </div>
 
 
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="js/script.js"></script>
 
-
-    <script>
-
-
-        /*
-         * ==================================================
-         * INICIA O VLibras
-         * ==================================================
-         */
-
-        new window.VLibras.Widget(
-            'https://vlibras.gov.br/app'
-        );
-
-
-        /*
-         * ==================================================
-         * ELEMENTOS
-         * ==================================================
-         */
-
-        const caixa =
-            document.getElementById("texto");
-
-
-        const botaoTraduzir =
-            document.getElementById("btnTraduzir");
-
-
-        const botaoLimpar =
-            document.getElementById("btnLimpar");
-
-
-        const status =
-            document.getElementById("status");
-
-
-        /*
-         * ==================================================
-         * FUNÇÃO PARA PEGAR O TEXTO
-         * ==================================================
-         */
-
-        function pegarTexto() {
-
-            return caixa.innerText
-                .replace(/\u00A0/g, " ")
-                .trim();
-
-        }
-
-
-        /*
-         * ==================================================
-         * FUNÇÃO PARA SELECIONAR O TEXTO
-         * ==================================================
-         */
-
-        function selecionarTexto() {
-
-
-            const texto =
-                pegarTexto();
-
-
-            /*
-             * Se não tiver texto
-             */
-
-            if (!texto) {
-
-                status.innerText =
-                    "Digite algum texto primeiro.";
-
-                caixa.focus();
-
-                return false;
-
-            }
-
-
-            /*
-             * Pega a seleção atual da página
-             */
-
-            const selecao =
-                window.getSelection();
-
-
-            /*
-             * Remove a seleção anterior
-             */
-
-            selecao.removeAllRanges();
-
-
-            /*
-             * Cria uma nova seleção
-             */
-
-            const range =
-                document.createRange();
-
-
-            /*
-             * ==================================================
-             * AQUI ESTÁ O MAIS IMPORTANTE
-             * ==================================================
-             *
-             * Selecionamos o conteúdo REAL da caixa.
-             *
-             * O texto que o usuário digitou está dentro
-             * desta própria página.
-             */
-
-            range.selectNodeContents(caixa);
-
-
-            /*
-             * Coloca a seleção na página
-             */
-
-            selecao.addRange(range);
-
-
-            /*
-             * Mostra no console para teste
-             */
-
-            console.log(
-                "Texto selecionado:",
-                selecao.toString()
-            );
-
-
-            /*
-             * Verifica se realmente selecionou
-             */
-
-            if (
-                selecao.toString().trim() === texto
-            ) {
-
-                status.innerText =
-                    "Texto selecionado automaticamente.";
-
-                return true;
-
-            }
-
-
-            status.innerText =
-                "Não foi possível selecionar o texto.";
-
-            return false;
-
-        }
-
-
-        /*
-         * ==================================================
-         * BOTÃO TRADUZIR
-         * ==================================================
-         */
-
-        botaoTraduzir.addEventListener(
-            "click",
-            function () {
-
-
-                /*
-                 * Não fazemos cópia.
-                 *
-                 * Não usamos textarea.
-                 *
-                 * Não criamos outro texto.
-                 *
-                 * Selecionamos diretamente o texto
-                 * que está aparecendo na página.
-                 */
-
-                selecionarTexto();
-
-
-            }
-        );
-
-
-        /*
-         * ==================================================
-         * LIMPAR
-         * ==================================================
-         */
-
-        botaoLimpar.addEventListener(
-            "click",
-            function () {
-
-
-                /*
-                 * Apaga o texto
-                 */
-
-                caixa.innerHTML = "";
-
-
-                /*
-                 * Remove seleção
-
-                 */
-
-                const selecao =
-                    window.getSelection();
-
-
-                selecao.removeAllRanges();
-
-
-                /*
-                 * Limpa mensagem
-                 */
-
-                status.innerText = "";
-
-
-                /*
-                 * Coloca cursor novamente na caixa
-                 */
-
-                caixa.focus();
-
-            }
-        );
-
-
-        /*
-         * ==================================================
-         * CTRL + ENTER
-         * ==================================================
-         */
-
-        caixa.addEventListener(
-            "keydown",
-            function(event) {
-
-
-                if (
-                    event.key === "Enter" &&
-                    event.ctrlKey
-                ) {
-
-                    event.preventDefault();
-
-                    selecionarTexto();
-
-                }
-
-            }
-        );
-
-
-    </script>
 
 
 </body>
 
 </html>
-
-
