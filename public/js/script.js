@@ -302,3 +302,35 @@ function mostrarSenha(IdInput, botao){
     }
 }
 
+
+// ====================
+// TRADUÇÃO COM VLibras
+// ====================
+
+const inputText = document.getElementById("inputText");
+const btnTraduzir = document.getElementById("btnTraduzir");
+
+if (inputText && btnTraduzir) {
+
+    btnTraduzir.addEventListener("click", function () {
+
+        const texto = inputText.value.trim();
+
+        if (texto === "") {
+            return;
+        }
+
+        let textoVlibras = document.getElementById("textoVlibras");
+
+        if (!textoVlibras) {
+            textoVlibras = document.createElement("p");
+            textoVlibras.id = "textoVlibras";
+
+            document.body.appendChild(textoVlibras);
+        }
+
+        textoVlibras.textContent = texto;
+
+        window.VLibrasWidget.open();
+    });
+}

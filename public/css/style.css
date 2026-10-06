@@ -290,6 +290,11 @@ body {
     }
 }
 
+.logo {
+    width: 30%; 
+    max-width: 500px; 
+    height: auto;
+}
 
 @media (max-height: 500px) {
 
@@ -578,6 +583,36 @@ body {
     box-shadow: 0 0 0 4px rgba(3, 3, 160, 0.1);
 }
 
+#btnTraduzir {
+    display: block;
+    margin-left: auto;
+    margin-top: 10px;
+
+    background-color: var(--vermelho-evel);
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnTraduzir:hover {
+    transform: translateY(-2px);
+}
+
+#btnTraduzir:active {
+    transform: translateY(0);
+}
+
+#btnTraduzir:focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 3px;
+}
+
 @media (max-width: 700px) {
     .pagina-traducao {
         align-items: flex-start;
@@ -738,16 +773,24 @@ body {
 
 header .btn-login {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
     background-color: red;
     border-radius: 12px;
     color: #fff;
     padding: clamp(10px, 1vw, 14px) clamp(16px, 1.8vw, 24px);
+    padding-left: 40px;
     font-size: clamp(0.9rem, 1.2vw, 1.3rem);
     font-weight: 600;
     white-space: nowrap;
     transition: 0.3s ease;
+}
+
+.btn-login i {
+    left: 15px ;
+    position: absolute;
 }
 
 .btn-login img {
