@@ -1,3 +1,46 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ====================
+// FIREBASE
+// ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
+  authDomain: "evel-14960.firebaseapp.com",
+  projectId: "evel-14960",
+  storageBucket: "evel-14960.firebasestorage.app",
+  messagingSenderId: "596964040271",
+  appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
+  measurementId: "G-VKENYR2DYD"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+function traduzirErro(code) {
+    const erros = {
+        "auth/email-already-in-use": "Este e-mail já está cadastrado.",
+        "auth/invalid-email": "E-mail inválido.",
+        "auth/weak-password": "A senha deve ter pelo menos 6 caracteres.",
+        "auth/invalid-credential": "E-mail ou senha incorretos.",
+        "auth/user-not-found": "Usuário não encontrado.",
+        "auth/wrong-password": "Senha incorreta.",
+        "auth/too-many-requests": "Muitas tentativas. Tente novamente mais tarde."
+    };
+    return erros[code] || "Erro inesperado. Tente novamente.";
+}
+
 // ====================
 // ELEMENTOS
 // ====================
@@ -5,7 +48,6 @@
 const modalLogin = document.getElementById("modalLogin");
 const modalCadastro = document.getElementById("modalCadastro");
 
-const abrirLogin = document.getElementById("abrirLogin");
 const abrirLoginTraduz = document.getElementById("abrirLoginTraduz");
 const abrirLoginAprender = document.getElementById("abrirLoginAprender");
 
@@ -16,85 +58,39 @@ const abrirCadastro = document.getElementById("abrirCadastro");
 const voltarLogin = document.getElementById("voltarLogin");
 
 // ====================
-// CARREGAR CABEÇALHO
-// ====================
-
-fetch("componentes/cabecalho.html")
-    .then(resposta => resposta.text())
-    .then(html => {
-        document.getElementById("cabecalho").innerHTML = html;
-    });
-
-
-// ====================
-// MOSTRAR LOGIN
+// MOSTRAR LOGIN / CADASTRO
 // ====================
 
 function mostrarLogin() {
-    if (!modalCadastro || !modalLogin) {
-        return;
-    }
-
+    if (!modalCadastro || !modalLogin) return;
     modalCadastro.style.display = "none";
     modalLogin.style.display = "flex";
 }
 
-
-// ====================
-// MOSTRAR CADASTRO
-// ====================
-
 function mostrarCadastro() {
-    if (!modalLogin || !modalCadastro) {
-        return;
-    }
-
+    if (!modalLogin || !modalCadastro) return;
     modalLogin.style.display = "none";
     modalCadastro.style.display = "flex";
 }
 
-
-// ====================
-// ABRIR LOGIN
-// ====================
-
-if (abrirLogin) {
-    abrirLogin.addEventListener("click", function (event) {
+function ligarEvento(elemento, funcao) {
+    if (!elemento) return;
+    elemento.addEventListener("click", function (event) {
         event.preventDefault();
-        mostrarLogin();
+        funcao();
     });
 }
 
-
-if (abrirLoginTraduz) {
-    abrirLoginTraduz.addEventListener("click", function (event) {
-        event.preventDefault();
-        mostrarLogin();
-    });
-}
-
-
-if (abrirLoginAprender) {
-    abrirLoginAprender.addEventListener("click", function (event) {
-        event.preventDefault();
-        mostrarLogin();
-    });
-}
-
-// ====================
-// FECHAR LOGIN
-// ====================
+ligarEvento(abrirLoginTraduz, mostrarLogin);
+ligarEvento(abrirLoginAprender, mostrarLogin);
+ligarEvento(abrirCadastro, mostrarCadastro);
+ligarEvento(voltarLogin, mostrarLogin);
 
 if (fecharLogin) {
     fecharLogin.addEventListener("click", function () {
         modalLogin.style.display = "none";
     });
 }
-
-
-// ====================
-// FECHAR CADASTRO
-// ====================
 
 if (fecharCadastro) {
     fecharCadastro.addEventListener("click", function () {
@@ -103,195 +99,91 @@ if (fecharCadastro) {
 }
 
 // ====================
-// IR PARA CADASTRO
+// CARREGAR CABEÇALHO
+// (o botão de login do cabeçalho só existe depois que ele carrega)
 // ====================
 
-if (abrirCadastro) {
-    abrirCadastro.addEventListener("click", function (event) {
-        event.preventDefault();
-        mostrarCadastro();
-    });
-}
+const areaCabecalho = document.getElementById("cabecalho");
 
+if (areaCabecalho) {
+    fetch("componentes/cabecalho.html")
+        .then(resposta => resposta.text())
+        .then(html => {
+            areaCabecalho.innerHTML = html;
 
-// ====================
-// VOLTAR PARA LOGIN
-// ====================
-
-if (voltarLogin) {
-    voltarLogin.addEventListener("click", function (event) {
-        event.preventDefault();
-        mostrarLogin();
-    });
+            const abrirLogin = document.getElementById("abrirLogin");
+            ligarEvento(abrirLogin, mostrarLogin);
+        })
+        .catch(erro => console.log("Erro ao carregar cabeçalho:", erro));
 }
 
 // ====================
-// CADASTRO
+// CADASTRO (Firebase)
 // ====================
 
 async function cadastrar() {
-
-    const campoNome = document.getElementById("cadNome");
-    const campoEmail = document.getElementById("cadEmail");
-    const campoSenha = document.getElementById("cadSenha");
-    const campoSenhaConf = document.getElementById("cadSenhaConf");
+    const nome = document.getElementById("cadNome").value.trim();
+    const email = document.getElementById("cadEmail").value.trim();
+    const senha = document.getElementById("cadSenha").value;
+    const conf = document.getElementById("cadSenhaConf").value;
     const resultado = document.getElementById("resultadoCadastro");
 
-    if (!campoNome || !campoEmail || !campoSenha || !campoSenhaConf || !resultado) {
-        return;
-    }
-
-    let nome = campoNome.value;
-    let email = campoEmail.value;
-    let senha = campoSenha.value;
-    let senhaConf = campoSenhaConf.value;
-
-    // Verificar campos vazios
-
-    if (nome === "" || email === "" || senha === "" || senhaConf === "") {
-
+    if (!nome || !email || !senha || !conf) {
         resultado.innerText = "Preencha todos os campos.";
         return;
-
     }
 
-
-    // Verificar senhas
-
-    if (senha !== senhaConf) {
-
+    if (senha !== conf) {
         resultado.innerText = "As senhas não coincidem.";
         return;
-
     }
-
 
     try {
+        const cred = await createUserWithEmailAndPassword(auth, email, senha);
 
-        let resposta = await fetch("https://evel-backend.onrender.com/cadastro", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                nome: nome,
-                email: email,
-                senha: senha
-            })
-
+        await setDoc(doc(db, "usuarios", cred.user.uid), {
+            nome,
+            email,
+            criadoEm: serverTimestamp()
         });
 
+        resultado.innerText = "Conta criada com sucesso!";
 
-        let dados = await resposta.json();
-
-
-        if (resposta.ok) {
-
-            resultado.innerText = dados.mensagem;
-
-            // Depois de cadastrar, vai para a página inicial
-
-            setTimeout(function () {
-                window.location.href = "index.html";
-            }, 1000);
-
-        } else {
-
-            resultado.innerText = dados.mensagem;
-
-        }
-
-
-    } catch (erro) {
-
-        console.log(erro);
-
-        resultado.innerText =
-            "Não foi possível conectar ao servidor.";
-
+        setTimeout(function () {
+            window.location.href = "index.html";
+        }, 1000);
+    } catch (e) {
+        console.log(e);
+        resultado.innerText = traduzirErro(e.code);
     }
-
 }
 
-
 // ====================
-// LOGIN
+// LOGIN (Firebase)
 // ====================
 
 async function entrar() {
-
-    const campoEmail = document.getElementById("loginEmail");
-    const campoSenha = document.getElementById("loginSenha");
+    const email = document.getElementById("loginEmail").value.trim();
+    const senha = document.getElementById("loginSenha").value;
     const resultado = document.getElementById("resultadoLogin");
 
-    if (!campoEmail || !campoSenha || !resultado) {
-        return;
-    }
-
-    let email = campoEmail.value;
-    let senha = campoSenha.value;
-
-
-    // Verificar campos vazios
-
-    if (email === "" || senha === "") {
-
+    if (!email || !senha) {
         resultado.innerText = "Preencha todos os campos.";
         return;
-
     }
-
 
     try {
+        await signInWithEmailAndPassword(auth, email, senha);
 
-        let resposta = await fetch("https://evel-backend.onrender.com/login", {
+        resultado.innerText = "Login realizado!";
 
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                email: email,
-                senha: senha
-            })
-
-        });
-
-
-        let dados = await resposta.json();
-
-
-        if (resposta.ok) {
-
-            resultado.innerText = dados.mensagem;
-
-            // Login realizado
-
-            setTimeout(function () {
-                window.location.href = "index.html";
-            }, 500);
-
-        } else {
-
-            resultado.innerText = dados.mensagem;
-
-        }
-
-
-    } catch (erro) {
-
-        console.log(erro);
-
-        resultado.innerText =
-            "Não foi possível conectar ao servidor.";
-
+        setTimeout(function () {
+            window.location.href = "index.html";
+        }, 500);
+    } catch (e) {
+        console.log(e);
+        resultado.innerText = traduzirErro(e.code);
     }
-
 }
 
 // ====================
@@ -299,19 +191,29 @@ async function entrar() {
 // ====================
 
 function mostrarSenha(IdInput, botao) {
-    var inputPass = document.getElementById(IdInput)
+  const inputPass = document.getElementById(IdInput);
 
-
-    if (inputPass.type === 'password') {
-        inputPass.type = 'text'
-        botao.classList.replace('bi-eye-fill', 'bi-eye-slash-fill')
-    }
-    else {
-        inputPass.type = 'password'
-        botao.classList.replace('bi-eye-slash-fill', 'bi-eye-fill')
-    }
+  if (inputPass.type === "password") {
+    inputPass.type = "text";
+    botao.classList.replace("bi-eye-fill", "bi-eye-slash-fill");
+  } else {
+    inputPass.type = "password";
+    botao.classList.replace("bi-eye-slash-fill", "bi-eye-fill");
+  }
 }
 
+// Expor para os onclick="..." do HTML (módulos não criam globais)
+window.cadastrar = cadastrar;
+window.entrar = entrar;
+window.mostrarSenha = mostrarSenha;
+
+// ====================
+// USUÁRIO LOGADO (opcional)
+// ====================
+
+onAuthStateChanged(auth, (user) => {
+  console.log(user ? "Logado: " + user.email : "Ninguém logado");
+});
 
 // ====================
 // TRADUÇÃO COM VLibras
@@ -321,26 +223,19 @@ const inputText = document.getElementById("inputText");
 const btnTraduzir = document.getElementById("btnTraduzir");
 
 if (inputText && btnTraduzir) {
+  btnTraduzir.addEventListener("click", function () {
+    const texto = inputText.value.trim();
+    if (texto === "") return;
 
-    btnTraduzir.addEventListener("click", function () {
+    let textoVlibras = document.getElementById("textoVlibras");
 
-        const texto = inputText.value.trim();
+    if (!textoVlibras) {
+      textoVlibras = document.createElement("p");
+      textoVlibras.id = "textoVlibras";
+      document.body.appendChild(textoVlibras);
+    }
 
-        if (texto === "") {
-            return;
-        }
-
-        let textoVlibras = document.getElementById("textoVlibras");
-
-        if (!textoVlibras) {
-            textoVlibras = document.createElement("p");
-            textoVlibras.id = "textoVlibras";
-
-            document.body.appendChild(textoVlibras);
-        }
-
-        textoVlibras.textContent = texto;
-
-        window.VLibrasWidget.open();
-    });
+    textoVlibras.textContent = texto;
+    window.VLibrasWidget.open();
+  });
 }

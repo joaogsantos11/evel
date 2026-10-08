@@ -1,4 +1,17 @@
-login/aiven.env
-aiven.envaiven.env
+# Dependências
 node_modules/
+
+# Variáveis de ambiente e segredos
 .env
+.env.*
+*serviceAccount*.json
+
+# Firebase local
+.firebase/
+firebase-debug.log*
+
+# Sistema e editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
