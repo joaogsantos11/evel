@@ -2,21 +2,21 @@
 
     <nav>
 
-        <img src="" alt="logo" class="logotop">
+        <img src="/public/img/logo.png" alt="logo" class="logotop">
 
-        <!-- Botão do celular -->
-        <button class="menu-mobile" onclick="abrirMenu()">
+        <!-- Botão ☰ (aparece só no celular) -->
+        <button class="menu-mobile" onclick="abrirMenu()" aria-label="Abrir menu">
             ☰
         </button>
 
-        <!-- Menu normal -->
+        <!-- Menu normal (computador) -->
         <ul class="nav-list">
-            <li><a href="/public/inicio.html">Início</a></li>
-            <li><a href="../traducao.html">Tradução</a></li>
-            <li><a href="../cursos.html">Cursos</a></li>
-            <li><a href="../sobre.html">Sobre nós</a></li>
-            <li><a href="../Blog">Blog</a></li>
-            <li><a href="">Contato</a></li>
+            <li><a href="/inicio.html">Início</a></li>
+            <li><a href="/traducao.html">Tradução</a></li>
+            <li><a href="/cursos.html">Cursos</a></li>
+            <li><a href="/sobre.html">Sobre nós</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contato</a></li>
         </ul>
 
         <a class="btn-login" id="abrirLogin">
@@ -29,22 +29,20 @@
 </header>
 
 
-<!-- BARRA LATERAL DO CELULAR -->
-
+<!-- MENU LATERAL (celular) -->
 <div class="menu-lateral" id="menuLateral">
 
-    <span class="fechar-menu" onclick="fecharMenu()">
-        ×
-    </span>
+    <span class="fechar-menu" onclick="fecharMenu()">&times;</span>
 
-    <a href="/public/inicio.html">Início</a>
-    <a href="../traducao.html">Tradução</a>
-    <a href="../cursos.html">Cursos</a>
-    <a href="../sobre.html">Sobre nós</a>
-    <a href="../Blog">Blog</a>
-    <a href="">Contato</a>
-    <a id="abrirLoginMobile">Login</a>
+    <a href="/inicio.html">Início</a>
+    <a href="/traducao.html">Tradução</a>
+    <a href="/cursos.html">Cursos</a>
+    <a href="/sobre.html">Sobre nós</a>
+    <a href="#">Blog</a>
+    <a href="#">Contato</a>
+    <a href="#" id="abrirLoginMobile">Login</a>
 
 </div>
 
-<script src="/public/js/script.js"></script>
+<!-- Fundo escurecido atrás do menu -->
+<div class="menu-overlay" id="menuOverlay" onclick="fecharMenu()"></div>

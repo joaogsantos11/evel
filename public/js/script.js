@@ -254,21 +254,44 @@ if (inputText && btnTraduzir) {
   });
 }
 
-//menu mobile
-function abrirMenu() {
-    const menu = document.getElementById("menuLateral");
+// ===== MENU LATERAL =====
 
-    if (menu) {
-        menu.classList.add("aberto");
-    }
+function abrirMenu() {
+    document.getElementById("menuLateral")?.classList.add("aberto");
+    document.getElementById("menuOverlay")?.classList.add("visivel");
 }
 
 function fecharMenu() {
-    const menu = document.getElementById("menuLateral");
-
-    if (menu) {
-        menu.classList.remove("aberto");
-    }
+    document.getElementById("menuLateral")?.classList.remove("aberto");
+    document.getElementById("menuOverlay")?.classList.remove("visivel");
 }
-window.abrirMenu = abrirMenu;
-window.fecharMenu = fecharMenu;
+
+document.addEventListener("click", (e) => {
+
+    // Login do menu lateral: fecha o menu e usa o botão de login normal
+    if (e.target.closest("#abrirLoginMobile")) {
+        e.preventDefault();
+        fecharMenu();
+        document.getElementById("abrirLogin")?.click();
+        return;
+    }
+
+    // Fecha ao clicar no X, no fundo escuro ou em qualquer link do menu
+    if (
+        e.target.closest(".fechar-menu") ||
+        e.target.closest("#menuOverlay") ||
+        e.target.closest("#menuLateral a")
+    ) {
+        fecharMenu();
+    }
+});
+
+// Fecha com a tecla ESC
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") fecharMenu();
+});
+
+// Se a tela voltar a ser grande, garante que o menu fique fechado
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) fecharMenu();
+});

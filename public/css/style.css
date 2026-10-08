@@ -1313,12 +1313,108 @@ header .btn-login {
     }
 
 }
+
+/* ===== MENU LATERAL (celular) ===== */
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -300px;
+
+    width: 280px;
+    height: 100vh;
+
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 70px 30px;
+    gap: 25px;
+
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+
+    transition: left 0.3s ease;
+
+    z-index: 99999;
+}
+
+/* MENU ABERTO */
+.menu-lateral.aberto {
+    left: 0;
+}
+
+/* LINKS DO MENU */
+.menu-lateral a {
+    position: static;
+
+    color: var(--azul-evel, #1a4fd6);
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Remove a linha vermelha dos links do menu */
+.menu-lateral a::after {
+    display: none;
+}
+
+/* BOTÃO X */
+.fechar-menu {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    color: #333;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+/* FUNDO ESCURECIDO */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99998;
+}
+
+.menu-overlay.visivel {
+    display: block;
+}
+
+/* BOTÃO ☰ (escondido no computador) */
 .menu-mobile {
-    display: block !important;
-    background: red;
-    color: white;
+    display: none;
+    background: none;
+    color: var(--azul-evel, #1a4fd6);
     border: none;
     font-size: 30px;
     padding: 10px;
     cursor: pointer;
+}
+
+
+/* ===== CELULAR ===== */
+
+@media (max-width: 768px) {
+
+    header nav {
+        min-height: 70px;
+        padding: 0 20px;
+    }
+
+    /* Esconde menu normal */
+    .nav-list {
+        display: none;
+    }
+
+    /* Mostra botão ☰ */
+    .menu-mobile {
+        display: block;
+        order: -1;
+    }
+
 }
