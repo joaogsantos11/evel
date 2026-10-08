@@ -29,14 +29,21 @@ body {
 
 /*==== CABEÇALHO ====*/
 
+#cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 header {
     width: 100%;
-
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
 }
+
 
 header nav {
     background-color: white;
-    box-shadow: 0 4px 12px rgba(92, 85, 85, 0.08);
+    box-shadow: 0 0px 5px rgba(92, 85, 85, 0.08);
     min-height: clamp(70px, 8vh, 100px);
     display: flex;
     justify-content: space-between;
@@ -49,7 +56,7 @@ header nav {
 header a {
     position: relative;
     font-weight: 600;
-    color: blue;
+    color: var(--azul-evel);
     text-decoration: none;
     font-size: clamp(0.9rem, 1.2vw, 1.3rem);
     transition: color 0.3s ease;
@@ -281,26 +288,399 @@ header .btn-login {
 
 /*=====Página Inicial====*/
 
+/* =========================
+   HOME
+   ========================= */
+
 .pagina-home main {
-    min-height: 70vh;
+    background: var(--fundo);
+}
+
+
+/* =========================
+   TELA DE BOAS-VINDAS
+   ========================= */
+
+.pagina-home .tela-welcome {
+    min-height: auto;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 
-    padding: 60px clamp(20px, 8vw, 120px);
+    padding: clamp(50px, 7vw, 90px) clamp(20px, 8vw, 120px);
 }
 
 .pagina-home .welcome {
+    margin: 0;
+
     color: var(--azul-evel);
     font-size: clamp(2.5rem, 5vw, 5rem);
-    margin: 0;
 }
 
-.pagina-home p {
-    color: var(--azul-evel);
+.pagina-home .destaques {
+    color: var(--vermelho-evel);
 }
+
+.pagina-home .tela-welcome p {
+    max-width: 650px;
+
+    margin-top: 20px;
+
+    color: var(--texto);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.7;
+}
+
+
+/* =========================
+   BOTÃO PRINCIPAL
+   ========================= */
+
+.pagina-home .btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 25px;
+    padding: 14px 24px;
+
+    background-color: var(--vermelho-evel);
+    color: var(--branco);
+
+    border-radius: 12px;
+
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.pagina-home .btn-home:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   SEÇÃO DE AÇÕES
+   ========================= */
+
+.pagina-home .acoes {
+    padding: clamp(50px, 8vw, 90px) clamp(20px, 8vw, 120px);
+}
+
+.pagina-home .acoes h2 {
+    margin: 0 0 30px;
+
+    color: var(--azul-evel);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+
+/* =========================
+   GRID DOS CARDS
+   ========================= */
+
+.pagina-home .cards {
+    width: 100%;
+    max-width: 1100px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: clamp(15px, 2vw, 25px);
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.pagina-home .card {
+    padding: clamp(20px, 3vw, 30px);
+
+    background: var(--branco);
+
+    border-radius: clamp(14px, 2vw, 18px);
+
+    color: var(--texto);
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s ease;
+}
+
+.pagina-home .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+
+/* =========================
+   ÍCONE DO CARD
+   ========================= */
+
+.pagina-home .card i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: clamp(45px, 5vw, 55px);
+    height: clamp(45px, 5vw, 55px);
+
+    margin-bottom: 18px;
+
+    border-radius: 14px;
+
+    background: #eeeeff;
+    color: var(--azul-evel);
+
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+
+/* =========================
+   TÍTULO DO CARD
+   ========================= */
+
+.pagina-home .card h3 {
+    margin: 0 0 10px;
+
+    color: var(--azul-evel);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+
+/* =========================
+   TEXTO DO CARD
+   ========================= */
+
+.pagina-home .card p {
+    margin: 0;
+
+    color: var(--texto);
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    line-height: 1.6;
+}
+
+
+/* =========================
+   LINK DO CARD
+   ========================= */
+
+.pagina-home .card-link {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: var(--azul-evel);
+
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: color 0.3s ease;
+}
+
+.pagina-home .card-link:hover {
+    color: var(--vermelho-evel);
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.pagina-home footer {
+    padding: 30px 20px;
+
+    background: var(--branco);
+
+    border-top: 1px solid #eee;
+
+    text-align: center;
+
+    color: #777;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+}
+
+/* =========================
+   CONTINUE APRENDENDO
+   ========================= */
+
+.pagina-home .continue-aprendendo {
+    padding: 0 clamp(20px, 8vw, 120px) clamp(50px, 7vw, 90px);
+}
+
+
+.pagina-home .progresso-info {
+    width: 100%;
+    max-width: 1100px;
+
+    padding: clamp(25px, 4vw, 45px);
+
+    background: var(--azul-evel);
+    color: var(--branco);
+
+    border-radius: clamp(16px, 2vw, 24px);
+}
+
+
+/* =========================
+   ETIQUETA
+   ========================= */
+
+.pagina-home .etiqueta {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.pagina-home .progresso-info h2 {
+    margin: 0;
+
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+
+/* =========================
+   INFORMAÇÕES DO CURSO
+   ========================= */
+
+.pagina-home .curso-nome {
+    margin: 18px 0 5px;
+
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 600;
+}
+
+.pagina-home .aula-atual {
+    margin: 0;
+
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+}
+
+
+/* =========================
+   BARRA DE PROGRESSO
+   ========================= */
+
+.pagina-home .barra-progresso {
+    width: 100%;
+    height: 12px;
+
+    margin-top: 28px;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.pagina-home .progresso {
+    width: 67%;
+    height: 100%;
+
+    background: var(--vermelho-evel);
+
+    border-radius: inherit;
+}
+
+
+/* =========================
+   DADOS DO PROGRESSO
+   ========================= */
+
+.pagina-home .progresso-dados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 10px;
+
+    gap: 15px;
+
+    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+}
+
+
+/* =========================
+   BOTÃO CONTINUAR
+   ========================= */
+
+.pagina-home .btn-continuar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 28px;
+    padding: 13px 20px;
+
+    background: var(--branco);
+    color: var(--azul-evel);
+
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.pagina-home .btn-continuar:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .pagina-home .progresso-dados {
+        flex-direction: column;
+        align-items: flex-start
+    }
+}
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 900px) {
+    .pagina-home .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+
+    .pagina-home .cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .pagina-home .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 
 
 /*---- Login/Cadastro ----*/
@@ -1183,7 +1563,7 @@ header .btn-login {
 }
 
 @media (max-height: 700px) and (min-width: 701px) {
-    .primeiratela{
+    .primeiratela {
         overflow-y: auto;
     }
 

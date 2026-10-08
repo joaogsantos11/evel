@@ -262,7 +262,7 @@ async function carregarCabecalho() {
 
     // tenta alguns caminhos possíveis
     const caminhos = [
-        "/componentes/cabecalho.html",
+        "/public/componentes/cabecalho.html",
         "componentes/cabecalho.html",
         "../componentes/cabecalho.html"
     ];
