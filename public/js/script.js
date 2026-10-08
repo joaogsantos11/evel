@@ -104,12 +104,20 @@ if (fecharCadastro) {
 // ====================
 
 const areaCabecalho = document.getElementById("cabecalho");
-if (areaCabecalho) {
-    const urlCabecalho = new URL("../componentes/cabecalho.html", import.meta.url);
 
-    fetch(urlCabecalho)
+if (areaCabecalho) {
+
+    const caminhoCabecalho =
+        window.location.pathname === "/"
+            ? "public/componentes/cabecalho.html"
+            : "componentes/cabecalho.html";
+
+    fetch(caminhoCabecalho)
         .then(resposta => {
-            if (!resposta.ok) throw new Error("Cabeçalho não encontrado");
+            if (!resposta.ok) {
+                throw new Error("Cabeçalho não encontrado: " + resposta.status);
+            }
+
             return resposta.text();
         })
         .then(html => {
@@ -118,8 +126,10 @@ if (areaCabecalho) {
             const abrirLogin = document.getElementById("abrirLogin");
             ligarEvento(abrirLogin, mostrarLogin);
         })
-        .catch(erro => console.log("Erro ao carregar cabeçalho:", erro));
-    }
+        .catch(erro => {
+            console.log("Erro ao carregar cabeçalho:", erro);
+        });
+}
 
 // ====================
 // CADASTRO (Firebase)
