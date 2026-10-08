@@ -30,7 +30,7 @@ body {
 /*==== CABEÇALHO ====*/
 
 header {
-width: 100%;
+    width: 100%;
 
 }
 
@@ -95,7 +95,7 @@ header a:hover::after {
 }
 
 .btn-login i {
-    left: 15px ;
+    left: 15px;
     position: absolute;
 }
 
@@ -279,6 +279,30 @@ header .btn-login {
     }
 }
 
+/*=====Página Inicial====*/
+
+.pagina-home main {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 60px clamp(20px, 8vw, 120px);
+}
+
+.pagina-home .welcome {
+    color: var(--azul-evel);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    margin: 0;
+}
+
+.pagina-home p {
+    color: var(--azul-evel);
+}
+
+
 /*---- Login/Cadastro ----*/
 
 .modal-login,
@@ -366,7 +390,7 @@ header .btn-login {
     right: 15px;
     top: 20px;
     cursor: pointer;
-    color:#333333be;
+    color: #333333be;
     font-size: 1.3rem;
 }
 
@@ -415,10 +439,10 @@ header .btn-login {
 
 /* LABEL QUANDO ATIVO/PREENCHIDO */
 
-.modal-login .input-box input:focus + label,
-.modal-login .input-box input:not(:placeholder-shown) + label,
-.modal-cadastro .input-box input:focus + label,
-.modal-cadastro .input-box input:not(:placeholder-shown) + label {
+.modal-login .input-box input:focus+label,
+.modal-login .input-box input:not(:placeholder-shown)+label,
+.modal-cadastro .input-box input:focus+label,
+.modal-cadastro .input-box input:not(:placeholder-shown)+label {
     top: 12px;
 
     font-size: 11px;
@@ -543,8 +567,8 @@ header .btn-login {
 }
 
 .logo {
-    width: 30%; 
-    max-width: 500px; 
+    width: 30%;
+    max-width: 500px;
     height: auto;
 }
 
@@ -575,7 +599,6 @@ header .btn-login {
 /*---- Pagina inicial ----*/
 
 .btn
-
 /*---- Cursos ----*/
 
 .pagina-cursos {
