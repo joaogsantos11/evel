@@ -15,6 +15,16 @@ const fecharCadastro = document.getElementById("fecharCadastro");
 const abrirCadastro = document.getElementById("abrirCadastro");
 const voltarLogin = document.getElementById("voltarLogin");
 
+// ====================
+// CARREGAR CABEÇALHO
+// ====================
+
+fetch("componentes/cabecalho.html")
+    .then(resposta => resposta.text())
+    .then(html => {
+        document.getElementById("cabecalho").innerHTML = html;
+    });
+
 
 // ====================
 // MOSTRAR LOGIN
@@ -49,7 +59,7 @@ function mostrarCadastro() {
 // ====================
 
 if (abrirLogin) {
-    abrirLogin.addEventListener("click", function(event) {
+    abrirLogin.addEventListener("click", function (event) {
         event.preventDefault();
         mostrarLogin();
     });
@@ -57,7 +67,7 @@ if (abrirLogin) {
 
 
 if (abrirLoginTraduz) {
-    abrirLoginTraduz.addEventListener("click", function(event) {
+    abrirLoginTraduz.addEventListener("click", function (event) {
         event.preventDefault();
         mostrarLogin();
     });
@@ -65,7 +75,7 @@ if (abrirLoginTraduz) {
 
 
 if (abrirLoginAprender) {
-    abrirLoginAprender.addEventListener("click", function(event) {
+    abrirLoginAprender.addEventListener("click", function (event) {
         event.preventDefault();
         mostrarLogin();
     });
@@ -76,7 +86,7 @@ if (abrirLoginAprender) {
 // ====================
 
 if (fecharLogin) {
-    fecharLogin.addEventListener("click", function() {
+    fecharLogin.addEventListener("click", function () {
         modalLogin.style.display = "none";
     });
 }
@@ -87,7 +97,7 @@ if (fecharLogin) {
 // ====================
 
 if (fecharCadastro) {
-    fecharCadastro.addEventListener("click", function() {
+    fecharCadastro.addEventListener("click", function () {
         modalCadastro.style.display = "none";
     });
 }
@@ -97,7 +107,7 @@ if (fecharCadastro) {
 // ====================
 
 if (abrirCadastro) {
-    abrirCadastro.addEventListener("click", function(event) {
+    abrirCadastro.addEventListener("click", function (event) {
         event.preventDefault();
         mostrarCadastro();
     });
@@ -109,7 +119,7 @@ if (abrirCadastro) {
 // ====================
 
 if (voltarLogin) {
-    voltarLogin.addEventListener("click", function(event) {
+    voltarLogin.addEventListener("click", function (event) {
         event.preventDefault();
         mostrarLogin();
     });
@@ -158,7 +168,7 @@ async function cadastrar() {
 
     try {
 
-        let resposta = await fetch("http://localhost:3000/cadastro", {
+        let resposta = await fetch("https://evel-backend.onrender.com/cadastro", {
 
             method: "POST",
 
@@ -184,7 +194,7 @@ async function cadastrar() {
 
             // Depois de cadastrar, vai para a página inicial
 
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = "index.html";
             }, 1000);
 
@@ -237,7 +247,7 @@ async function entrar() {
 
     try {
 
-        let resposta = await fetch("http://localhost:3000/login", {
+        let resposta = await fetch("https://evel-backend.onrender.com/login", {
 
             method: "POST",
 
@@ -262,7 +272,7 @@ async function entrar() {
 
             // Login realizado
 
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = "index.html";
             }, 500);
 
@@ -288,17 +298,17 @@ async function entrar() {
 // MOSTRAR/OCULTAR SENHA
 // ====================
 
-function mostrarSenha(IdInput, botao){
+function mostrarSenha(IdInput, botao) {
     var inputPass = document.getElementById(IdInput)
-    
 
-    if(inputPass.type === 'password'){
+
+    if (inputPass.type === 'password') {
         inputPass.type = 'text'
-        botao.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+        botao.classList.replace('bi-eye-fill', 'bi-eye-slash-fill')
     }
     else {
         inputPass.type = 'password'
-        botao.classList.replace('bi-eye-slash-fill','bi-eye-fill')
+        botao.classList.replace('bi-eye-slash-fill', 'bi-eye-fill')
     }
 }
 
