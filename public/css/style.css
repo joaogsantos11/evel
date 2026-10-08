@@ -1210,42 +1210,42 @@ header .btn-login {
     }
 }
 
-/*---- funcionar em telas pequenas ----*/
-/* BOTÃO DO MENU MOBILE */
+/* ===== MENU MOBILE ===== */
 
 .menu-mobile {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
+    color: var(--azul-evel);
     font-size: 30px;
     cursor: pointer;
+    padding: 5px;
 }
 
 
-/* BARRA LATERAL */
+/* ===== MENU LATERAL ===== */
 
 .menu-lateral {
     position: fixed;
     top: 0;
-    left: -280px;
+    left: -300px;
 
     width: 280px;
     height: 100vh;
 
-    background: white;
+    background-color: white;
 
     display: flex;
     flex-direction: column;
 
     padding: 70px 30px;
-
     gap: 25px;
 
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
 
-    transition: 0.3s;
+    transition: left 0.3s ease;
 
-    z-index: 9999;
+    z-index: 99999;
 }
 
 
@@ -1256,12 +1256,23 @@ header .btn-login {
 }
 
 
-/* LINKS */
+/* LINKS DO MENU */
 
 .menu-lateral a {
+    position: static;
+
+    color: var(--azul-evel);
     text-decoration: none;
-    color: black;
+
     font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* Remove a linha vermelha dos links do menu */
+
+.menu-lateral a::after {
+    display: none;
 }
 
 
@@ -1269,24 +1280,36 @@ header .btn-login {
 
 .fechar-menu {
     position: absolute;
+
     top: 15px;
     right: 20px;
 
-    font-size: 30px;
+    color: #333;
+    font-size: 32px;
     cursor: pointer;
 }
 
 
-/* CELULAR */
+/* ===== CELULAR ===== */
 
 @media (max-width: 768px) {
 
-    .menu-mobile {
-        display: block;
+    header nav {
+        min-height: 70px;
+        padding: 0 20px;
     }
+
+    /* Esconde menu normal */
 
     .nav-list {
         display: none;
+    }
+
+    /* Mostra botão ☰ */
+
+    .menu-mobile {
+        display: block;
+        order: -1;
     }
 
 }

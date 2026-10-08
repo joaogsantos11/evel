@@ -254,10 +254,21 @@ if (inputText && btnTraduzir) {
   });
 }
 
+//menu mobile
 function abrirMenu() {
-    document.getElementById("menuLateral").classList.add("aberto");
+    const menu = document.getElementById("menuLateral");
+
+    if (menu) {
+        menu.classList.add("aberto");
+    }
 }
 
 function fecharMenu() {
-    document.getElementById("menuLateral").classList.remove("aberto");
+    const menu = document.getElementById("menuLateral");
+
+    if (menu) {
+        menu.classList.remove("aberto");
+    }
 }
+window.abrirMenu = abrirMenu;
+window.fecharMenu = fecharMenu;
