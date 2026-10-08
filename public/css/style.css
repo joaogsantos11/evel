@@ -1402,19 +1402,34 @@ header .btn-login {
 @media (max-width: 768px) {
 
     header nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         min-height: 70px;
         padding: 0 20px;
+        gap: 10px;
     }
 
-    /* Esconde menu normal */
-    .nav-list {
-        display: none;
+    /* Esconde o menu normal */
+    header nav .nav-list {
+        display: none !important;
     }
 
-    /* Mostra botão ☰ */
-    .menu-mobile {
+    /* Mostra o botão ☰ */
+    header nav .menu-mobile {
         display: block;
         order: -1;
     }
 
+    /* Logo menor para caber */
+    header nav .logotop {
+        height: 40px;
+        width: auto;
+    }
+
+    /* Botão de login mais compacto */
+    header nav .btn-login {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
 }
