@@ -254,6 +254,39 @@ if (inputText && btnTraduzir) {
   });
 }
 
+// ===== CARREGAR O CABEÇALHO =====
+
+async function carregarCabecalho() {
+    const lugar = document.getElementById("cabecalho");
+    if (!lugar) return;
+
+    // tenta alguns caminhos possíveis
+    const caminhos = [
+        "/componentes/cabecalho.html",
+        "componentes/cabecalho.html",
+        "../componentes/cabecalho.html"
+    ];
+
+    for (const caminho of caminhos) {
+        try {
+            const resposta = await fetch(caminho);
+            if (resposta.ok) {
+                lugar.innerHTML = await resposta.text();
+                return;
+            }
+        } catch (erro) {
+            // tenta o próximo caminho
+        }
+    }
+
+    // se nenhum funcionou, mostra aviso na tela para ajudar a achar o erro
+    lugar.innerHTML =
+        '<p style="background:#fee;color:#900;padding:10px;text-align:center;">' +
+        'Erro: não consegui carregar componentes/cabecalho.html</p>';
+}
+
+document.addEventListener("DOMContentLoaded", carregarCabecalho);
+
 // ===== MENU LATERAL =====
 
 function abrirMenu() {
