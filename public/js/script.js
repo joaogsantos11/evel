@@ -104,10 +104,14 @@ if (fecharCadastro) {
 // ====================
 
 const areaCabecalho = document.getElementById("cabecalho");
-
 if (areaCabecalho) {
-    fetch("componentes/cabecalho.html")
-        .then(resposta => resposta.text())
+    const urlCabecalho = new URL("../componentes/cabecalho.html", import.meta.url);
+
+    fetch(urlCabecalho)
+        .then(resposta => {
+            if (!resposta.ok) throw new Error("Cabeçalho não encontrado");
+            return resposta.text();
+        })
         .then(html => {
             areaCabecalho.innerHTML = html;
 
@@ -115,7 +119,7 @@ if (areaCabecalho) {
             ligarEvento(abrirLogin, mostrarLogin);
         })
         .catch(erro => console.log("Erro ao carregar cabeçalho:", erro));
-}
+    }
 
 // ====================
 // CADASTRO (Firebase)
