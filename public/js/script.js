@@ -16,13 +16,13 @@ import {
 // FIREBASE
 // ====================
 const firebaseConfig = {
-  apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
-  authDomain: "evel-14960.firebaseapp.com",
-  projectId: "evel-14960",
-  storageBucket: "evel-14960.firebasestorage.app",
-  messagingSenderId: "596964040271",
-  appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
-  measurementId: "G-VKENYR2DYD"
+    apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
+    authDomain: "evel-14960.firebaseapp.com",
+    projectId: "evel-14960",
+    storageBucket: "evel-14960.firebasestorage.app",
+    messagingSenderId: "596964040271",
+    appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
+    measurementId: "G-VKENYR2DYD"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -80,19 +80,21 @@ function ligarEvento(elemento, funcao) {
         funcao();
     });
 }
+const abrirLogin = document.getElementById("abrirLogin");
 
+ligarEvento(abrirLogin, mostrarLogin);
 ligarEvento(abrirLoginTraduz, mostrarLogin);
 ligarEvento(abrirLoginAprender, mostrarLogin);
 ligarEvento(abrirCadastro, mostrarCadastro);
 ligarEvento(voltarLogin, mostrarLogin);
 
-if (fecharLogin) {
+if (fecharLogin && modalLogin) {
     fecharLogin.addEventListener("click", function () {
         modalLogin.style.display = "none";
     });
 }
 
-if (fecharCadastro) {
+if (fecharCadastro && modalCadastro) {
     fecharCadastro.addEventListener("click", function () {
         modalCadastro.style.display = "none";
     });
@@ -192,7 +194,7 @@ async function entrar() {
         resultado.innerText = "Login realizado!";
 
         setTimeout(function () {
-            window.location.href = "index.html";
+            window.location.href = "/public/inicio.html";
         }, 500);
     } catch (e) {
         console.log(e);
@@ -205,15 +207,15 @@ async function entrar() {
 // ====================
 
 function mostrarSenha(IdInput, botao) {
-  const inputPass = document.getElementById(IdInput);
+    const inputPass = document.getElementById(IdInput);
 
-  if (inputPass.type === "password") {
-    inputPass.type = "text";
-    botao.classList.replace("bi-eye-fill", "bi-eye-slash-fill");
-  } else {
-    inputPass.type = "password";
-    botao.classList.replace("bi-eye-slash-fill", "bi-eye-fill");
-  }
+    if (inputPass.type === "password") {
+        inputPass.type = "text";
+        botao.classList.replace("bi-eye-fill", "bi-eye-slash-fill");
+    } else {
+        inputPass.type = "password";
+        botao.classList.replace("bi-eye-slash-fill", "bi-eye-fill");
+    }
 }
 
 // Expor para os onclick="..." do HTML (módulos não criam globais)
@@ -226,7 +228,7 @@ window.mostrarSenha = mostrarSenha;
 // ====================
 
 onAuthStateChanged(auth, (user) => {
-  console.log(user ? "Logado: " + user.email : "Ninguém logado");
+    console.log(user ? "Logado: " + user.email : "Ninguém logado");
 });
 
 // ====================
@@ -237,21 +239,21 @@ const inputText = document.getElementById("inputText");
 const btnTraduzir = document.getElementById("btnTraduzir");
 
 if (inputText && btnTraduzir) {
-  btnTraduzir.addEventListener("click", function () {
-    const texto = inputText.value.trim();
-    if (texto === "") return;
+    btnTraduzir.addEventListener("click", function () {
+        const texto = inputText.value.trim();
+        if (texto === "") return;
 
-    let textoVlibras = document.getElementById("textoVlibras");
+        let textoVlibras = document.getElementById("textoVlibras");
 
-    if (!textoVlibras) {
-      textoVlibras = document.createElement("p");
-      textoVlibras.id = "textoVlibras";
-      document.body.appendChild(textoVlibras);
-    }
+        if (!textoVlibras) {
+            textoVlibras = document.createElement("p");
+            textoVlibras.id = "textoVlibras";
+            document.body.appendChild(textoVlibras);
+        }
 
-    textoVlibras.textContent = texto;
-    window.VLibrasWidget.open();
-  });
+        textoVlibras.textContent = texto;
+        window.VLibrasWidget.open();
+    });
 }
 
 // ===== CARREGAR O CABEÇALHO =====
