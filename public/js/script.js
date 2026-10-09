@@ -9,6 +9,7 @@ import {
     getFirestore,
     doc,
     setDoc,
+    getDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -16,13 +17,13 @@ import {
 // FIREBASE
 // ====================
 const firebaseConfig = {
-    apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
-    authDomain: "evel-14960.firebaseapp.com",
-    projectId: "evel-14960",
-    storageBucket: "evel-14960.firebasestorage.app",
-    messagingSenderId: "596964040271",
-    appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
-    measurementId: "G-VKENYR2DYD"
+  apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
+  authDomain: "evel-14960.firebaseapp.com",
+  projectId: "evel-14960",
+  storageBucket: "evel-14960.firebasestorage.app",
+  messagingSenderId: "596964040271",
+  appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
+  measurementId: "G-VKENYR2DYD"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -39,6 +40,26 @@ function traduzirErro(code) {
         "auth/too-many-requests": "Muitas tentativas. Tente novamente mais tarde."
     };
     return erros[code] || "Erro inesperado. Tente novamente.";
+}
+
+// ====================
+// NOME DO USUÁRIO NO CABEÇALHO
+// ====================
+
+// Começa com o nome guardado no navegador (evita o "piscar" de Início → nome)
+let nomeUsuario = null;
+try {
+    nomeUsuario = localStorage.getItem("nomeUsuario");
+} catch (e) {}
+
+function atualizarCabecalho() {
+    const nomeFormatado = nomeUsuario
+        ? nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)
+        : null;
+
+    // "Olá, Fulano!" da página inicial
+    const boasVindas = document.getElementById("nomeBoasVindas");
+    if (boasVindas) boasVindas.textContent = (nomeFormatado || "visitante") + "!";
 }
 
 // ====================
@@ -98,39 +119,6 @@ if (fecharCadastro && modalCadastro) {
     fecharCadastro.addEventListener("click", function () {
         modalCadastro.style.display = "none";
     });
-}
-
-// ====================
-// CARREGAR CABEÇALHO
-// (o botão de login do cabeçalho só existe depois que ele carrega)
-// ====================
-
-const areaCabecalho = document.getElementById("cabecalho");
-
-if (areaCabecalho) {
-
-    const caminhoCabecalho =
-        window.location.pathname === "/"
-            ? "public/componentes/cabecalho.html"
-            : "componentes/cabecalho.html";
-
-    fetch(caminhoCabecalho)
-        .then(resposta => {
-            if (!resposta.ok) {
-                throw new Error("Cabeçalho não encontrado: " + resposta.status);
-            }
-
-            return resposta.text();
-        })
-        .then(html => {
-            areaCabecalho.innerHTML = html;
-
-            const abrirLogin = document.getElementById("abrirLogin");
-            ligarEvento(abrirLogin, mostrarLogin);
-        })
-        .catch(erro => {
-            console.log("Erro ao carregar cabeçalho:", erro);
-        });
 }
 
 // ====================
@@ -224,11 +212,38 @@ window.entrar = entrar;
 window.mostrarSenha = mostrarSenha;
 
 // ====================
-// USUÁRIO LOGADO (opcional)
+// USUÁRIO LOGADO → NOME NO "INÍCIO"
 // ====================
 
 onAuthStateChanged(auth, (user) => {
     console.log(user ? "Logado: " + user.email : "Ninguém logado");
+onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+        nomeUsuario = null;
+        try {
+            localStorage.removeItem("nomeUsuario");
+        } catch (e) {}
+        atualizarCabecalho();
+        return;
+    }
+
+    let nome = null;
+    try {
+        const snap = await getDoc(doc(db, "usuarios", user.uid));
+        if (snap.exists()) nome = snap.data().nome;
+    } catch (e) {
+        console.log("Erro ao buscar nome:", e);
+    }
+
+    nome = nome || user.displayName || user.email.split("@")[0];
+    const primeiro = nome.split(" ")[0];
+nomeUsuario = primeiro.charAt(0).toUpperCase() + primeiro.slice(1).toLowerCase(); // só o primeiro nome (use `nome` para o nome completo)
+
+    try {
+        localStorage.setItem("nomeUsuario", nomeUsuario);
+    } catch (e) {}
+
+    atualizarCabecalho();
 });
 
 // ====================
@@ -274,6 +289,10 @@ async function carregarCabecalho() {
             const resposta = await fetch(caminho);
             if (resposta.ok) {
                 lugar.innerHTML = await resposta.text();
+
+                // liga o botão de login e coloca o nome (se já houver usuário)
+                ligarEvento(document.getElementById("abrirLogin"), mostrarLogin);
+                atualizarCabecalho();
                 return;
             }
         } catch (erro) {
@@ -287,7 +306,10 @@ async function carregarCabecalho() {
         'Erro: não consegui carregar componentes/cabecalho.html</p>';
 }
 
-document.addEventListener("DOMContentLoaded", carregarCabecalho);
+document.addEventListener("DOMContentLoaded", async () => {
+    await carregarCabecalho();
+    atualizarCabecalho(); // cobre páginas com o cabeçalho escrito direto no HTML (ex.: index.html)
+});
 
 // ===== MENU LATERAL =====
 
