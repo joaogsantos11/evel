@@ -19,11 +19,11 @@ import {
 const firebaseConfig = {
   apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
   authDomain: "evel-14960.firebaseapp.com",
-  projectId: "evel-14960",
-  storageBucket: "evel-14960.firebasestorage.app",
-  messagingSenderId: "596964040271",
-  appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
-  measurementId: "G-VKENYR2DYD"
+projectId: "evel-14960",
+storageBucket: "evel-14960.firebasestorage.app",
+messagingSenderId: "596964040271",
+appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
+measurementId: "G-VKENYR2DYD"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -217,6 +217,7 @@ window.mostrarSenha = mostrarSenha;
 
 onAuthStateChanged(auth, (user) => {
     console.log(user ? "Logado: " + user.email : "Ninguém logado");
+});
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
         nomeUsuario = null;
