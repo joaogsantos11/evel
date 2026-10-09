@@ -3,7 +3,8 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
     getFirestore,
@@ -17,13 +18,13 @@ import {
 // FIREBASE
 // ====================
 const firebaseConfig = {
-  apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
-  authDomain: "evel-14960.firebaseapp.com",
-projectId: "evel-14960",
-storageBucket: "evel-14960.firebasestorage.app",
-messagingSenderId: "596964040271",
-appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
-measurementId: "G-VKENYR2DYD"
+    apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
+    authDomain: "evel-14960.firebaseapp.com",
+    projectId: "evel-14960",
+    storageBucket: "evel-14960.firebasestorage.app",
+    messagingSenderId: "596964040271",
+    appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
+    measurementId: "G-VKENYR2DYD"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -50,7 +51,93 @@ function traduzirErro(code) {
 let nomeUsuario = null;
 try {
     nomeUsuario = localStorage.getItem("nomeUsuario");
-} catch (e) {}
+} catch (e) { }
+
+
+let usuarioAtual = null;
+
+function fecharMenuPerfil() {
+    const menu = document.getElementById("menuPerfil");
+    const botao = document.getElementById("abrirMenuPerfil");
+
+    if (menu) {
+        menu.hidden = true;
+    }
+
+    if (botao) {
+        botao.setAttribute("aria-expanded", "false");
+    }
+}
+
+function alternarMenuPerfil() {
+    const menu = document.getElementById("menuPerfil");
+    const botao = document.getElementById("abrirMenuPerfil");
+
+    if (!menu || !botao) return;
+
+    const vaiAbrir = menu.hidden;
+
+    menu.hidden = !vaiAbrir;
+    botao.setAttribute("aria-expanded", String(vaiAbrir));
+}
+
+
+document.addEventListener("click", (event) => {
+    const elemento = event.target;
+
+    if (!(elemento instanceof Element)) return;
+
+    if (elemento.closest("#abrirMenuPerfil")) {
+        event.preventDefault();
+        alternarMenuPerfil();
+        return;
+    }
+
+    if (!elemento.closest(".area-conta")) {
+        fecharMenuPerfil();
+    }
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        fecharMenuPerfil();
+    }
+});
+
+
+document.addEventListener("click", async (event) => {
+    const elemento = event.target;
+
+    if (!(elemento instanceof Element)) return;
+
+    const botaoSair = elemento.closest("#btnSairConta");
+
+    if (!botaoSair) return;
+
+    event.preventDefault();
+    fecharMenuPerfil();
+
+    try {
+        await signOut(auth);
+
+        usuarioAtual = null;
+        nomeUsuario = null;
+
+        try {
+            localStorage.removeItem("nomeUsuario");
+        } catch (e) { }
+
+        atualizarCabecalho();
+
+        window.location.href = "../index.html";
+
+    } catch (erro) {
+        console.error("Erro ao sair da conta:", erro);
+        alert("Não foi possível sair da conta. Tente novamente.");
+    }
+});
+
+
 
 function atualizarCabecalho() {
     const nomeFormatado = nomeUsuario
@@ -223,7 +310,7 @@ onAuthStateChanged(auth, async (user) => {
         nomeUsuario = null;
         try {
             localStorage.removeItem("nomeUsuario");
-        } catch (e) {}
+        } catch (e) { }
         atualizarCabecalho();
         return;
     }
@@ -238,11 +325,11 @@ onAuthStateChanged(auth, async (user) => {
 
     nome = nome || user.displayName || user.email.split("@")[0];
     const primeiro = nome.split(" ")[0];
-nomeUsuario = primeiro.charAt(0).toUpperCase() + primeiro.slice(1).toLowerCase(); // só o primeiro nome (use `nome` para o nome completo)
+    nomeUsuario = primeiro.charAt(0).toUpperCase() + primeiro.slice(1).toLowerCase(); // só o primeiro nome (use `nome` para o nome completo)
 
     try {
         localStorage.setItem("nomeUsuario", nomeUsuario);
-    } catch (e) {}
+    } catch (e) { }
 
     atualizarCabecalho();
 });
