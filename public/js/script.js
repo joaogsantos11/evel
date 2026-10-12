@@ -440,3 +440,41 @@ document.addEventListener("keydown", (e) => {
 window.addEventListener("resize", () => {
     if (window.innerWidth > 768) fecharMenu();
 });
+
+
+
+//=================SWIPER===============//
+
+
+const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: false,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    
+
+
+    // Paginação
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+
+    // Setas de navegação
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    // Breakpoints para responsividade
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        }
+    }
+});
