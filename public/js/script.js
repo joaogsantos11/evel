@@ -475,37 +475,34 @@ window.addEventListener("resize", () => {
 
 
 //=================SWIPER===============//
+if (typeof Swiper !== "undefined") {
+    const swiper = new Swiper(".swiper", {
+        direction: "horizontal",
+        loop: false,
+        slidesPerView: 1,
+        spaceBetween: 20,
 
-
-const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: false,
-    slidesPerView: 1,
-    spaceBetween: 20,
-
-
-
-    // Paginação
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-
-    // Setas de navegação
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    // Breakpoints para responsividade
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
         },
-        1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
+
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
         }
-    }
-});
+    });
+} else {
+    console.error("A biblioteca Swiper não foi carregada.");
+}
