@@ -306,6 +306,18 @@ onAuthStateChanged(auth, (user) => {
     console.log(user ? "Logado: " + user.email : "Ninguém logado");
 });
 onAuthStateChanged(auth, async (user) => {
+
+    
+    // Se não houver usuário logado, protege a página de perfil
+    if (
+        document.body.classList.contains("pagina-perfil") &&
+        !user
+    ) {
+        window.location.href = "/public/index.html";
+        return;
+    }
+
+
     if (!user) {
         nomeUsuario = null;
         try {
@@ -313,6 +325,13 @@ onAuthStateChanged(auth, async (user) => {
         } catch (e) { }
         atualizarCabecalho();
         return;
+    }
+
+    // Preenche o e-mail da conta autenticada
+    const campoEmailPerfil = document.getElementById("perfilEmail");
+
+    if (campoEmailPerfil) {
+        campoEmailPerfil.textContent = user.email || "E-mail não disponível";
     }
 
     let nome = null;
@@ -326,6 +345,18 @@ onAuthStateChanged(auth, async (user) => {
     nome = nome || user.displayName || user.email.split("@")[0];
     const primeiro = nome.split(" ")[0];
     nomeUsuario = primeiro.charAt(0).toUpperCase() + primeiro.slice(1).toLowerCase(); // só o primeiro nome (use `nome` para o nome completo)
+
+
+    const campoNomePerfil = document.getElementById("perfilNome");
+
+    if (campoNomePerfil) {
+        campoNomePerfil.textContent = nome;
+    }
+
+    if (campoEmailPerfil) {
+        campoEmailPerfil.textContent = user.email || "E-mail não disponível";
+    }
+
 
     try {
         localStorage.setItem("nomeUsuario", nomeUsuario);
@@ -451,7 +482,7 @@ const swiper = new Swiper('.swiper', {
     loop: false,
     slidesPerView: 1,
     spaceBetween: 20,
-    
+
 
 
     // Paginação
