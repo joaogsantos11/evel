@@ -429,6 +429,10 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
 }
 
 @media (max-width: 900px) {
+    .pagina-inicio {
+        overflow: auto;
+    }
+
     nav {
         padding: 0 25px;
     }
