@@ -1,8 +1,154 @@
-const perguntas = { "1": [{ "q": "Qual afirmação sobre Libras está correta?", "options": ["É português em gestos", "É língua visual-espacial com gramática própria", "É igual em todos os países"], "correct": 1 }, { "q": "Para que serve o alfabeto manual?", "options": ["Soletrar nomes", "Substituir toda a Libras", "Só contar"], "correct": 0 }, { "q": "Ao soletrar, o que ajuda?", "options": ["Acelerar", "Esconder a mão", "Manter a mão visível e clara"], "correct": 2 }, { "q": "O que também participa da comunicação?", "options": ["Só a voz", "Expressões faciais e contato visual", "Só escrita"], "correct": 1 }], "2": [{ "q": "O uso dos números pode depender de quê?", "options": ["Do contexto", "Da roupa", "Só da voz"], "correct": 0 }, { "q": "Idade e aniversário podem usar:", "options": ["Só soletração", "Números e sinais de datas", "Mímica aleatória"], "correct": 1 }, { "q": "Como praticar dias e meses?", "options": ["Usando rotina fictícia", "Sem observar sinais", "Sem contexto"], "correct": 0 }, { "q": "Como praticar perguntas pessoais?", "options": ["Exigir dados sensíveis", "Fingir entender", "Usar exemplos fictícios e respeitar privacidade"], "correct": 2 }], "3": [{ "q": "Como praticar sinais de família?", "options": ["Árvore genealógica fictícia", "Evitar contexto", "Só escrita"], "correct": 0 }, { "q": "Como aprender sinais de profissões?", "options": ["Inventar", "Confirmar em fontes visuais", "Sempre soletrar"], "correct": 1 }, { "q": "Ao descrever alguém, devemos:", "options": ["Ridicularizar", "Evitar contexto", "Ser respeitosos"], "correct": 2 }, { "q": "O que ajuda a apresentar pessoas?", "options": ["Falar ao mesmo tempo", "Respeitar turnos e olhar", "Virar as costas"], "correct": 1 }], "4": [{ "q": "Como ampliar vocabulário de alimentos?", "options": ["Cardápio fictício", "Só português", "Sem vídeos"], "correct": 0 }, { "q": "Como praticar vocabulário de casa?", "options": ["Sem contexto", "Descrever casa imaginária", "Evitar lugares"], "correct": 1 }, { "q": "Como treinar vocabulário escolar?", "options": ["Pedir material ou ajuda", "Só mímica sem contexto", "Não praticar"], "correct": 0 }, { "q": "Como praticar transporte?", "options": ["Ignorar espaço", "Trajeto fictício", "Movimentos aleatórios"], "correct": 1 }], "5": [{ "q": "Expressões faciais e corporais:", "options": ["Podem influenciar significado", "São enfeites", "Nunca importam"], "correct": 0 }, { "q": "O que pode ajudar em perguntas?", "options": ["Esconder o rosto", "Expressão facial apropriada", "Evitar olhar sempre"], "correct": 1 }, { "q": "Se não entender, deve:", "options": ["Fingir", "Encerrar", "Pedir repetição"], "correct": 2 }, { "q": "Conversa clara envolve:", "options": ["Turnos e atenção visual", "Interromper", "Evitar confirmação"], "correct": 0 }], "6": [{ "q": "Acessibilidade na escola envolve:", "options": ["Deixar para depois", "Comunicação direta e respeito", "Só improviso"], "correct": 1 }, { "q": "Em lojas, comece:", "options": ["Com respeito e clareza", "Pressupondo preferência", "Escondendo o rosto"], "correct": 0 }, { "q": "Em consulta, quando possível:", "options": ["Improvisar tudo", "Solicitar intérprete qualificado", "Ignorar comunicação"], "correct": 1 }, { "q": "Se não entender instrução:", "options": ["Fingir", "Sair", "Pedir repetição e confirmar"], "correct": 2 }], "7": [{ "q": "Libras é:", "options": ["Português palavra por palavra", "Língua com estrutura própria", "Gestos sem gramática"], "correct": 1 }, { "q": "O que ajuda a organizar mensagem visual?", "options": ["Referências espaciais consistentes", "Mudar sem explicar", "Evitar expressão"], "correct": 0 }, { "q": "O que importa numa conversa?", "options": ["Não deixar responder", "Respeitar turnos e reparar mal-entendidos", "Fingir fluência"], "correct": 1 }, { "q": "Quiz concluído significa:", "options": ["Fluência garantida", "Nunca praticar mais", "Chance de revisar dúvidas"], "correct": 2 }] };
-const moduloAtual = Number(document.body.dataset.modulo || 1);
-const chave = "evel_progresso_modulo_" + moduloAtual;
-function ler() { try { return JSON.parse(localStorage.getItem(chave) || "[]") } catch (e) { return [] } }
-let concluidas = ler();
-function atualizar() { const n = concluidas.length, p = Math.round(n / 4 * 100); const t = document.getElementById("progressoTexto"), v = document.getElementById("progressoPercentual"), b = document.getElementById("progressoBarra"); if (t) t.textContent = `${n} de 4 aulas concluídas · ${p}%`; if (v) v.textContent = p + "%"; if (b) b.style.width = p + "%"; document.querySelectorAll("[data-concluir]").forEach(x => { const feita = concluidas.includes(Number(x.dataset.concluir)); x.classList.toggle("concluida", feita); x.textContent = feita ? "✓ Aula concluída" : "✓ Marcar aula como concluída" }) }
-document.querySelectorAll(".quiz").forEach((bloco, i) => { const d = perguntas[String(moduloAtual)]?.[i]; if (!d) return; bloco.querySelector(".pergunta").textContent = d.q; const area = bloco.querySelector(".opcoes"); d.options.forEach((texto, j) => { const b = document.createElement("button"); b.type = "button"; b.className = "opcao"; b.textContent = texto; b.addEventListener("click", () => { if (bloco.dataset.respondido === "sim") return; bloco.dataset.respondido = "sim"; const feedback = bloco.querySelector(".feedback");[...area.children].forEach((o, k) => { o.disabled = true; if (k === d.correct) o.classList.add("certa") }); const certo = j === d.correct; if (!certo) b.classList.add("errada"); feedback.className = "feedback " + (certo ? "certa" : "errada"); feedback.textContent = certo ? "Correto! Muito bem." : "Ainda não. A resposta correta está destacada em verde; revise a aula." }); area.appendChild(b) }) });
-document.querySelectorAll("[data-concluir]").forEach(b => b.addEventListener("click", () => { const n = Number(b.dataset.concluir); concluidas = concluidas.includes(n) ? concluidas.filter(x => x !== n) : [...concluidas, n].sort((a, b) => a - b); try { localStorage.setItem(chave, JSON.stringify(concluidas)) } catch (e) { } atualizar() })); atualizar();
+const secaoAulas = document.getElementById("secaoAulas");
+const telaAprendizagem = document.getElementById("telaAprendizagem");
+const conteudoAula = document.getElementById("conteudoAula");
+const botaoVoltar = document.getElementById("voltarLista");
+
+const aulas = {
+1: {
+titulo: "O que é Libras?",
+descricao: "Conheça a Língua Brasileira de Sinais e sua importância.",
+conteudo: `
+<section class="conteudo-aula">
+<span class="etiqueta">AULA 1</span>
+<h1>O que é Libras?</h1>
+<p>
+A Libras é a Língua Brasileira de Sinais, utilizada principalmente
+por comunidades surdas no Brasil.
+</p>
+
+            <h2>Uma língua visual e espacial</h2>
+            <p>
+                A Libras utiliza movimentos das mãos, expressões faciais,
+                movimentos corporais e o espaço para transmitir significados.
+            </p>
+
+            <div class="caixa-destaque">
+                <strong>Você sabia?</strong>
+                <p>
+                    A Libras possui gramática própria. Ela não é simplesmente
+                    uma representação de cada palavra do português com as mãos.
+                </p>
+            </div>
+        </section>
+    `
+},
+
+2: {
+    titulo: "Alfabeto manual",
+    descricao: "Descubra como representar letras usando as mãos.",
+    conteudo: `
+        <section class="conteudo-aula">
+            <span class="etiqueta">AULA 2</span>
+            <h1>Alfabeto manual</h1>
+            <p>
+                O alfabeto manual representa letras por meio de configurações
+                específicas das mãos.
+            </p>
+
+            <h2>Para que ele serve?</h2>
+            <p>
+                Ele pode ser utilizado para soletrar nomes próprios, lugares
+                e outras palavras quando necessário.
+            </p>
+
+            <div class="caixa-destaque">
+                <strong>Dica de aprendizagem</strong>
+                <p>
+                    Pratique aos poucos, observando a configuração e a orientação
+                    de cada mão. O alfabeto manual é apenas uma parte da Libras.
+                </p>
+            </div>
+        </section>
+    `
+},
+
+3: {
+    titulo: "Soletrando nomes",
+    descricao: "Pratique a soletração de nomes com o alfabeto manual.",
+    conteudo: `
+        <section class="conteudo-aula">
+            <span class="etiqueta">AULA 3</span>
+            <h1>Soletrando nomes</h1>
+            <p>
+                O alfabeto manual pode ajudar você a apresentar seu nome
+                ou soletrar o nome de outra pessoa.
+            </p>
+
+            <h2>Como praticar</h2>
+            <ol>
+                <li>Escolha um nome curto.</li>
+                <li>Identifique as letras que o compõem.</li>
+                <li>Pratique cada letra com calma.</li>
+                <li>Repita a sequência, buscando clareza.</li>
+            </ol>
+
+            <div class="caixa-destaque">
+                <strong>Importante</strong>
+                <p>
+                    Na comunidade surda, algumas pessoas também possuem sinais
+                    pessoais. A soletração não substitui esse contexto cultural.
+                </p>
+            </div>
+        </section>
+    `
+},
+
+4: {
+    titulo: "Cumprimentos e apresentações",
+    descricao: "Aprenda os primeiros passos para se apresentar em Libras.",
+    conteudo: `
+        <section class="conteudo-aula">
+            <span class="etiqueta">AULA 4</span>
+            <h1>Cumprimentos e apresentações</h1>
+            <p>
+                Cumprimentos e apresentações são um bom ponto de partida
+                para iniciar uma conversa em Libras.
+            </p>
+
+            <h2>Prepare-se para conversar</h2>
+            <p>
+                Ao se comunicar, mantenha atenção visual na outra pessoa
+                e observe também as expressões faciais e corporais.
+            </p>
+
+            <div class="caixa-destaque">
+                <strong>Hora de praticar</strong>
+                <p>
+                    Prepare uma apresentação simples com seu nome e pratique
+                    a soletração dele usando o alfabeto manual.
+                </p>
+            </div>
+        </section>
+    `
+}
+
+};
+
+document.querySelectorAll("[data-abrir-aula]").forEach((botao) => {
+botao.addEventListener("click", () => {
+const numeroAula = botao.dataset.abrirAula;
+const aula = aulas[numeroAula];
+
+    if (!aula) return;
+
+    conteudoAula.innerHTML = aula.conteudo;
+
+    secaoAulas.hidden = true;
+    telaAprendizagem.hidden = false;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+});
+
+botaoVoltar.addEventListener("click", () => {
+telaAprendizagem.hidden = true;
+secaoAulas.hidden = false;
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
+});

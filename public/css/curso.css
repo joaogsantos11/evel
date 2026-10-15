@@ -1,9 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-
-/* =========================
-   VARIÁVEIS DO EVEL
-========================= */
 
 :root {
     --azul: #0303a0;
@@ -12,15 +7,10 @@
     --texto: #19194a;
     --cinza: #666780;
     --borda: #dfe3ff;
-    --verde: #16834a;
-    --vermelho: #ff304f;
+    --vermelho: #ff0000;
     --fundo: #f5f6ff;
     --branco: #ffffff;
 }
-
-/* =========================
-   RESET E CONFIGURAÇÕES
-========================= */
 
 * {
     box-sizing: border-box;
@@ -32,10 +22,10 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', Arial, sans-serif;
-    color: var(--texto);
-    line-height: 1.6;
     background: var(--fundo);
+    color: var(--texto);
+    font-family: 'Montserrat', Arial, sans-serif;
+    line-height: 1.6;
 }
 
 button,
@@ -45,9 +35,7 @@ select {
     font: inherit;
 }
 
-/* =========================
-   CABEÇALHO
-========================= */
+/* Cabeçalho */
 
 .topo {
     position: sticky;
@@ -68,7 +56,7 @@ select {
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     color: var(--azul);
     text-decoration: none;
     font-size: 30px;
@@ -77,10 +65,8 @@ select {
     white-space: nowrap;
 }
 
-.logo-icone {
-    color: var(--vermelho);
-    font-size: 30px;
-    line-height: 1;
+.logo img {
+    height: 50px;
 }
 
 .topo nav {
@@ -102,13 +88,11 @@ select {
     color: var(--vermelho);
 }
 
-/* =========================
-   CONTEÚDO PRINCIPAL
-========================= */
+/* Conteúdo principal */
 
 .container {
-    max-width: 1100px;
     width: calc(100% - 36px);
+    max-width: 1100px;
     margin: 28px auto 60px;
 }
 
@@ -118,35 +102,23 @@ select {
 }
 
 .voltar:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-/* =========================
-   BANNER DO MÓDULO
-========================= */
+/* Banner do módulo */
 
 .hero {
-    color: var(--branco);
-    border-radius: 22px;
     padding: clamp(24px, 5vw, 44px);
+    border-radius: 22px;
+    color: var(--branco);
 }
 
 .hero-modulo {
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(
-            circle at 100% 0%,
-            #ff304f 0,
-            #ff304f 9%,
-            transparent 9.2%
-        ),
-        radial-gradient(
-            circle at 95% 110%,
-            #2929db 0,
-            #2929db 23%,
-            transparent 23.2%
-        ),
+        radial-gradient(circle at 100% 0%, #ff304f 0, #ff304f 9%, transparent 9.2%),
+        radial-gradient(circle at 95% 110%, #2929db 0, #2929db 23%, transparent 23.2%),
         linear-gradient(120deg, #08058f, #1515c9);
     box-shadow: 0 12px 30px #0303a018;
 }
@@ -154,15 +126,12 @@ select {
 .etiqueta {
     display: inline-block;
     padding: 7px 12px;
+    border: 1px solid #ffffff30;
     border-radius: 30px;
     background: #ffffff28;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1.5px;
-}
-
-.hero-modulo .etiqueta {
-    border: 1px solid #ffffff30;
 }
 
 .hero h1 {
@@ -183,9 +152,7 @@ select {
     font-size: clamp(14px, 2vw, 17px);
 }
 
-/* =========================
-   PROGRESSO DO MÓDULO
-========================= */
+/* Progresso do módulo */
 
 .progresso-info {
     display: flex;
@@ -194,14 +161,10 @@ select {
     gap: 12px;
     margin: 22px 0 8px;
     font-size: 14px;
-}
-
-.hero-modulo .progresso-info {
     font-weight: 600;
 }
 
-.barra,
-.barra-progresso {
+.barra {
     height: 10px;
     overflow: hidden;
     border-radius: 20px;
@@ -211,139 +174,149 @@ select {
 .barra > div {
     width: 0;
     height: 100%;
-    border-radius: 20px;
+    border-radius: inherit;
     background: var(--branco);
     transition: width 0.3s ease;
 }
 
-/* =========================
-   TÍTULO DA LISTA DE AULAS
-========================= */
+/* Cabeçalho da lista de aulas */
+
+.secao-aulas {
+    margin-top: 34px;
+}
+
+.cabecalho-aulas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
 
 .titulo-lista-aulas {
-    margin: 32px 0 18px;
+    margin: 0 0 5px;
     color: var(--azul);
     font-size: clamp(23px, 3vw, 30px);
     font-weight: 800;
     letter-spacing: -0.6px;
 }
 
-/* =========================
-   LISTA E CARDS DAS AULAS
-========================= */
+.cabecalho-aulas > div > p {
+    margin: 0;
+    color: var(--cinza);
+    font-size: 14px;
+}
+
+.contador-aulas {
+    flex-shrink: 0;
+    padding: 7px 13px;
+    border: 1px solid var(--borda);
+    border-radius: 30px;
+    background: var(--branco);
+    color: var(--azul);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Cards da lista de aulas */
 
 .lista-aulas {
     display: grid;
-    gap: 18px;
-    margin-top: 0;
+    gap: 14px;
 }
 
-.aula {
+.aula.aula-card {
+    width: 100%;
+    min-width: 0;
     display: grid;
-    grid-template-columns: 50px minmax(0, 1fr);
-    gap: 18px;
-    padding: 26px;
-    background: var(--branco);
+    grid-template-columns: 58px minmax(0, 1fr) 24px;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 24px;
     border: 1px solid var(--borda);
     border-radius: 16px;
-    box-shadow: 0 5px 18px #0303a008;
+    background: var(--branco);
+    box-shadow: 0 4px 14px #0303a008;
+    color: var(--texto);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
     transition:
         transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.aula:hover {
+.aula.aula-card:hover {
     transform: translateY(-2px);
     border-color: #b9c1ff;
-    box-shadow: 0 10px 24px #0303a012;
+    box-shadow: 0 9px 22px #0303a012;
 }
 
-.aula-numero {
+.aula.aula-card:focus-visible {
+    outline: 3px solid #7777ff;
+    outline-offset: 3px;
+}
+
+.aula.aula-card .aula-numero {
+    width: 58px;
+    height: 58px;
     display: grid;
     place-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 13px;
-    background: #e9eaff;
+    border-radius: 15px;
+    background: var(--claro);
     color: var(--azul);
-    font-size: 19px;
+    font-size: 21px;
     font-weight: 800;
 }
 
-.aula-conteudo {
+.aula-resumo {
     min-width: 0;
-}
-
-.subtitulo {
-    margin: 0 0 5px;
-    color: var(--azul);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.3px;
-}
-
-.aula h2 {
-    margin: 0 0 10px;
-    color: var(--azul);
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.3;
-}
-
-.aula-conteudo > p:not(.subtitulo) {
-    margin: 8px 0;
-}
-
-/* =========================
-   ATIVIDADE PRÁTICA
-========================= */
-
-.pratica {
-    margin: 18px 0;
-    padding: 16px 18px;
-    border-left: 4px solid var(--azul);
-    border-radius: 0 12px 12px 0;
-    background: #f4f4ff;
-}
-
-.pratica strong {
-    color: var(--azul);
-}
-
-.pratica p {
-    margin: 7px 0 0;
-}
-
-/* =========================
-   VÍDEOS DEMONSTRATIVOS
-========================= */
-
-.video-box {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    margin: 18px 0;
-    padding: 16px;
-    border: 1px solid var(--borda);
-    border-radius: 14px;
-    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.video-box strong {
+.aula.aula-card .subtitulo {
+    margin: 0 0 4px;
     color: var(--azul);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
 }
 
-.video-box p {
-    margin: 5px 0 0;
+.aula-titulo {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--azul);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.aula-descricao {
+    display: block;
     color: var(--cinza);
     font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
-/* =========================
-   BOTÕES
-========================= */
+.aula-status {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    color: var(--azul);
+    font-size: 19px;
+    transition: transform 0.2s ease;
+}
+
+.aula.aula-card:hover .aula-status {
+    transform: translateX(3px);
+}
+
+/* Botões */
 
 .botao {
     display: inline-flex;
@@ -368,7 +341,7 @@ select {
 
 .botao:hover {
     transform: translateY(-1px);
-    background: var(--escuro);
+    background: var(--vermelho);
     box-shadow: 0 5px 12px #0303a020;
 }
 
@@ -383,99 +356,21 @@ select {
     background: #f4f4ff;
 }
 
-.botao[aria-disabled="true"] {
-    opacity: 0.4;
-    pointer-events: none;
+/* Tela de aprendizagem */
+
+.tela-aprendizagem {
+    margin-top: 28px;
 }
 
-.concluir {
-    margin-top: 2px;
+.tela-aprendizagem[hidden] {
+    display: none !important;
 }
 
-.concluir.concluida {
-    background: var(--verde);
+.tela-aprendizagem > .botao {
+    margin-bottom: 22px;
 }
 
-.concluir.concluida:hover {
-    background: #106b3b;
-}
-
-/* =========================
-   QUESTIONÁRIOS
-========================= */
-
-.quiz {
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #e4e4ff;
-    border-radius: 14px;
-    background: #f8f8ff;
-}
-
-.quiz h3 {
-    margin: 0 0 8px;
-    color: var(--azul);
-    font-size: 18px;
-}
-
-.pergunta {
-    font-weight: 700;
-}
-
-.opcoes {
-    display: grid;
-    gap: 9px;
-}
-
-.opcao {
-    padding: 11px 14px;
-    border: 1px solid #dadaf2;
-    border-radius: 9px;
-    background: var(--branco);
-    color: var(--texto);
-    text-align: left;
-    font-family: inherit;
-    cursor: pointer;
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-.opcao:hover:not(:disabled) {
-    border-color: var(--azul);
-    background: #f4f4ff;
-}
-
-.opcao:disabled {
-    cursor: default;
-}
-
-.opcao.certa {
-    border-color: var(--verde);
-    background: #e9f8ef;
-}
-
-.opcao.errada {
-    border-color: var(--vermelho);
-    background: #fff0f0;
-}
-
-.feedback {
-    min-height: 24px;
-    font-weight: 700;
-}
-
-.feedback.certa {
-    color: var(--verde);
-}
-
-.feedback.errada {
-    color: var(--vermelho);
-}
-
-/* =========================
-   NAVEGAÇÃO ENTRE MÓDULOS
-========================= */
+/* Navegação entre módulos */
 
 .navegacao-aulas {
     display: flex;
@@ -484,9 +379,7 @@ select {
     margin: 30px 0;
 }
 
-/* =========================
-   AVISO EDUCACIONAL
-========================= */
+/* Aviso e rodapé */
 
 .aviso {
     padding: 14px;
@@ -497,44 +390,6 @@ select {
     font-size: 12px;
 }
 
-/* =========================
-   TELAS DE APRENDIZAGEM
-========================= */
-
-.tela-aprendizagem {
-    margin-top: 28px;
-}
-
-.tela-aprendizagem h2 {
-    margin: 0 0 16px;
-    color: var(--azul);
-    font-size: clamp(24px, 3vw, 32px);
-    line-height: 1.3;
-}
-
-.conteudo-aula {
-    padding: clamp(20px, 4vw, 32px);
-    border: 1px solid var(--borda);
-    border-radius: 18px;
-    background: var(--branco);
-    box-shadow: 0 4px 16px #11102a08;
-}
-
-.conteudo-aula p {
-    margin: 12px 0;
-}
-
-.acoes-aula {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-/* =========================
-   RODAPÉ
-========================= */
-
 footer {
     padding: 24px;
     border-top: 1px solid #e8eaff;
@@ -544,9 +399,7 @@ footer {
     text-align: center;
 }
 
-/* =========================
-   RESPONSIVIDADE
-========================= */
+/* Responsividade */
 
 @media (max-width: 650px) {
     .topo {
@@ -578,38 +431,81 @@ footer {
         flex-wrap: wrap;
     }
 
-    .aula {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 18px;
+    .secao-aulas {
+        margin-top: 28px;
     }
 
-    .aula h2 {
-        font-size: 21px;
-    }
-
-    .video-box {
+    .cabecalho-aulas {
         align-items: flex-start;
-        flex-direction: column;
+    }
+
+    .cabecalho-aulas > div > p {
+        font-size: 13px;
+    }
+
+    .contador-aulas {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .aula.aula-card {
+        grid-template-columns: 46px minmax(0, 1fr) 20px;
+        gap: 13px;
+        padding: 17px 15px;
+    }
+
+    .aula.aula-card .aula-numero {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        font-size: 17px;
+    }
+
+    .aula-titulo {
+        font-size: 16px;
+    }
+
+    .aula-descricao {
+        font-size: 12px;
+    }
+
+    .aula-status {
+        width: 20px;
+        font-size: 17px;
     }
 
     .navegacao-aulas {
         flex-direction: column;
     }
 
-    .navegacao-aulas .botao,
-    .acoes-aula .botao {
+    .navegacao-aulas .botao {
         width: 100%;
-    }
-
-    .acoes-aula {
-        flex-direction: column;
     }
 }
 
-/* =========================
-   ACESSIBILIDADE
-========================= */
+@media (max-width: 380px) {
+    .aula.aula-card {
+        grid-template-columns: 40px minmax(0, 1fr) 16px;
+        gap: 10px;
+        padding: 14px 12px;
+    }
+
+    .aula.aula-card .aula-numero {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .aula-titulo {
+        font-size: 15px;
+    }
+
+    .aula-descricao {
+        font-size: 11px;
+    }
+}
+
+/* Acessibilidade */
 
 @media (prefers-reduced-motion: reduce) {
     html {
