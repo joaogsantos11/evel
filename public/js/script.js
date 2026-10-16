@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -6,6 +7,7 @@ import {
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 import {
     getFirestore,
     doc,
@@ -17,6 +19,7 @@ import {
 // ====================
 // FIREBASE
 // ====================
+
 const firebaseConfig = {
     apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
     authDomain: "evel-14960.firebaseapp.com",
@@ -26,6 +29,7 @@ const firebaseConfig = {
     appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
     measurementId: "G-VKENYR2DYD"
 };
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -40,21 +44,27 @@ function traduzirErro(code) {
         "auth/wrong-password": "Senha incorreta.",
         "auth/too-many-requests": "Muitas tentativas. Tente novamente mais tarde."
     };
+
     return erros[code] || "Erro inesperado. Tente novamente.";
 }
 
 // ====================
-// NOME DO USUÁRIO NO CABEÇALHO
+// NOME DO USUÁRIO
 // ====================
 
-// Começa com o nome guardado no navegador (evita o "piscar" de Início → nome)
 let nomeUsuario = null;
+
 try {
     nomeUsuario = localStorage.getItem("nomeUsuario");
-} catch (e) { }
-
+} catch (e) {
+    // O navegador pode bloquear o armazenamento.
+}
 
 let usuarioAtual = null;
+
+// ====================
+// MENU DO PERFIL
+// ====================
 
 function fecharMenuPerfil() {
     const menu = document.getElementById("menuPerfil");
@@ -81,7 +91,6 @@ function alternarMenuPerfil() {
     botao.setAttribute("aria-expanded", String(vaiAbrir));
 }
 
-
 document.addEventListener("click", (event) => {
     const elemento = event.target;
 
@@ -104,6 +113,9 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+// ====================
+// SAIR DA CONTA
+// ====================
 
 document.addEventListener("click", async (event) => {
     const elemento = event.target;
@@ -125,11 +137,11 @@ document.addEventListener("click", async (event) => {
 
         try {
             localStorage.removeItem("nomeUsuario");
-        } catch (e) { }
+        } catch (e) {}
 
         atualizarCabecalho();
 
-        window.location.href = "../index.html";
+        window.location.href = "/public/index.html";
 
     } catch (erro) {
         console.error("Erro ao sair da conta:", erro);
@@ -137,20 +149,24 @@ document.addEventListener("click", async (event) => {
     }
 });
 
-
+// ====================
+// ATUALIZAR CABEÇALHO
+// ====================
 
 function atualizarCabecalho() {
     const nomeFormatado = nomeUsuario
         ? nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)
         : null;
 
-    // "Olá, Fulano!" da página inicial
     const boasVindas = document.getElementById("nomeBoasVindas");
-    if (boasVindas) boasVindas.textContent = (nomeFormatado || "visitante") + "!";
+
+    if (boasVindas) {
+        boasVindas.textContent = (nomeFormatado || "visitante") + "!";
+    }
 }
 
 // ====================
-// ELEMENTOS
+// ELEMENTOS DE LOGIN
 // ====================
 
 const modalLogin = document.getElementById("modalLogin");
@@ -166,28 +182,32 @@ const abrirCadastro = document.getElementById("abrirCadastro");
 const voltarLogin = document.getElementById("voltarLogin");
 
 // ====================
-// MOSTRAR LOGIN / CADASTRO
+// MOSTRAR LOGIN E CADASTRO
 // ====================
 
 function mostrarLogin() {
     if (!modalCadastro || !modalLogin) return;
+
     modalCadastro.style.display = "none";
     modalLogin.style.display = "flex";
 }
 
 function mostrarCadastro() {
     if (!modalLogin || !modalCadastro) return;
+
     modalLogin.style.display = "none";
     modalCadastro.style.display = "flex";
 }
 
 function ligarEvento(elemento, funcao) {
     if (!elemento) return;
+
     elemento.addEventListener("click", function (event) {
         event.preventDefault();
         funcao();
     });
 }
+
 const abrirLogin = document.getElementById("abrirLogin");
 
 ligarEvento(abrirLogin, mostrarLogin);
@@ -209,15 +229,24 @@ if (fecharCadastro && modalCadastro) {
 }
 
 // ====================
-// CADASTRO (Firebase)
+// CADASTRO FIREBASE
 // ====================
 
 async function cadastrar() {
-    const nome = document.getElementById("cadNome").value.trim();
-    const email = document.getElementById("cadEmail").value.trim();
-    const senha = document.getElementById("cadSenha").value;
-    const conf = document.getElementById("cadSenhaConf").value;
+    const campoNome = document.getElementById("cadNome");
+    const campoEmail = document.getElementById("cadEmail");
+    const campoSenha = document.getElementById("cadSenha");
+    const campoConf = document.getElementById("cadSenhaConf");
     const resultado = document.getElementById("resultadoCadastro");
+
+    if (!campoNome || !campoEmail || !campoSenha || !campoConf || !resultado) {
+        return;
+    }
+
+    const nome = campoNome.value.trim();
+    const email = campoEmail.value.trim();
+    const senha = campoSenha.value;
+    const conf = campoConf.value;
 
     if (!nome || !email || !senha || !conf) {
         resultado.innerText = "Preencha todos os campos.";
@@ -241,8 +270,9 @@ async function cadastrar() {
         resultado.innerText = "Conta criada com sucesso!";
 
         setTimeout(function () {
-            window.location.href = "index.html";
+            window.location.href = "/public/inicio.html";
         }, 1000);
+
     } catch (e) {
         console.log(e);
         resultado.innerText = traduzirErro(e.code);
@@ -250,13 +280,20 @@ async function cadastrar() {
 }
 
 // ====================
-// LOGIN (Firebase)
+// LOGIN FIREBASE
 // ====================
 
 async function entrar() {
-    const email = document.getElementById("loginEmail").value.trim();
-    const senha = document.getElementById("loginSenha").value;
+    const campoEmail = document.getElementById("loginEmail");
+    const campoSenha = document.getElementById("loginSenha");
     const resultado = document.getElementById("resultadoLogin");
+
+    if (!campoEmail || !campoSenha || !resultado) {
+        return;
+    }
+
+    const email = campoEmail.value.trim();
+    const senha = campoSenha.value;
 
     if (!email || !senha) {
         resultado.innerText = "Preencha todos os campos.";
@@ -271,6 +308,7 @@ async function entrar() {
         setTimeout(function () {
             window.location.href = "/public/inicio.html";
         }, 500);
+
     } catch (e) {
         console.log(e);
         resultado.innerText = traduzirErro(e.code);
@@ -278,11 +316,13 @@ async function entrar() {
 }
 
 // ====================
-// MOSTRAR/OCULTAR SENHA
+// MOSTRAR OU OCULTAR SENHA
 // ====================
 
 function mostrarSenha(IdInput, botao) {
     const inputPass = document.getElementById(IdInput);
+
+    if (!inputPass || !botao) return;
 
     if (inputPass.type === "password") {
         inputPass.type = "text";
@@ -293,22 +333,19 @@ function mostrarSenha(IdInput, botao) {
     }
 }
 
-// Expor para os onclick="..." do HTML (módulos não criam globais)
+// Disponibiliza as funções para onclick do HTML.
 window.cadastrar = cadastrar;
 window.entrar = entrar;
 window.mostrarSenha = mostrarSenha;
 
 // ====================
-// USUÁRIO LOGADO → NOME NO "INÍCIO"
+// USUÁRIO LOGADO
 // ====================
 
-onAuthStateChanged(auth, (user) => {
-    console.log(user ? "Logado: " + user.email : "Ninguém logado");
-});
 onAuthStateChanged(auth, async (user) => {
+    usuarioAtual = user;
 
-    
-    // Se não houver usuário logado, protege a página de perfil
+    // Protege a página de perfil.
     if (
         document.body.classList.contains("pagina-perfil") &&
         !user
@@ -317,35 +354,43 @@ onAuthStateChanged(auth, async (user) => {
         return;
     }
 
-
     if (!user) {
         nomeUsuario = null;
+
         try {
             localStorage.removeItem("nomeUsuario");
-        } catch (e) { }
+        } catch (e) {}
+
         atualizarCabecalho();
         return;
     }
 
-    // Preenche o e-mail da conta autenticada
     const campoEmailPerfil = document.getElementById("perfilEmail");
 
     if (campoEmailPerfil) {
-        campoEmailPerfil.textContent = user.email || "E-mail não disponível";
+        campoEmailPerfil.textContent =
+            user.email || "E-mail não disponível";
     }
 
     let nome = null;
+
     try {
         const snap = await getDoc(doc(db, "usuarios", user.uid));
-        if (snap.exists()) nome = snap.data().nome;
+
+        if (snap.exists()) {
+            nome = snap.data().nome;
+        }
     } catch (e) {
         console.log("Erro ao buscar nome:", e);
     }
 
-    nome = nome || user.displayName || user.email.split("@")[0];
-    const primeiro = nome.split(" ")[0];
-    nomeUsuario = primeiro.charAt(0).toUpperCase() + primeiro.slice(1).toLowerCase(); // só o primeiro nome (use `nome` para o nome completo)
+    nome = nome || user.displayName || (user.email || "Usuário").split("@")[0];
 
+    const primeiro = nome.split(" ")[0];
+
+    nomeUsuario =
+        primeiro.charAt(0).toUpperCase() +
+        primeiro.slice(1).toLowerCase();
 
     const campoNomePerfil = document.getElementById("perfilNome");
 
@@ -354,19 +399,19 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     if (campoEmailPerfil) {
-        campoEmailPerfil.textContent = user.email || "E-mail não disponível";
+        campoEmailPerfil.textContent =
+            user.email || "E-mail não disponível";
     }
-
 
     try {
         localStorage.setItem("nomeUsuario", nomeUsuario);
-    } catch (e) { }
+    } catch (e) {}
 
     atualizarCabecalho();
 });
 
 // ====================
-// TRADUÇÃO COM VLibras
+// TRADUÇÃO COM VLIBRAS
 // ====================
 
 const inputText = document.getElementById("inputText");
@@ -375,6 +420,7 @@ const btnTraduzir = document.getElementById("btnTraduzir");
 if (inputText && btnTraduzir) {
     btnTraduzir.addEventListener("click", function () {
         const texto = inputText.value.trim();
+
         if (texto === "") return;
 
         let textoVlibras = document.getElementById("textoVlibras");
@@ -386,17 +432,24 @@ if (inputText && btnTraduzir) {
         }
 
         textoVlibras.textContent = texto;
-        window.VLibrasWidget.open();
+
+        if (window.VLibrasWidget) {
+            window.VLibrasWidget.open();
+        } else {
+            console.error("O widget VLibras não está disponível.");
+        }
     });
 }
 
-// ===== CARREGAR O CABEÇALHO =====
+// ====================
+// CARREGAR CABEÇALHO
+// ====================
 
 async function carregarCabecalho() {
     const lugar = document.getElementById("cabecalho");
+
     if (!lugar) return;
 
-    // tenta alguns caminhos possíveis
     const caminhos = [
         "/public/componentes/cabecalho.html",
         "componentes/cabecalho.html",
@@ -406,20 +459,24 @@ async function carregarCabecalho() {
     for (const caminho of caminhos) {
         try {
             const resposta = await fetch(caminho);
+
             if (resposta.ok) {
                 lugar.innerHTML = await resposta.text();
 
-                // liga o botão de login e coloca o nome (se já houver usuário)
-                ligarEvento(document.getElementById("abrirLogin"), mostrarLogin);
+                ligarEvento(
+                    document.getElementById("abrirLogin"),
+                    mostrarLogin
+                );
+
                 atualizarCabecalho();
                 return;
             }
+
         } catch (erro) {
-            // tenta o próximo caminho
+            // Tenta o próximo caminho.
         }
     }
 
-    // se nenhum funcionou, mostra aviso na tela para ajudar a achar o erro
     lugar.innerHTML =
         '<p style="background:#fee;color:#900;padding:10px;text-align:center;">' +
         'Erro: não consegui carregar componentes/cabecalho.html</p>';
@@ -427,10 +484,12 @@ async function carregarCabecalho() {
 
 document.addEventListener("DOMContentLoaded", async () => {
     await carregarCabecalho();
-    atualizarCabecalho(); // cobre páginas com o cabeçalho escrito direto no HTML (ex.: index.html)
+    atualizarCabecalho();
 });
 
-// ===== MENU LATERAL =====
+// ====================
+// MENU LATERAL MOBILE
+// ====================
 
 function abrirMenu() {
     document.getElementById("menuLateral")?.classList.add("aberto");
@@ -442,67 +501,366 @@ function fecharMenu() {
     document.getElementById("menuOverlay")?.classList.remove("visivel");
 }
 
-document.addEventListener("click", (e) => {
+window.abrirMenu = abrirMenu;
+window.fecharMenu = fecharMenu;
 
-    // Login do menu lateral: fecha o menu e usa o botão de login normal
-    if (e.target.closest("#abrirLoginMobile")) {
+document.addEventListener("click", (e) => {
+    const elemento = e.target;
+
+    if (!(elemento instanceof Element)) return;
+
+    if (elemento.closest("#abrirLoginMobile")) {
         e.preventDefault();
         fecharMenu();
         document.getElementById("abrirLogin")?.click();
         return;
     }
 
-    // Fecha ao clicar no X, no fundo escuro ou em qualquer link do menu
     if (
-        e.target.closest(".fechar-menu") ||
-        e.target.closest("#menuOverlay") ||
-        e.target.closest("#menuLateral a")
+        elemento.closest(".fechar-menu") ||
+        elemento.closest("#menuOverlay") ||
+        elemento.closest("#menuLateral a")
     ) {
         fecharMenu();
     }
 });
 
-// Fecha com a tecla ESC
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") fecharMenu();
+    if (e.key === "Escape") {
+        fecharMenu();
+    }
 });
 
-// Se a tela voltar a ser grande, garante que o menu fique fechado
 window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) fecharMenu();
+    if (window.innerWidth > 768) {
+        fecharMenu();
+    }
 });
 
+// ====================
+// SWIPER DOS CURSOS
+// ====================
 
-
-//=================SWIPER===============//
 if (typeof Swiper !== "undefined") {
-    const swiper = new Swiper(".swiper", {
-        direction: "horizontal",
-        loop: false,
-        slidesPerView: 1,
-        spaceBetween: 20,
+    const elementoSwiper = document.querySelector(".swiper");
 
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true
-        },
+    if (elementoSwiper) {
+        const swiper = new Swiper(".swiper", {
+            direction: "horizontal",
+            loop: false,
+            slidesPerView: 1,
+            spaceBetween: 20,
 
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
-        },
-
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
             },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
             }
-        }
-    });
+        });
+    }
 } else {
     console.error("A biblioteca Swiper não foi carregada.");
 }
+
+// =============================================
+// CONFIGURAÇÕES E ACESSIBILIDADE DO EVEL
+// Sem modo escuro
+// =============================================
+
+const CHAVE_PREFERENCIAS_EVEL = "evelConfiguracoes";
+
+const PREFERENCIAS_PADRAO_EVEL = {
+    tamanhoTexto: "16",
+    altoContraste: false,
+    notificacoes: false
+};
+
+// =============================================
+// LER PREFERÊNCIAS SALVAS
+// =============================================
+
+function lerPreferenciasEvel() {
+    try {
+        const salvas = localStorage.getItem(
+            CHAVE_PREFERENCIAS_EVEL
+        );
+
+        if (!salvas) {
+            return { ...PREFERENCIAS_PADRAO_EVEL };
+        }
+
+        const dados = JSON.parse(salvas);
+        const tamanho = String(dados.tamanhoTexto ?? "16");
+
+        return {
+            tamanhoTexto: ["16", "18", "20"].includes(tamanho)
+                ? tamanho
+                : "16",
+
+            altoContraste: dados.altoContraste === true,
+
+            notificacoes: dados.notificacoes === true
+        };
+
+    } catch (erro) {
+        console.error("Erro ao carregar preferências:", erro);
+
+        return { ...PREFERENCIAS_PADRAO_EVEL };
+    }
+}
+
+// =============================================
+// APLICAR TAMANHO DAS LETRAS
+// =============================================
+
+function aplicarTamanhoTextoEvel(tamanho, raiz = document.body) {
+    if (!(raiz instanceof HTMLElement)) return;
+
+    const escala = Number(tamanho) / 16;
+
+    if (!Number.isFinite(escala) || ![1, 1.125, 1.25].includes(escala)) {
+        return;
+    }
+
+    const elementos = [];
+
+    if (!raiz.matches("script, style, noscript, svg, i, .bi")) {
+        elementos.push(raiz);
+    }
+
+    elementos.push(
+        ...raiz.querySelectorAll(
+            "p, h1, h2, h3, h4, h5, h6, a, button, label, span, li, " +
+            "strong, em, small, select, input, textarea, td, th"
+        )
+    );
+
+    const elegiveis = elementos.filter(elemento => {
+        return elemento instanceof HTMLElement &&
+            !elemento.matches("script, style, noscript, svg, i, .bi") &&
+            !elemento.closest("svg, .bi");
+    });
+
+    // Guarda os tamanhos originais antes de aplicar a escala.
+    elegiveis.forEach(elemento => {
+        if (elemento.hasAttribute("data-evel-fonte-base")) return;
+
+        const tamanhoOriginal = parseFloat(
+            getComputedStyle(elemento).fontSize
+        );
+
+        if (Number.isFinite(tamanhoOriginal)) {
+            elemento.setAttribute(
+                "data-evel-fonte-base",
+                String(tamanhoOriginal)
+            );
+        }
+    });
+
+    // Aplica a escala escolhida.
+    elegiveis.forEach(elemento => {
+        const tamanhoOriginal = parseFloat(
+            elemento.getAttribute("data-evel-fonte-base")
+        );
+
+        if (Number.isFinite(tamanhoOriginal)) {
+            elemento.style.fontSize =
+                `${tamanhoOriginal * escala}px`;
+        }
+    });
+}
+
+// =============================================
+// APLICAR PREFERÊNCIAS
+// =============================================
+
+function aplicarPreferenciasEvel(preferencias) {
+    if (!document.body) return;
+
+    // Não adiciona nem aplica nenhuma classe de tema escuro.
+    document.body.classList.remove("tema-escuro");
+
+    // Mantém o alto contraste como opção de acessibilidade.
+    document.body.classList.toggle(
+        "alto-contraste",
+        preferencias.altoContraste === true
+    );
+
+    aplicarTamanhoTextoEvel(
+        preferencias.tamanhoTexto || "16"
+    );
+}
+
+// =============================================
+// SALVAR PREFERÊNCIAS
+// =============================================
+
+function salvarPreferenciasEvel(preferencias) {
+    try {
+        localStorage.setItem(
+            CHAVE_PREFERENCIAS_EVEL,
+            JSON.stringify(preferencias)
+        );
+
+        aplicarPreferenciasEvel(preferencias);
+
+        return true;
+
+    } catch (erro) {
+        console.error("Erro ao salvar preferências:", erro);
+        return false;
+    }
+}
+
+// =============================================
+// INICIAR A PÁGINA DE CONFIGURAÇÕES
+// =============================================
+
+function iniciarPaginaConfiguracoesEvel() {
+    const campoTamanhoTexto =
+        document.getElementById("tamanhoTexto");
+
+    const campoAltoContraste =
+        document.getElementById("altoContraste");
+
+    const campoNotificacoes =
+        document.getElementById("notificacoes");
+
+    const botaoSalvar =
+        document.getElementById("btnSalvar");
+
+    const botaoRestaurar =
+        document.getElementById("btnRestaurar");
+
+    const mensagem =
+        document.getElementById("mensagemConfiguracoes");
+
+    if (
+        !campoTamanhoTexto ||
+        !campoAltoContraste ||
+        !campoNotificacoes ||
+        !botaoSalvar ||
+        !botaoRestaurar
+    ) {
+        return;
+    }
+
+    function preencherCampos(preferencias) {
+        campoTamanhoTexto.value = preferencias.tamanhoTexto;
+        campoAltoContraste.checked = preferencias.altoContraste;
+        campoNotificacoes.checked = preferencias.notificacoes;
+    }
+
+    function lerCampos() {
+        return {
+            tamanhoTexto: ["16", "18", "20"].includes(
+                campoTamanhoTexto.value
+            )
+                ? campoTamanhoTexto.value
+                : "16",
+
+            altoContraste: campoAltoContraste.checked,
+
+            notificacoes: campoNotificacoes.checked
+        };
+    }
+
+    // Carrega as escolhas salvas.
+    const preferencias = lerPreferenciasEvel();
+
+    preencherCampos(preferencias);
+    aplicarPreferenciasEvel(preferencias);
+
+    // Salvar preferências.
+    botaoSalvar.addEventListener("click", () => {
+        const preferenciasAtuais = lerCampos();
+        const sucesso = salvarPreferenciasEvel(preferenciasAtuais);
+
+        if (mensagem) {
+            mensagem.textContent = sucesso
+                ? "Preferências salvas com sucesso!"
+                : "Não foi possível salvar as preferências.";
+        }
+    });
+
+    // Restaurar padrões.
+    botaoRestaurar.addEventListener("click", () => {
+        const padrao = {
+            ...PREFERENCIAS_PADRAO_EVEL
+        };
+
+        preencherCampos(padrao);
+
+        const sucesso = salvarPreferenciasEvel(padrao);
+
+        if (mensagem) {
+            mensagem.textContent = sucesso
+                ? "Configurações padrão restauradas!"
+                : "Não foi possível restaurar as configurações.";
+        }
+    });
+}
+
+// =============================================
+// INICIALIZAÇÃO
+// =============================================
+
+function iniciarPreferenciasEvel() {
+    aplicarPreferenciasEvel(lerPreferenciasEvel());
+    iniciarPaginaConfiguracoesEvel();
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener(
+        "DOMContentLoaded",
+        iniciarPreferenciasEvel
+    );
+} else {
+    iniciarPreferenciasEvel();
+}
+
+// Reaplica as preferências aos elementos inseridos depois,
+// como o cabeçalho carregado pelo JavaScript.
+const observadorPreferenciasEvel = new MutationObserver(alteracoes => {
+    const preferencias = lerPreferenciasEvel();
+
+    alteracoes.forEach(alteracao => {
+        alteracao.addedNodes.forEach(elemento => {
+            if (elemento instanceof HTMLElement) {
+                aplicarTamanhoTextoEvel(
+                    preferencias.tamanhoTexto,
+                    elemento
+                );
+            }
+        });
+    });
+});
+
+if (document.body) {
+    observadorPreferenciasEvel.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
+// Atualiza as preferências se forem alteradas em outra aba.
+window.addEventListener("storage", evento => {
+    if (evento.key === CHAVE_PREFERENCIAS_EVEL) {
+        aplicarPreferenciasEvel(lerPreferenciasEvel());
+    }
+});
