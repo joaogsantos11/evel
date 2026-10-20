@@ -2,6 +2,18 @@ const secaoAulas = document.getElementById("secaoAulas");
 const telaAprendizagem = document.getElementById("telaAprendizagem");
 const conteudoAula = document.getElementById("conteudoAula");
 const botaoVoltar = document.getElementById("voltarLista");
+const numeroModulo = Number(
+    document.body.dataset.modulo || 1
+);
+
+function chaveAulaConcluida(numeroAula) {
+    // Mantém compatibilidade com o progresso antigo do módulo 1.
+    if (numeroModulo === 1) {
+        return `aula${numeroAula}Concluida`;
+    }
+
+    return `modulo${numeroModulo}_aula${numeroAula}Concluida`;
+}
 
 const ilustracaoLibras = `
 <svg class="ilustracao-svg" viewBox="0 0 360 230" role="img" aria-label="Ilustração de uma pessoa se comunicando em Libras">
@@ -113,6 +125,41 @@ const aulas = {
     }
 };
 
+function atualizarProgressoModulo() {
+    const totalAulas = 4;
+    let aulasConcluidas = 0;
+
+    for (let numero = 1; numero <= totalAulas; numero++) {
+        const concluida =
+            localStorage.getItem(chaveAulaConcluida(numero)) === "true";
+
+        if (concluida) {
+            aulasConcluidas++;
+        }
+    }
+
+    const percentual = Math.round(
+        (aulasConcluidas / totalAulas) * 100
+    );
+
+    const textoProgresso = document.getElementById("progressoTexto");
+    const percentualProgresso = document.getElementById("progressoPercentual");
+    const barraProgresso = document.getElementById("progressoBarra");
+
+    if (textoProgresso) {
+        textoProgresso.textContent =
+            `${aulasConcluidas} de ${totalAulas} aulas concluídas`;
+    }
+
+    if (percentualProgresso) {
+        percentualProgresso.textContent = `${percentual}%`;
+    }
+
+    if (barraProgresso) {
+        barraProgresso.style.width = `${percentual}%`;
+    }
+}
+
 function abrirAula(numeroAula) {
     const aula = aulas[numeroAula];
     if (!aula || !conteudoAula || !secaoAulas || !telaAprendizagem) return;
@@ -128,6 +175,30 @@ function abrirAula(numeroAula) {
     }
 }
 
+
+function atualizarCardsAulas() {
+    document.querySelectorAll("[data-abrir-aula]").forEach((card) => {
+        const numeroAula = Number(card.dataset.abrirAula);
+
+        const concluida =
+            localStorage.getItem(
+                chaveAulaConcluida(numeroAula)
+            ) === "true";
+
+        const status = card.querySelector(".aula-status");
+
+        card.classList.toggle("aula-concluida", concluida);
+
+        if (status) {
+            status.textContent = concluida ? "✓" : "→";
+
+            status.setAttribute(
+                "aria-label",
+                concluida ? "Aula concluída" : "Abrir aula"
+            );
+        }
+    });
+}
 
 
 function verificarQuizAula1(evento) {
@@ -152,15 +223,25 @@ function verificarQuizAula1(evento) {
         return;
     }
 
+
     if (acertos === 5) {
-        localStorage.setItem("aula1Concluida", "true");
+        localStorage.setItem(
+    chaveAulaConcluida(1),
+    "true"
+);
+
+        atualizarCardAula1();
+        atualizarProgressoModulo();
 
         resultado.className = "resultado-quiz resultado-sucesso";
-        resultado.textContent = `Excelente! Você acertou ${acertos} de 5 questões. Aula concluída, continue aprendendo Libras!`;
+        resultado.textContent =
+            `Excelente! Você acertou ${acertos} de 5 questões. Aula concluída!`;
     } else {
         resultado.className = "resultado-quiz resultado-erro";
-        resultado.textContent = `Você acertou ${acertos} de 5 questões. Revise o conteúdo e tente novamente.`;
+        resultado.textContent =
+            `Você acertou ${acertos} de 5 questões. Revise o conteúdo e tente novamente.`;
     }
+
 }
 
 document.querySelectorAll("[data-abrir-aula]").forEach((botao) => {
@@ -174,3 +255,6 @@ if (botaoVoltar) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 }
+
+atualizarCardsAulas();
+atualizarProgressoModulo();

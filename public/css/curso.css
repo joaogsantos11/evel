@@ -1001,3 +1001,32 @@ footer {
         width: 100%;
     }
 }
+
+/* Card de aula concluída */
+
+.aula.aula-card.aula-concluida {
+    border-color: #a8dfbd;
+    background: #f0faf3;
+    box-shadow: 0 4px 14px #16834a10;
+}
+
+.aula.aula-card.aula-concluida:hover {
+    border-color: #68bd89;
+    box-shadow: 0 9px 22px #16834a18;
+}
+
+.aula.aula-card.aula-concluida .aula-numero {
+    background: #d5f1df;
+    color: #176b3a;
+}
+
+.aula.aula-card.aula-concluida .subtitulo,
+.aula.aula-card.aula-concluida .aula-titulo {
+    color: #176b3a;
+}
+
+.aula.aula-card.aula-concluida .aula-status {
+    color: #16834a;
+    font-size: 24px;
+    font-weight: 800;
+}
