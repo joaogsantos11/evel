@@ -51,6 +51,400 @@ const ilustracaoMaos = `
     <path d="M151 30l-4-13m17 17 8-12m-1 27 13-4" stroke="#3535c9" stroke-width="4" stroke-linecap="round"/>
 </svg>`;
 
+const aulasModulo2 = {
+    1: {
+        titulo: "Números e contagem",
+        conteudo: `
+            <article class="conteudo-aula">
+                <header class="aula-hero-conteudo">
+                    <div class="aula-hero-texto">
+                        <span class="etiqueta etiqueta-clara">AULA 1</span>
+                        <h1>Números e contagem</h1>
+                        <p>Conheça a importância dos números na comunicação em Libras.</p>
+                    </div>
+                    <div class="aula-hero-ilustracao">${ilustracaoMaos}</div>
+                </header>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">1</span>
+                    <div class="texto-secao">
+                        <h2>Os números na Libras</h2>
+                        <p>Os números são utilizados em diversas situações cotidianas, como informar quantidades, preços, horários e datas.</p>
+                        <p>Em Libras, a representação dos números é visual e pode variar conforme o contexto. É importante observar a configuração e o movimento das mãos.</p>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">2</span>
+                    <div class="texto-secao">
+                        <h2>Quando usamos os números?</h2>
+                        <ul class="lista-objetivos">
+                            <li>Para informar a idade.</li>
+                            <li>Para falar sobre preços e quantidades.</li>
+                            <li>Para indicar datas e horários.</li>
+                            <li>Para apresentar números de telefone.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo objetivos-aula">
+                    <span class="numero-secao">3</span>
+                    <div class="texto-secao">
+                        <h2>Pratique o que aprendeu</h2>
+                        <p>Imagine que você precisa informar quantos livros possui. Os números ajudam a comunicar essa quantidade de maneira clara.</p>
+                        <div class="destaque-aula">
+                            <strong>Dica:</strong> pratique com vídeos educativos de Libras para observar a execução correta dos sinais numéricos.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="atividade-aula">
+                    <div class="atividade-cabecalho">
+                        <span class="atividade-icone" aria-hidden="true">✓</span>
+                        <div>
+                            <span class="etiqueta etiqueta-clara">DESAFIO FINAL</span>
+                            <h2>Desafio da Aula 1</h2>
+                            <p>Responda às cinco questões para concluir a aula.</p>
+                        </div>
+                    </div>
+
+                    <form id="quizModulo2Aula1" class="quiz-aula">
+                        <fieldset class="questao-quiz">
+                            <legend>1. Para que podemos usar números na comunicação?</legend>
+                            <label><input type="radio" name="q1" value="a"><span>Somente para cumprimentar.</span></label>
+                            <label><input type="radio" name="q1" value="b"><span>Para informar quantidades, preços e horários.</span></label>
+                            <label><input type="radio" name="q1" value="c"><span>Para substituir toda a gramática da Libras.</span></label>
+                        </fieldset>
+
+                        <fieldset class="questao-quiz">
+                            <legend>2. Como a Libras é principalmente percebida?</legend>
+                            <label><input type="radio" name="q2" value="a"><span>Visualmente.</span></label>
+                            <label><input type="radio" name="q2" value="b"><span>Somente pela audição.</span></label>
+                            <label><input type="radio" name="q2" value="c"><span>Somente pela leitura labial.</span></label>
+                        </fieldset>
+
+                        <fieldset class="questao-quiz">
+                            <legend>3. Em qual situação os números podem ser úteis?</legend>
+                            <label><input type="radio" name="q3" value="a"><span>Para informar um preço.</span></label>
+                            <label><input type="radio" name="q3" value="b"><span>Somente para soletrar nomes.</span></label>
+                            <label><input type="radio" name="q3" value="c"><span>Para substituir todas as expressões faciais.</span></label>
+                        </fieldset>
+
+                        <fieldset class="questao-quiz">
+                            <legend>4. O que é importante ao aprender sinais numéricos?</legend>
+                            <label><input type="radio" name="q4" value="a"><span>Ignorar a posição das mãos.</span></label>
+                            <label><input type="radio" name="q4" value="b"><span>Observar a configuração e o movimento das mãos.</span></label>
+                            <label><input type="radio" name="q4" value="c"><span>Pronunciar os números em voz alta.</span></label>
+                        </fieldset>
+
+                        <fieldset class="questao-quiz">
+                            <legend>5. Qual é uma boa maneira de aprender a execução dos sinais?</legend>
+                            <label><input type="radio" name="q5" value="a"><span>Praticar sem observar exemplos.</span></label>
+                            <label><input type="radio" name="q5" value="b"><span>Evitar repetir os movimentos.</span></label>
+                            <label><input type="radio" name="q5" value="c"><span>Observar materiais educativos e praticar.</span></label>
+                        </fieldset>
+
+                        <button class="botao botao-quiz" type="submit">
+                            Verificar respostas <span aria-hidden="true">→</span>
+                        </button>
+
+                        <p class="resultado-quiz" id="resultadoQuizModulo2Aula1" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </article>
+     
+            
+        `
+    },
+
+    2: {
+        titulo: "Idade e aniversário",
+        conteudo: `
+            <article class="conteudo-aula">
+                <header class="aula-hero-conteudo">
+                    <div class="aula-hero-texto">
+                        <span class="etiqueta etiqueta-clara">AULA 2</span>
+                        <h1>Idade e aniversário</h1>
+                        <p>Aprenda a conversar sobre idade e aniversário em Libras.</p>
+                    </div>
+                    <div class="aula-hero-ilustracao">${ilustracaoMaos}</div>
+                </header>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">1</span>
+                    <div class="texto-secao">
+                        <h2>Falando sobre idade</h2>
+                        <p>A idade é uma informação pessoal que pode aparecer em conversas, apresentações e cadastros.</p>
+                        <p>Para comunicar a idade em Libras, é importante aprender os sinais relacionados à pergunta sobre idade e à resposta com números.</p>
+                        <div class="destaque-aula">
+                            <strong>Pratique:</strong> treine como perguntar a idade de alguém e como responder usando o número correspondente.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">2</span>
+                    <div class="texto-secao">
+                        <h2>Falando sobre aniversário</h2>
+                        <p>Conversas sobre aniversário podem envolver dia, mês, idade e comemorações.</p>
+                        <p>Aprenda os sinais relacionados a aniversário e pratique a combinação com números e meses.</p>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo objetivos-aula">
+                    <span class="numero-secao">3</span>
+                    <div class="texto-secao">
+                        <h2>O que você aprendeu?</h2>
+                        <ul class="lista-objetivos">
+                            <li>Como conversar sobre idade.</li>
+                            <li>A relação entre números e informações pessoais.</li>
+                            <li>Como falar sobre aniversário e datas.</li>
+                            <li>A importância de observar sinais demonstrados corretamente.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="atividade-aula">
+                    <div class="atividade-cabecalho">
+                        <span class="atividade-icone" aria-hidden="true">✓</span>
+                        <div>
+                            <span class="etiqueta etiqueta-clara">DESAFIO FINAL</span>
+                            <h2>Desafio da Aula 2</h2>
+                            <p>Responda às cinco questões para testar o que aprendeu.</p>
+                        </div>
+                    </div>
+
+                    <form id="quizModulo2Aula2" class="quiz-aula">
+                        <fieldset class="questao-quiz">
+                            <legend>1. Qual informação é relacionada à idade?</legend>
+                            <label><input type="radio" name="q1" value="a"><span>Quantos anos uma pessoa tem.</span></label>
+                            <label><input type="radio" name="q1" value="b"><span>Apenas o nome de uma cidade.</span></label>
+                            <label><input type="radio" name="q1" value="c"><span>A cor de um objeto.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>2. Qual recurso pode ajudar a informar a idade?</legend>
+                            <label><input type="radio" name="q2" value="a"><span>Somente o alfabeto manual.</span></label>
+                            <label><input type="radio" name="q2" value="b"><span>Números e sinais adequados ao contexto.</span></label>
+                            <label><input type="radio" name="q2" value="c"><span>Apenas expressões faciais, sem sinais.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>3. Uma conversa sobre aniversário pode incluir:</legend>
+                            <label><input type="radio" name="q3" value="a"><span>Somente nomes de animais.</span></label>
+                            <label><input type="radio" name="q3" value="b"><span>Apenas cores.</span></label>
+                            <label><input type="radio" name="q3" value="c"><span>Dia, mês e idade.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>4. Para aprender os sinais de idade, é importante:</legend>
+                            <label><input type="radio" name="q4" value="a"><span>Inventar qualquer movimento.</span></label>
+                            <label><input type="radio" name="q4" value="b"><span>Evitar observar outras pessoas sinalizando.</span></label>
+                            <label><input type="radio" name="q4" value="c"><span>Observar exemplos corretos e praticar.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>5. Qual é uma atitude adequada ao perguntar a idade de alguém?</legend>
+                            <label><input type="radio" name="q5" value="a"><span>Respeitar a pessoa e o contexto da conversa.</span></label>
+                            <label><input type="radio" name="q5" value="b"><span>Exigir que todos respondam.</span></label>
+                            <label><input type="radio" name="q5" value="c"><span>Ignorar a resposta.</span></label>
+                        </fieldset>
+                        <button class="botao botao-quiz" type="submit">Verificar respostas <span aria-hidden="true">→</span></button>
+                        <p class="resultado-quiz" id="resultadoQuizModulo2Aula2" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </article>
+        `
+    },
+
+    3: {
+        titulo: "Dias da semana e meses",
+        conteudo: `
+            <article class="conteudo-aula">
+                <header class="aula-hero-conteudo">
+                    <div class="aula-hero-texto">
+                        <span class="etiqueta etiqueta-clara">AULA 3</span>
+                        <h1>Dias da semana e meses</h1>
+                        <p>Aprenda a falar sobre dias, meses e compromissos em Libras.</p>
+                    </div>
+                    <div class="aula-hero-ilustracao">${ilustracaoLibras}</div>
+                </header>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">1</span>
+                    <div class="texto-secao">
+                        <h2>Organizando o tempo</h2>
+                        <p>Os dias da semana e os meses ajudam a comunicar datas, compromissos, aulas e acontecimentos.</p>
+                        <p>Em Libras, aprenda os sinais correspondentes por meio de demonstrações confiáveis e pratique sua execução visual.</p>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">2</span>
+                    <div class="texto-secao">
+                        <h2>Como praticar?</h2>
+                        <ul class="lista-objetivos">
+                            <li>Estude os sinais dos dias da semana.</li>
+                            <li>Pratique os nomes dos meses.</li>
+                            <li>Combine dias e meses para comunicar datas.</li>
+                            <li>Treine frases sobre aulas e compromissos.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo objetivos-aula">
+                    <span class="numero-secao">3</span>
+                    <div class="texto-secao">
+                        <h2>Exemplo de prática</h2>
+                        <p>Imagine que alguém pergunte quando será uma aula. Você poderá praticar uma resposta que indique o dia da semana e a data.</p>
+                        <div class="destaque-aula">
+                            <strong>Dica:</strong> observe a sinalização em vídeo. Ler o nome de um sinal não ensina, por si só, a configuração e o movimento corretos das mãos.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="atividade-aula">
+                    <div class="atividade-cabecalho">
+                        <span class="atividade-icone" aria-hidden="true">✓</span>
+                        <div>
+                            <span class="etiqueta etiqueta-clara">DESAFIO FINAL</span>
+                            <h2>Desafio da Aula 3</h2>
+                            <p>Responda às cinco questões para testar o que aprendeu.</p>
+                        </div>
+                    </div>
+
+                    <form id="quizModulo2Aula3" class="quiz-aula">
+                        <fieldset class="questao-quiz">
+                            <legend>1. Para que servem os dias da semana e os meses em uma conversa?</legend>
+                            <label><input type="radio" name="q1" value="a"><span>Para indicar datas e organizar compromissos.</span></label>
+                            <label><input type="radio" name="q1" value="b"><span>Para substituir todos os números.</span></label>
+                            <label><input type="radio" name="q1" value="c"><span>Somente para soletrar nomes.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>2. O que ajuda a aprender os sinais de dias e meses?</legend>
+                            <label><input type="radio" name="q2" value="a"><span>Evitar praticar.</span></label>
+                            <label><input type="radio" name="q2" value="b"><span>Observar demonstrações e praticar.</span></label>
+                            <label><input type="radio" name="q2" value="c"><span>Memorizar apenas a grafia em português.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>3. Qual informação pode fazer parte de uma data?</legend>
+                            <label><input type="radio" name="q3" value="a"><span>Somente a cor favorita.</span></label>
+                            <label><input type="radio" name="q3" value="b"><span>Apenas o nome de uma pessoa.</span></label>
+                            <label><input type="radio" name="q3" value="c"><span>Dia e mês.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>4. Para combinar dia e mês, devemos:</legend>
+                            <label><input type="radio" name="q4" value="a"><span>Ignorar o significado da mensagem.</span></label>
+                            <label><input type="radio" name="q4" value="b"><span>Usar sinais e números adequados ao contexto.</span></label>
+                            <label><input type="radio" name="q4" value="c"><span>Usar somente gestos inventados.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>5. Qual é uma boa forma de praticar datas?</legend>
+                            <label><input type="radio" name="q5" value="a"><span>Treinar exemplos de compromissos e acontecimentos.</span></label>
+                            <label><input type="radio" name="q5" value="b"><span>Evitar repetir os sinais.</span></label>
+                            <label><input type="radio" name="q5" value="c"><span>Aprender sem observar a sinalização.</span></label>
+                        </fieldset>
+                        <button class="botao botao-quiz" type="submit">Verificar respostas <span aria-hidden="true">→</span></button>
+                        <p class="resultado-quiz" id="resultadoQuizModulo2Aula3" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </article>
+        `
+    },
+
+    4: {
+        titulo: "Perguntas pessoais",
+        conteudo: `
+            <article class="conteudo-aula">
+                <header class="aula-hero-conteudo">
+                    <div class="aula-hero-texto">
+                        <span class="etiqueta etiqueta-clara">AULA 4</span>
+                        <h1>Perguntas pessoais</h1>
+                        <p>Pratique perguntas e respostas usadas em apresentações e conversas cotidianas.</p>
+                    </div>
+                    <div class="aula-hero-ilustracao">${ilustracaoLibras}</div>
+                </header>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">1</span>
+                    <div class="texto-secao">
+                        <h2>Conhecendo outras pessoas</h2>
+                        <p>Em uma conversa, podemos perguntar o nome de alguém, como a pessoa está ou outras informações que ela se sinta confortável em compartilhar.</p>
+                        <p>Em Libras, perguntas podem envolver sinais, expressões faciais e elementos gramaticais visuais. Observe exemplos completos para entender como a pergunta é construída.</p>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">2</span>
+                    <div class="texto-secao">
+                        <h2>Pratique perguntas e respostas</h2>
+                        <ul class="lista-objetivos">
+                            <li>Aprenda a perguntar o nome de alguém.</li>
+                            <li>Pratique como dizer seu próprio nome.</li>
+                            <li>Treine perguntas simples sobre como a pessoa está.</li>
+                            <li>Observe a expressão facial e a direção do olhar.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo objetivos-aula">
+                    <span class="numero-secao">3</span>
+                    <div class="texto-secao">
+                        <h2>Comunicação com respeito</h2>
+                        <p>Nem toda pergunta pessoal precisa ser respondida. Respeite os limites e as escolhas de cada pessoa durante a conversa.</p>
+                        <div class="destaque-aula">
+                            <strong>Prática:</strong> prepare uma breve apresentação e treine perguntas simples com alguém que também esteja aprendendo Libras.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="atividade-aula">
+                    <div class="atividade-cabecalho">
+                        <span class="atividade-icone" aria-hidden="true">✓</span>
+                        <div>
+                            <span class="etiqueta etiqueta-clara">DESAFIO FINAL</span>
+                            <h2>Desafio da Aula 4</h2>
+                            <p>Responda às cinco questões para testar o que aprendeu.</p>
+                        </div>
+                    </div>
+
+                    <form id="quizModulo2Aula4" class="quiz-aula">
+                        <fieldset class="questao-quiz">
+                            <legend>1. Qual é um exemplo de pergunta pessoal?</legend>
+                            <label><input type="radio" name="q1" value="a"><span>Qual é o seu nome?</span></label>
+                            <label><input type="radio" name="q1" value="b"><span>Quanto pesa uma cadeira?</span></label>
+                            <label><input type="radio" name="q1" value="c"><span>Qual é a cor de uma parede vazia?</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>2. O que pode participar da construção de uma pergunta em Libras?</legend>
+                            <label><input type="radio" name="q2" value="a"><span>Apenas a fala em português.</span></label>
+                            <label><input type="radio" name="q2" value="b"><span>Sinais e expressões faciais.</span></label>
+                            <label><input type="radio" name="q2" value="c"><span>Somente a escrita.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>3. Como podemos praticar apresentações?</legend>
+                            <label><input type="radio" name="q3" value="a"><span>Evitar interagir com outras pessoas.</span></label>
+                            <label><input type="radio" name="q3" value="b"><span>Usar apenas gestos inventados.</span></label>
+                            <label><input type="radio" name="q3" value="c"><span>Treinar perguntas e respostas simples.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>4. Qual atitude demonstra respeito numa conversa?</legend>
+                            <label><input type="radio" name="q4" value="a"><span>Insistir em perguntas pessoais.</span></label>
+                            <label><input type="radio" name="q4" value="b"><span>Ignorar os limites da outra pessoa.</span></label>
+                            <label><input type="radio" name="q4" value="c"><span>Respeitar se alguém não quiser responder.</span></label>
+                        </fieldset>
+                        <fieldset class="questao-quiz">
+                            <legend>5. Por que observar expressões faciais é importante?</legend>
+                            <label><input type="radio" name="q5" value="a"><span>Porque elas podem contribuir para o significado e a gramática.</span></label>
+                            <label><input type="radio" name="q5" value="b"><span>Porque substituem todos os sinais.</span></label>
+                            <label><input type="radio" name="q5" value="c"><span>Porque não têm relação com a comunicação visual.</span></label>
+                        </fieldset>
+                        <button class="botao botao-quiz" type="submit">Verificar respostas <span aria-hidden="true">→</span></button>
+                        <p class="resultado-quiz" id="resultadoQuizModulo2Aula4" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </article>
+        `
+    }
+};
+
+
 const aulas = {
     1: {
         titulo: "O que é Libras?",
@@ -304,7 +698,9 @@ function atualizarProgressoModulo() {
 }
 
 function abrirAula(numeroAula) {
-    const aula = aulas[numeroAula];
+    const aula = numeroModulo === 2
+        ? aulasModulo2[numeroAula] || aulas[numeroAula]
+        : aulas[numeroAula];
     if (!aula || !conteudoAula || !secaoAulas || !telaAprendizagem) return;
 
     conteudoAula.innerHTML = aula.conteudo;
