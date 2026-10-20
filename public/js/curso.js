@@ -697,22 +697,44 @@ function atualizarProgressoModulo() {
     }
 }
 
+
 function abrirAula(numeroAula) {
-    const aula = numeroModulo === 2
-        ? aulasModulo2[numeroAula] || aulas[numeroAula]
-        : aulas[numeroAula];
-    if (!aula || !conteudoAula || !secaoAulas || !telaAprendizagem) return;
+    let aula;
+
+    if (numeroModulo === 2) {
+        aula = aulasModulo2[numeroAula] || aulas[numeroAula];
+    } else if (numeroModulo === 1) {
+        aula = aulas[numeroAula];
+    } else {
+        const aulasDoModulo = window["aulasModulo" + numeroModulo];
+
+        aula = aulasDoModulo
+            ? aulasDoModulo[numeroAula]
+            : aulas[numeroAula];
+    }
+
+    if (!aula || !conteudoAula || !secaoAulas || !telaAprendizagem) {
+        return;
+    }
 
     conteudoAula.innerHTML = aula.conteudo;
     secaoAulas.hidden = true;
     telaAprendizagem.hidden = false;
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
     if (numeroAula === "1" || numeroAula === 1) {
         const quiz = document.getElementById("quizAula1");
-        if (quiz) quiz.addEventListener("submit", verificarQuizAula1);
+
+        if (quiz) {
+            quiz.addEventListener("submit", verificarQuizAula1);
+        }
     }
 }
+
 
 
 function atualizarCardsAulas() {
