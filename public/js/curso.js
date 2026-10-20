@@ -15,6 +15,17 @@ function chaveAulaConcluida(numeroAula) {
     return `modulo${numeroModulo}_aula${numeroAula}Concluida`;
 }
 
+function concluirAula(numeroAula) {
+    localStorage.setItem(
+        chaveAulaConcluida(numeroAula),
+        "true"
+    );
+
+    atualizarCardsAulas();
+    atualizarProgressoModulo();
+}
+
+
 const ilustracaoLibras = `
 <svg class="ilustracao-svg" viewBox="0 0 360 230" role="img" aria-label="Ilustração de uma pessoa se comunicando em Libras">
     <rect x="8" y="8" width="344" height="214" rx="26" fill="#ededff"/>
@@ -112,9 +123,7 @@ const aulas = {
         `
     },
     2: {
-       
-2: {
-    titulo: "Alfabeto manual",
+        titulo: "Alfabeto manual",
     conteudo: `
         <article class="conteudo-aula">
             <header class="aula-hero-conteudo">
@@ -249,7 +258,6 @@ const aulas = {
         </article>
     `
 },
-},
     3: {
         titulo: "Soletrando nomes",
         conteudo: `<article class="conteudo-aula aula-placeholder"><span class="etiqueta etiqueta-clara">AULA 3</span><h1>Soletrando nomes</h1><div class="ilustracao-destaque">${ilustracaoLibras}</div><h2>Pratique a soletração</h2><p>O alfabeto manual pode ajudar você a apresentar seu nome ou soletrar o nome de outra pessoa.</p><ol class="passos-pratica"><li>Escolha um nome curto.</li><li>Identifique as letras que o compõem.</li><li>Pratique cada letra com calma.</li><li>Repita a sequência, buscando clareza.</li></ol><div class="destaque-aula"><strong>Importante:</strong> na comunidade surda, algumas pessoas também possuem sinais pessoais. A soletração não substitui esse contexto cultural.</div><p>O conteúdo completo desta aula será desenvolvido na próxima etapa.</p></article>`
@@ -337,8 +345,6 @@ function atualizarCardsAulas() {
 
 
 concluirAula(1);
-
-
 
 function verificarQuizAula1(evento) {
     evento.preventDefault();
