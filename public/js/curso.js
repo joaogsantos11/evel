@@ -112,9 +112,144 @@ const aulas = {
         `
     },
     2: {
-        titulo: "Alfabeto manual",
-        conteudo: `<article class="conteudo-aula aula-placeholder"><span class="etiqueta etiqueta-clara">AULA 2</span><h1>Alfabeto manual</h1><div class="ilustracao-destaque">${ilustracaoMaos}</div><h2>Representando letras com as mãos</h2><p>O alfabeto manual representa letras por meio de configurações específicas das mãos. Ele pode ser utilizado para soletrar nomes próprios, lugares e outras palavras quando necessário.</p><div class="destaque-aula"><strong>Dica de aprendizagem:</strong> pratique aos poucos, observando a configuração e a orientação de cada mão. O alfabeto manual é apenas uma parte da Libras.</div><p>O conteúdo completo desta aula será desenvolvido na próxima etapa.</p></article>`
-    },
+       
+2: {
+    titulo: "Alfabeto manual",
+    conteudo: `
+        <article class="conteudo-aula">
+            <header class="aula-hero-conteudo">
+                <div class="aula-hero-texto">
+                    <span class="etiqueta etiqueta-clara">AULA 2</span>
+                    <h1>Alfabeto manual</h1>
+                    <p>Aprenda como as letras podem ser representadas pelas mãos e descubra como utilizar o alfabeto manual na comunicação em Libras.</p>
+                </div>
+                <div class="aula-hero-ilustracao">${ilustracaoMaos}</div>
+            </header>
+
+            <section class="bloco-conteudo">
+                <span class="numero-secao">1</span>
+                <div class="texto-secao">
+                    <h2>O que é o alfabeto manual?</h2>
+                    <p>O alfabeto manual, também conhecido como datilologia, permite representar as letras do alfabeto por meio de configurações específicas das mãos.</p>
+                    <p>Ele é utilizado, por exemplo, para soletrar nomes próprios, sobrenomes, lugares e palavras para as quais seja necessário apresentar as letras.</p>
+                    <div class="destaque-aula">
+                        <strong>Atenção:</strong> o alfabeto manual é uma ferramenta da Libras, mas não substitui os sinais próprios da língua.
+                    </div>
+                </div>
+                <div class="ilustracao-lateral">${ilustracaoMaos}</div>
+            </section>
+
+            <section class="bloco-conteudo">
+                <span class="numero-secao">2</span>
+                <div class="texto-secao">
+                    <h2>Como utilizar o alfabeto manual?</h2>
+                    <p>Para soletrar uma palavra, você representa suas letras em sequência, utilizando as configurações manuais correspondentes.</p>
+                    <div class="cartoes-elementos">
+                        <article class="cartao-elemento">
+                            <div class="elemento-ilustracao">${ilustracaoMaos}</div>
+                            <div>
+                                <h3>Observe a configuração</h3>
+                                <p>Preste atenção ao formato dos dedos e à posição da mão em cada letra.</p>
+                            </div>
+                        </article>
+                        <article class="cartao-elemento">
+                            <div class="elemento-ilustracao">${ilustracaoLibras}</div>
+                            <div>
+                                <h3>Cuide da orientação</h3>
+                                <p>A direção da palma e a posição da mão também são importantes para representar corretamente as letras.</p>
+                            </div>
+                        </article>
+                        <article class="cartao-elemento">
+                            <div class="elemento-ilustracao">${ilustracaoMaos}</div>
+                            <div>
+                                <h3>Pratique com calma</h3>
+                                <p>Treine uma letra de cada vez e depois pratique sequências curtas.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bloco-conteudo">
+                <span class="numero-secao">3</span>
+                <div class="texto-secao">
+                    <h2>Quando usar a datilologia?</h2>
+                    <p>O alfabeto manual pode ser útil quando precisamos apresentar nomes de pessoas, cidades, instituições ou outras palavras específicas.</p>
+                    <p>Entretanto, a comunicação em Libras não consiste em soletrar todas as palavras do português. A língua possui sinais, gramática e estruturas próprias.</p>
+                </div>
+            </section>
+
+            <section class="bloco-conteudo objetivos-aula">
+                <span class="numero-secao">4</span>
+                <div class="texto-secao">
+                    <h2>O que você aprendeu?</h2>
+                    <ul class="lista-objetivos">
+                        <li>O significado de alfabeto manual e datilologia.</li>
+                        <li>Como as mãos representam letras.</li>
+                        <li>A importância da configuração e da orientação das mãos.</li>
+                        <li>Quando a soletração pode ser utilizada.</li>
+                        <li>Por que o alfabeto manual não substitui a Libras.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="atividade-aula" id="atividadeAula2">
+                <div class="atividade-cabecalho">
+                    <span class="atividade-icone" aria-hidden="true">✓</span>
+                    <div>
+                        <span class="etiqueta etiqueta-clara">DESAFIO FINAL</span>
+                        <h2>Desafio da Aula 2</h2>
+                        <p>Responda às cinco questões. Você precisa acertar todas para concluir a aula.</p>
+                    </div>
+                </div>
+
+                <form id="quizAula2" class="quiz-aula">
+                    <fieldset class="questao-quiz">
+                        <legend>1. O que é o alfabeto manual?</legend>
+                        <label><input type="radio" name="q1" value="a"><span>Uma forma de representar letras utilizando as mãos.</span></label>
+                        <label><input type="radio" name="q1" value="b"><span>Uma língua universal usada em todos os países.</span></label>
+                        <label><input type="radio" name="q1" value="c"><span>Uma maneira de substituir todos os sinais da Libras.</span></label>
+                    </fieldset>
+
+                    <fieldset class="questao-quiz">
+                        <legend>2. Qual é outro nome para a representação manual das letras?</legend>
+                        <label><input type="radio" name="q2" value="a"><span>Expressão corporal.</span></label>
+                        <label><input type="radio" name="q2" value="b"><span>Datilologia.</span></label>
+                        <label><input type="radio" name="q2" value="c"><span>Tradução oral.</span></label>
+                    </fieldset>
+
+                    <fieldset class="questao-quiz">
+                        <legend>3. Em qual situação o alfabeto manual pode ser utilizado?</legend>
+                        <label><input type="radio" name="q3" value="a"><span>Para substituir toda a gramática da Libras.</span></label>
+                        <label><input type="radio" name="q3" value="b"><span>Somente para conversar sobre números.</span></label>
+                        <label><input type="radio" name="q3" value="c"><span>Para soletrar nomes próprios e lugares.</span></label>
+                    </fieldset>
+
+                    <fieldset class="questao-quiz">
+                        <legend>4. O que devemos observar ao representar uma letra?</legend>
+                        <label><input type="radio" name="q4" value="a"><span>Apenas a velocidade do movimento.</span></label>
+                        <label><input type="radio" name="q4" value="b"><span>A configuração e a orientação da mão.</span></label>
+                        <label><input type="radio" name="q4" value="c"><span>Apenas a expressão facial.</span></label>
+                    </fieldset>
+
+                    <fieldset class="questao-quiz">
+                        <legend>5. O alfabeto manual substitui todos os sinais da Libras?</legend>
+                        <label><input type="radio" name="q5" value="a"><span>Sim, todas as palavras devem ser soletradas.</span></label>
+                        <label><input type="radio" name="q5" value="b"><span>Sim, porque a Libras não possui sinais próprios.</span></label>
+                        <label><input type="radio" name="q5" value="c"><span>Não, ele é apenas um dos recursos utilizados na língua.</span></label>
+                    </fieldset>
+
+                    <button class="botao botao-quiz" type="submit">
+                        Verificar respostas <span aria-hidden="true">→</span>
+                    </button>
+
+                    <p class="resultado-quiz" id="resultadoQuiz2" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+        </article>
+    `
+},
+},
     3: {
         titulo: "Soletrando nomes",
         conteudo: `<article class="conteudo-aula aula-placeholder"><span class="etiqueta etiqueta-clara">AULA 3</span><h1>Soletrando nomes</h1><div class="ilustracao-destaque">${ilustracaoLibras}</div><h2>Pratique a soletração</h2><p>O alfabeto manual pode ajudar você a apresentar seu nome ou soletrar o nome de outra pessoa.</p><ol class="passos-pratica"><li>Escolha um nome curto.</li><li>Identifique as letras que o compõem.</li><li>Pratique cada letra com calma.</li><li>Repita a sequência, buscando clareza.</li></ol><div class="destaque-aula"><strong>Importante:</strong> na comunidade surda, algumas pessoas também possuem sinais pessoais. A soletração não substitui esse contexto cultural.</div><p>O conteúdo completo desta aula será desenvolvido na próxima etapa.</p></article>`
@@ -199,6 +334,10 @@ function atualizarCardsAulas() {
         }
     });
 }
+
+
+concluirAula(1);
+
 
 
 function verificarQuizAula1(evento) {
