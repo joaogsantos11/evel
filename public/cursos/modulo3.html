@@ -2,141 +2,425 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>EVEL | Módulo 3 — Família e pessoas</title>
-    <link rel="stylesheet" href="/public/css/curso.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>
+        EVEL | M&oacute;dulo 3 &mdash; Fam&iacute;lia e pessoas
+    </title>
+    <link href="/public/css/curso.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" />
 </head>
 
 <body data-modulo="3">
-    <header class="topo"><a class="logo" href="../cursos.html">✋ Evel</a>
-        <nav><a href="../cursos.html">Todos os módulos</a><a href="../inicio.html">Início</a></nav>
+    <header class="topo">
+        <a class="logo" href="../cursos.html">
+            ✋ Evel
+        </a>
+        <nav>
+            <a href="../cursos.html">
+                Todos os m&oacute;dulos
+            </a>
+            <a href="../inicio.html">
+                In&iacute;cio
+            </a>
+        </nav>
     </header>
-    <main class="container"><a class="voltar" href="../cursos.html">← Voltar aos módulos</a>
-        <section class="hero"><span class="etiqueta">MÓDULO 3 DE 7</span>
-            <h1>Família e pessoas</h1>
-            <p>Aprenda vocabulário para falar sobre familiares, pessoas e ocupações.</p>
-            <div class="progresso-info"><span id="progressoTexto">0 de 4 aulas concluídas · 0%</span><strong
-                    id="progressoPercentual">0%</strong></div>
+    <main class="container">
+        <a class="voltar" href="../cursos.html">
+            &larr; Voltar aos m&oacute;dulos
+        </a>
+        <section class="hero hero-modulo">
+            <span class="etiqueta">
+                M&Oacute;DULO 3 DE 7
+            </span>
+            <h1>
+                Fam&iacute;lia e pessoas
+            </h1>
+            <p>
+                Aprenda vocabul&aacute;rio para falar sobre familiares, pessoas e ocupa&ccedil;&otilde;es.
+            </p>
+            <div class="progresso-info">
+                <span id="progressoTexto">
+                    0 de 4 aulas conclu&iacute;das &middot; 0%
+                </span>
+                <strong id="progressoPercentual">
+                    0%
+                </strong>
+            </div>
             <div class="barra">
-                <div id="progressoBarra"></div>
+                <div id="progressoBarra">
+                </div>
             </div>
         </section>
-        <section class="lista-aulas">
-            <article class="aula">
-                <div class="aula-numero">01</div>
-                <div class="aula-conteudo">
-                    <p class="subtitulo">AULA 1</p>
-                    <h2>Família e parentes</h2>
-                    <p>Há sinais para familiares e relações de parentesco; algumas formas podem variar por comunidade.
+        <section class="secao-aulas" id="secaoAulas">
+            <div class="cabecalho-aulas">
+                <div>
+                    <h2 class="titulo-lista-aulas">
+                        Aulas do m&oacute;dulo
+                    </h2>
+                    <p>
+                        Estude cada tema e pratique no seu ritmo.
                     </p>
-                    <div class="pratica"><strong>Atividade prática</strong>
-                        <p>Desenhe uma árvore genealógica fictícia e pratique apresentar as pessoas.</p>
-                    </div>
-                    <div class="video-box">
-                        <div><strong>Vídeo demonstrativo</strong>
-                            <p>Busque uma demonstração visual e confira a fonte, priorizando instituições e pessoas
-                                fluentes em Libras.</p>
-                        </div><a class="botao secundario"
-                            href="https://www.youtube.com/results?search_query=Família+e+parentes+Libras+sinais+aula"
-                            target="_blank" rel="noopener noreferrer">Ver vídeos ↗</a>
-                    </div>
-                    <div class="quiz" data-quiz="3-1">
-                        <h3>Confira o que aprendeu</h3>
-                        <p class="pergunta"></p>
-                        <div class="opcoes"></div>
-                        <p class="feedback" aria-live="polite"></p>
-                    </div><button class="botao concluir" type="button" data-concluir="1">✓ Marcar aula como
-                        concluída</button>
                 </div>
-            </article>
-            <article class="aula">
-                <div class="aula-numero">02</div>
-                <div class="aula-conteudo">
-                    <p class="subtitulo">AULA 2</p>
-                    <h2>Pessoas e profissões</h2>
-                    <p>Conversas sobre ocupações combinam vocabulário de pessoas, locais e atividades profissionais.</p>
-                    <div class="pratica"><strong>Atividade prática</strong>
-                        <p>Escolha três profissões e confirme seus sinais em vídeos confiáveis.</p>
-                    </div>
-                    <div class="video-box">
-                        <div><strong>Vídeo demonstrativo</strong>
-                            <p>Busque uma demonstração visual e confira a fonte, priorizando instituições e pessoas
-                                fluentes em Libras.</p>
-                        </div><a class="botao secundario"
-                            href="https://www.youtube.com/results?search_query=Pessoas+e+profissões+Libras+sinais+aula"
-                            target="_blank" rel="noopener noreferrer">Ver vídeos ↗</a>
-                    </div>
-                    <div class="quiz" data-quiz="3-2">
-                        <h3>Confira o que aprendeu</h3>
-                        <p class="pergunta"></p>
-                        <div class="opcoes"></div>
-                        <p class="feedback" aria-live="polite"></p>
-                    </div><button class="botao concluir" type="button" data-concluir="2">✓ Marcar aula como
-                        concluída</button>
-                </div>
-            </article>
-            <article class="aula">
-                <div class="aula-numero">03</div>
-                <div class="aula-conteudo">
-                    <p class="subtitulo">AULA 3</p>
-                    <h2>Características pessoais</h2>
-                    <p>Descrições podem combinar vocabulário, expressões faciais e contexto. Descreva com respeito.</p>
-                    <div class="pratica"><strong>Atividade prática</strong>
-                        <p>Descreva um personagem fictício de forma neutra e respeitosa.</p>
-                    </div>
-                    <div class="video-box">
-                        <div><strong>Vídeo demonstrativo</strong>
-                            <p>Busque uma demonstração visual e confira a fonte, priorizando instituições e pessoas
-                                fluentes em Libras.</p>
-                        </div><a class="botao secundario"
-                            href="https://www.youtube.com/results?search_query=Características+pessoais+Libras+sinais+aula"
-                            target="_blank" rel="noopener noreferrer">Ver vídeos ↗</a>
-                    </div>
-                    <div class="quiz" data-quiz="3-3">
-                        <h3>Confira o que aprendeu</h3>
-                        <p class="pergunta"></p>
-                        <div class="opcoes"></div>
-                        <p class="feedback" aria-live="polite"></p>
-                    </div><button class="botao concluir" type="button" data-concluir="3">✓ Marcar aula como
-                        concluída</button>
-                </div>
-            </article>
-            <article class="aula">
-                <div class="aula-numero">04</div>
-                <div class="aula-conteudo">
-                    <p class="subtitulo">AULA 4</p>
-                    <h2>Apresentando outra pessoa</h2>
-                    <p>Ao apresentar alguém, organize a informação visualmente e respeite os turnos da conversa.</p>
-                    <div class="pratica"><strong>Atividade prática</strong>
-                        <p>Simule apresentar duas pessoas fictícias.</p>
-                    </div>
-                    <div class="video-box">
-                        <div><strong>Vídeo demonstrativo</strong>
-                            <p>Busque uma demonstração visual e confira a fonte, priorizando instituições e pessoas
-                                fluentes em Libras.</p>
-                        </div><a class="botao secundario"
-                            href="https://www.youtube.com/results?search_query=Apresentando+outra+pessoa+Libras+sinais+aula"
-                            target="_blank" rel="noopener noreferrer">Ver vídeos ↗</a>
-                    </div>
-                    <div class="quiz" data-quiz="3-4">
-                        <h3>Confira o que aprendeu</h3>
-                        <p class="pergunta"></p>
-                        <div class="opcoes"></div>
-                        <p class="feedback" aria-live="polite"></p>
-                    </div><button class="botao concluir" type="button" data-concluir="4">✓ Marcar aula como
-                        concluída</button>
-                </div>
-            </article>
+                <span class="contador-aulas">
+                    4 aulas
+                </span>
+            </div>
+            <button aria-label="Abrir aula 1: Fam&iacute;lia e parentes" class="aula aula-card" data-abrir-aula="1"
+                type="button">
+                <span class="aula-numero">
+                    01
+                </span>
+                <span class="aula-resumo">
+                    <span class="subtitulo">
+                        AULA 1
+                    </span>
+                    <span class="aula-titulo">
+                        Fam&iacute;lia e parentes
+                    </span>
+                    <span class="aula-descricao">
+                        H&aacute; sinais para familiares e rela&ccedil;&otilde;es de parentesco; algumas formas podem
+                        variar por comunidade.
+                    </span>
+                </span>
+                <span aria-hidden="true" class="aula-status">
+                    &rarr;
+                </span>
+            </button>
+            <button aria-label="Abrir aula 2: Pessoas e profiss&otilde;es" class="aula aula-card" data-abrir-aula="2"
+                type="button">
+                <span class="aula-numero">
+                    02
+                </span>
+                <span class="aula-resumo">
+                    <span class="subtitulo">
+                        AULA 2
+                    </span>
+                    <span class="aula-titulo">
+                        Pessoas e profiss&otilde;es
+                    </span>
+                    <span class="aula-descricao">
+                        Conversas sobre ocupa&ccedil;&otilde;es combinam vocabul&aacute;rio de pessoas, locais e
+                        atividades profissionais.
+                    </span>
+                </span>
+                <span aria-hidden="true" class="aula-status">
+                    &rarr;
+                </span>
+            </button>
+            <button aria-label="Abrir aula 3: Caracter&iacute;sticas pessoais" class="aula aula-card"
+                data-abrir-aula="3" type="button">
+                <span class="aula-numero">
+                    03
+                </span>
+                <span class="aula-resumo">
+                    <span class="subtitulo">
+                        AULA 3
+                    </span>
+                    <span class="aula-titulo">
+                        Caracter&iacute;sticas pessoais
+                    </span>
+                    <span class="aula-descricao">
+                        Descri&ccedil;&otilde;es podem combinar vocabul&aacute;rio, express&otilde;es faciais e
+                        contexto. Descreva com respeito.
+                    </span>
+                </span>
+                <span aria-hidden="true" class="aula-status">
+                    &rarr;
+                </span>
+            </button>
+            <button aria-label="Abrir aula 4: Apresentando outra pessoa" class="aula aula-card" data-abrir-aula="4"
+                type="button">
+                <span class="aula-numero">
+                    04
+                </span>
+                <span class="aula-resumo">
+                    <span class="subtitulo">
+                        AULA 4
+                    </span>
+                    <span class="aula-titulo">
+                        Apresentando outra pessoa
+                    </span>
+                    <span class="aula-descricao">
+                        Ao apresentar algu&eacute;m, organize a informa&ccedil;&atilde;o visualmente e respeite os
+                        turnos da conversa.
+                    </span>
+                </span>
+                <span aria-hidden="true" class="aula-status">
+                    &rarr;
+                </span>
+            </button>
         </section>
-        <div class="navegacao-aulas"><a class="botao secundario" href="modulo2.html">← Módulo anterior</a><a
-                class="botao" href="modulo4.html">Próximo módulo →</a></div>
-        <p class="aviso">Material introdutório. Os sinais podem variar regionalmente; observe vídeos confiáveis e,
-            quando possível, pratique com instrutores ou pessoas fluentes em Libras.</p>
+        <section class="tela-aprendizagem" hidden="True" id="telaAprendizagem">
+            <button class="botao secundario" id="voltarLista" type="button">
+                &larr; Voltar &agrave; lista de aulas
+            </button>
+            <div id="conteudoAula">
+            </div>
+        </section>
+        <template id="conteudoAula4">
+            <div class="aula-conteudo">
+                <p class="subtitulo">
+                    AULA 4
+                </p>
+                <h2>
+                    Apresentando outra pessoa
+                </h2>
+                <p>
+                    Ao apresentar algu&eacute;m, organize a informa&ccedil;&atilde;o visualmente e respeite os turnos da
+                    conversa.
+                </p>
+                <div class="pratica">
+                    <strong>
+                        Atividade pr&aacute;tica
+                    </strong>
+                    <p>
+                        Simule apresentar duas pessoas fict&iacute;cias.
+                    </p>
+                </div>
+                <div class="video-box">
+                    <div>
+                        <strong>
+                            V&iacute;deo demonstrativo
+                        </strong>
+                        <p>
+                            Busque uma demonstra&ccedil;&atilde;o visual e confira a fonte, priorizando
+                            institui&ccedil;&otilde;es e pessoas
+                            fluentes em Libras.
+                        </p>
+                    </div>
+                    <a class="botao secundario"
+                        href="https://www.youtube.com/results?search_query=Apresentando+outra+pessoa+Libras+sinais+aula"
+                        rel="noopener noreferrer" target="_blank">
+                        Ver v&iacute;deos &nearrow;
+                    </a>
+                </div>
+                <div class="quiz" data-quiz="3-4">
+                    <h3>
+                        Confira o que aprendeu
+                    </h3>
+                    <p class="pergunta">
+                    </p>
+                    <div class="opcoes">
+                    </div>
+                    <p aria-live="polite" class="feedback">
+                    </p>
+                </div>
+                <button class="botao concluir" data-concluir="4" type="button">
+                    &checkmark; Marcar aula como
+                    conclu&iacute;da
+                </button>
+            </div>
+        </template>
+        <template id="conteudoAula3">
+            <div class="aula-conteudo">
+                <p class="subtitulo">
+                    AULA 3
+                </p>
+                <h2>
+                    Caracter&iacute;sticas pessoais
+                </h2>
+                <p>
+                    Descri&ccedil;&otilde;es podem combinar vocabul&aacute;rio, express&otilde;es faciais e contexto.
+                    Descreva com respeito.
+                </p>
+                <div class="pratica">
+                    <strong>
+                        Atividade pr&aacute;tica
+                    </strong>
+                    <p>
+                        Descreva um personagem fict&iacute;cio de forma neutra e respeitosa.
+                    </p>
+                </div>
+                <div class="video-box">
+                    <div>
+                        <strong>
+                            V&iacute;deo demonstrativo
+                        </strong>
+                        <p>
+                            Busque uma demonstra&ccedil;&atilde;o visual e confira a fonte, priorizando
+                            institui&ccedil;&otilde;es e pessoas
+                            fluentes em Libras.
+                        </p>
+                    </div>
+                    <a class="botao secundario"
+                        href="https://www.youtube.com/results?search_query=Caracter&iacute;sticas+pessoais+Libras+sinais+aula"
+                        rel="noopener noreferrer" target="_blank">
+                        Ver v&iacute;deos &nearrow;
+                    </a>
+                </div>
+                <div class="quiz" data-quiz="3-3">
+                    <h3>
+                        Confira o que aprendeu
+                    </h3>
+                    <p class="pergunta">
+                    </p>
+                    <div class="opcoes">
+                    </div>
+                    <p aria-live="polite" class="feedback">
+                    </p>
+                </div>
+                <button class="botao concluir" data-concluir="3" type="button">
+                    &checkmark; Marcar aula como
+                    conclu&iacute;da
+                </button>
+            </div>
+        </template>
+        <template id="conteudoAula2">
+            <div class="aula-conteudo">
+                <p class="subtitulo">
+                    AULA 2
+                </p>
+                <h2>
+                    Pessoas e profiss&otilde;es
+                </h2>
+                <p>
+                    Conversas sobre ocupa&ccedil;&otilde;es combinam vocabul&aacute;rio de pessoas, locais e atividades
+                    profissionais.
+                </p>
+                <div class="pratica">
+                    <strong>
+                        Atividade pr&aacute;tica
+                    </strong>
+                    <p>
+                        Escolha tr&ecirc;s profiss&otilde;es e confirme seus sinais em v&iacute;deos confi&aacute;veis.
+                    </p>
+                </div>
+                <div class="video-box">
+                    <div>
+                        <strong>
+                            V&iacute;deo demonstrativo
+                        </strong>
+                        <p>
+                            Busque uma demonstra&ccedil;&atilde;o visual e confira a fonte, priorizando
+                            institui&ccedil;&otilde;es e pessoas
+                            fluentes em Libras.
+                        </p>
+                    </div>
+                    <a class="botao secundario"
+                        href="https://www.youtube.com/results?search_query=Pessoas+e+profiss&otilde;es+Libras+sinais+aula"
+                        rel="noopener noreferrer" target="_blank">
+                        Ver v&iacute;deos &nearrow;
+                    </a>
+                </div>
+                <div class="quiz" data-quiz="3-2">
+                    <h3>
+                        Confira o que aprendeu
+                    </h3>
+                    <p class="pergunta">
+                    </p>
+                    <div class="opcoes">
+                    </div>
+                    <p aria-live="polite" class="feedback">
+                    </p>
+                </div>
+                <button class="botao concluir" data-concluir="2" type="button">
+                    &checkmark; Marcar aula como
+                    conclu&iacute;da
+                </button>
+            </div>
+        </template>
+        <template id="conteudoAula1">
+            <div class="aula-conteudo">
+                <p class="subtitulo">
+                    AULA 1
+                </p>
+                <h2>
+                    Fam&iacute;lia e parentes
+                </h2>
+                <p>
+                    H&aacute; sinais para familiares e rela&ccedil;&otilde;es de parentesco; algumas formas podem variar
+                    por comunidade.
+                </p>
+                <div class="pratica">
+                    <strong>
+                        Atividade pr&aacute;tica
+                    </strong>
+                    <p>
+                        Desenhe uma &aacute;rvore geneal&oacute;gica fict&iacute;cia e pratique apresentar as pessoas.
+                    </p>
+                </div>
+                <div class="video-box">
+                    <div>
+                        <strong>
+                            V&iacute;deo demonstrativo
+                        </strong>
+                        <p>
+                            Busque uma demonstra&ccedil;&atilde;o visual e confira a fonte, priorizando
+                            institui&ccedil;&otilde;es e pessoas fluentes em Libras.
+                        </p>
+                    </div>
+                    <a class="botao secundario"
+                        href="https://www.youtube.com/results?search_query=Fam&iacute;lia+e+parentes+Libras+sinais+aula"
+                        rel="noopener noreferrer" target="_blank">
+                        Ver v&iacute;deos &nearrow;
+                    </a>
+                </div>
+                <div class="quiz" data-quiz="3-1">
+                    <h3>
+                        Confira o que aprendeu
+                    </h3>
+                    <p class="pergunta">
+                    </p>
+                    <div class="opcoes">
+                    </div>
+                    <p aria-live="polite" class="feedback">
+                    </p>
+                </div>
+                <button class="botao concluir" data-concluir="1" type="button">
+                    &checkmark; Marcar aula como
+                    conclu&iacute;da
+                </button>
+            </div>
+        </template>
+        <div class="navegacao-aulas">
+            <a class="botao secundario" href="modulo2.html">
+                &larr; M&oacute;dulo anterior
+            </a>
+            <a class="botao" href="modulo4.html">
+                Pr&oacute;ximo m&oacute;dulo &rarr;
+            </a>
+        </div>
+        <p class="aviso">
+            Material introdut&oacute;rio. Os sinais podem variar regionalmente; observe v&iacute;deos confi&aacute;veis
+            e,
+            quando poss&iacute;vel, pratique com instrutores ou pessoas fluentes em Libras.
+        </p>
     </main>
-    <footer>© 2026 EVEL — Tradução e ensino de Libras</footer>
-    <script src="../cursos.js/curso.js"></script>
+    <footer>
+        &copy; 2026 EVEL &mdash; Tradu&ccedil;&atilde;o e ensino de Libras
+    </footer>
+    <script src="/public/js/curso.js">
+    </script>
+    <script>
+        (() => {
+            const secao = document.getElementById("secaoAulas");
+            const tela = document.getElementById("telaAprendizagem");
+            const destino = document.getElementById("conteudoAula");
+            const voltar = document.getElementById("voltarLista");
+            const modulo = document.body.dataset.modulo || "x";
+            const chave = `evel-modulo-${modulo}-concluidas`;
+            let concluidas = [];
+            try { concluidas = JSON.parse(localStorage.getItem(chave) || "[]"); } catch (e) { }
+            function atualizar() {
+                const total = concluidas.length, pct = Math.round(total / 4 * 100);
+                const texto = document.getElementById("progressoTexto"); if (texto) texto.textContent = `${total} de 4 aulas concluídas · ${pct}%`;
+                const percentual = document.getElementById("progressoPercentual"); if (percentual) percentual.textContent = `${pct}%`;
+                const barra = document.getElementById("progressoBarra"); if (barra) barra.style.width = `${pct}%`;
+                document.querySelectorAll("[data-abrir-aula]").forEach(b => { const i = Number(b.dataset.abrirAula); const status = b.querySelector(".aula-status"); if (status) status.textContent = concluidas.includes(i) ? "✓" : "→"; });
+            }
+            document.querySelectorAll("[data-abrir-aula]").forEach(botao => botao.addEventListener("click", () => {
+                const modelo = document.getElementById(`conteudoAula${botao.dataset.abrirAula}`);
+                if (!modelo || !destino) return;
+                destino.replaceChildren(modelo.content.cloneNode(true));
+                secao.hidden = true; tela.hidden = false; window.scrollTo({ top: 0, behavior: "smooth" });
+                const btn = destino.querySelector("[data-concluir]");
+                if (btn) { const i = Number(btn.dataset.concluir); btn.textContent = concluidas.includes(i) ? "✓ Aula concluída" : "✓ Marcar aula como concluída"; btn.addEventListener("click", () => { if (!concluidas.includes(i)) concluidas.push(i); localStorage.setItem(chave, JSON.stringify(concluidas)); btn.textContent = "✓ Aula concluída"; atualizar(); }); }
+            }));
+            if (voltar) voltar.addEventListener("click", () => { tela.hidden = true; secao.hidden = false; window.scrollTo({ top: 0, behavior: "smooth" }); });
+            atualizar();
+        })();
+    </script>
 </body>
 
 </html>
