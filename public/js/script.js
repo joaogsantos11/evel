@@ -864,3 +864,78 @@ window.addEventListener("storage", evento => {
         aplicarPreferenciasEvel(lerPreferenciasEvel());
     }
 });
+
+// =============================================
+// PROGRESSO DOS MÓDULOS NA PÁGINA DE CURSOS
+// Adicione este bloco ao FINAL de public/js/script.js
+// =============================================
+
+function atualizarProgressoCardsCursos() {
+    const cards = document.querySelectorAll(".pagina-cursos .card");
+
+    cards.forEach((card) => {
+        const linkModulo = card.querySelector('a[href*="modulo"]');
+        const barra = card.querySelector(".barra-progresso .progresso");
+        const textoProgresso = card.querySelector(".progresso-dados span");
+        const percentualProgresso = card.querySelector(".progresso-dados strong");
+
+        if (!linkModulo || !barra || !textoProgresso || !percentualProgresso) {
+            return;
+        }
+
+        const correspondencia = linkModulo.getAttribute("href").match(/modulo(\d+)\.html/i);
+
+        if (!correspondencia) {
+            return;
+        }
+
+        const numeroModulo = Number(correspondencia[1]);
+        let aulasConcluidas = 0;
+
+        for (let numeroAula = 1; numeroAula <= 4; numeroAula++) {
+            // O módulo 1 mantém as chaves antigas para preservar o progresso existente.
+            const chave = numeroModulo === 1
+                ? `aula${numeroAula}Concluida`
+                : `modulo${numeroModulo}_aula${numeroAula}Concluida`;
+
+            try {
+                if (localStorage.getItem(chave) === "true") {
+                    aulasConcluidas++;
+                }
+            } catch (erro) {
+                console.error("Não foi possível ler o progresso das aulas:", erro);
+                return;
+            }
+        }
+
+        const percentual = Math.round((aulasConcluidas / 4) * 100);
+
+        barra.style.width = `${percentual}%`;
+        barra.setAttribute("role", "progressbar");
+        barra.setAttribute("aria-valuemin", "0");
+        barra.setAttribute("aria-valuemax", "100");
+        barra.setAttribute("aria-valuenow", String(percentual));
+        barra.setAttribute("aria-label", `Progresso do módulo ${numeroModulo}`);
+
+        textoProgresso.textContent = `${aulasConcluidas} de 4 aulas concluídas`;
+        percentualProgresso.textContent = `${percentual}%`;
+    });
+}
+
+// Atualiza os cards quando a página termina de carregar.
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", atualizarProgressoCardsCursos);
+} else {
+    atualizarProgressoCardsCursos();
+}
+
+// Atualiza os cards se o progresso mudar em outra aba do mesmo site.
+window.addEventListener("storage", (evento) => {
+    if (
+        evento.key === null ||
+        /^aula[1-4]Concluida$/.test(evento.key || "") ||
+        /^modulo[2-7]_aula[1-4]Concluida$/.test(evento.key || "")
+    ) {
+        atualizarProgressoCardsCursos();
+    }
+});

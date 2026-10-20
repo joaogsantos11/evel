@@ -108,7 +108,7 @@ const aulasModulo2 = {
                         </div>
                     </div>
 
-                    <form id="quizModulo2Aula1" class="quiz-aula">
+                    <form id="quizModulo2Aula1" class="quiz-aula" data-numero-aula="1" data-respostas='{"q1":"b","q2":"a","q3":"a","q4":"b","q5":"c"}'>
                         <fieldset class="questao-quiz">
                             <legend>1. Para que podemos usar números na comunicação?</legend>
                             <label><input type="radio" name="q1" value="a"><span>Somente para cumprimentar.</span></label>
@@ -214,7 +214,7 @@ const aulasModulo2 = {
                         </div>
                     </div>
 
-                    <form id="quizModulo2Aula2" class="quiz-aula">
+                    <form id="quizModulo2Aula2" class="quiz-aula" data-numero-aula="2" data-respostas='{"q1":"a","q2":"b","q3":"c","q4":"c","q5":"a"}'>
                         <fieldset class="questao-quiz">
                             <legend>1. Qual informação é relacionada à idade?</legend>
                             <label><input type="radio" name="q1" value="a"><span>Quantos anos uma pessoa tem.</span></label>
@@ -309,7 +309,7 @@ const aulasModulo2 = {
                         </div>
                     </div>
 
-                    <form id="quizModulo2Aula3" class="quiz-aula">
+                    <form id="quizModulo2Aula3" class="quiz-aula" data-numero-aula="3" data-respostas='{"q1":"a","q2":"b","q3":"c","q4":"b","q5":"a"}'>
                         <fieldset class="questao-quiz">
                             <legend>1. Para que servem os dias da semana e os meses em uma conversa?</legend>
                             <label><input type="radio" name="q1" value="a"><span>Para indicar datas e organizar compromissos.</span></label>
@@ -404,7 +404,7 @@ const aulasModulo2 = {
                         </div>
                     </div>
 
-                    <form id="quizModulo2Aula4" class="quiz-aula">
+                    <form id="quizModulo2Aula4" class="quiz-aula" data-numero-aula="4" data-respostas='{"q1":"a","q2":"b","q3":"c","q4":"c","q5":"a"}'>
                         <fieldset class="questao-quiz">
                             <legend>1. Qual é um exemplo de pergunta pessoal?</legend>
                             <label><input type="radio" name="q1" value="a"><span>Qual é o seu nome?</span></label>
@@ -503,7 +503,7 @@ const aulas = {
 
                 <section class="atividade-aula" id="atividadeAula1">
                     <div class="atividade-cabecalho"><span class="atividade-icone" aria-hidden="true">✓</span><div><span class="etiqueta etiqueta-clara">DESAFIO FINAL</span><h2>Desafio da Aula 1</h2><p>Responda às cinco questões para testar o que aprendeu.</p></div></div>
-                    <form id="quizAula1" class="quiz-aula">
+                    <form id="quizAula1" class="quiz-aula" data-numero-aula="1" data-respostas='{"q1":"b","q2":"c","q3":"a","q4":"b","q5":"a"}'>
                         <fieldset class="questao-quiz"><legend>1. O que é Libras?</legend><label><input type="radio" name="q1" value="a"><span>Uma língua universal utilizada em todos os países.</span></label><label><input type="radio" name="q1" value="b"><span>Uma língua visual e espacial utilizada no Brasil.</span></label><label><input type="radio" name="q1" value="c"><span>Uma representação gestual do português.</span></label></fieldset>
                         <fieldset class="questao-quiz"><legend>2. Quais elementos participam da comunicação em Libras?</legend><label><input type="radio" name="q2" value="a"><span>Apenas as mãos.</span></label><label><input type="radio" name="q2" value="b"><span>Apenas os movimentos dos braços.</span></label><label><input type="radio" name="q2" value="c"><span>Mãos, expressões faciais, corpo e espaço.</span></label></fieldset>
                         <fieldset class="questao-quiz"><legend>3. A Libras possui gramática própria?</legend><label><input type="radio" name="q3" value="a"><span>Sim.</span></label><label><input type="radio" name="q3" value="b"><span>Não.</span></label></fieldset>
@@ -606,7 +606,7 @@ const aulas = {
                     </div>
                 </div>
 
-                <form id="quizAula2" class="quiz-aula">
+                <form id="quizAula2" class="quiz-aula" data-numero-aula="2" data-respostas='{"q1":"a","q2":"b","q3":"c","q4":"b","q5":"c"}'>
                     <fieldset class="questao-quiz">
                         <legend>1. O que é o alfabeto manual?</legend>
                         <label><input type="radio" name="q1" value="a"><span>Uma forma de representar letras utilizando as mãos.</span></label>
@@ -654,12 +654,201 @@ const aulas = {
 },
     3: {
         titulo: "Soletrando nomes",
-        conteudo: `<article class="conteudo-aula aula-placeholder"><span class="etiqueta etiqueta-clara">AULA 3</span><h1>Soletrando nomes</h1><div class="ilustracao-destaque">${ilustracaoLibras}</div><h2>Pratique a soletração</h2><p>O alfabeto manual pode ajudar você a apresentar seu nome ou soletrar o nome de outra pessoa.</p><ol class="passos-pratica"><li>Escolha um nome curto.</li><li>Identifique as letras que o compõem.</li><li>Pratique cada letra com calma.</li><li>Repita a sequência, buscando clareza.</li></ol><div class="destaque-aula"><strong>Importante:</strong> na comunidade surda, algumas pessoas também possuem sinais pessoais. A soletração não substitui esse contexto cultural.</div><p>O conteúdo completo desta aula será desenvolvido na próxima etapa.</p></article>`
+        conteudo: `
+            <article class="conteudo-aula">
+                <header class="aula-hero-conteudo">
+                    <div class="aula-hero-texto">
+                        <span class="etiqueta etiqueta-clara">AULA 3</span>
+                        <h1>Soletrando nomes</h1>
+                        <p>Use o alfabeto manual para apresentar nomes próprios e pratique a soletração com clareza.</p>
+                    </div>
+                    <div class="aula-hero-ilustracao">${ilustracaoMaos}</div>
+                </header>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">1</span>
+                    <div class="texto-secao">
+                        <h2>Por que soletrar nomes?</h2>
+                        <p>O alfabeto manual, também chamado de datilologia, permite representar as letras de um nome usando configurações específicas das mãos. Ele pode ser útil quando apresentamos nosso nome, o nome de outra pessoa ou uma palavra específica.</p>
+                        <p>Por exemplo, se alguém perguntar seu nome e você precisar soletrá-lo, poderá representar as letras em sequência, uma de cada vez.</p>
+                        <div class="destaque-aula"><strong>Lembre-se:</strong> soletrar é um recurso da comunicação em Libras. Nem toda palavra precisa ser representada letra por letra, pois a língua também possui sinais próprios.</div>
+                    </div>
+                    <div class="ilustracao-lateral">${ilustracaoMaos}</div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">2</span>
+                    <div class="texto-secao">
+                        <h2>Como soletrar um nome</h2>
+                        <p>Para praticar, siga estas etapas:</p>
+                        <ol class="passos-pratica">
+                            <li>Escolha um nome curto, como Ana, Bia ou Leo.</li>
+                            <li>Identifique as letras na ordem correta.</li>
+                            <li>Observe a configuração e a orientação da mão para cada letra.</li>
+                            <li>Faça as letras em sequência, sem apressar os movimentos.</li>
+                            <li>Repita a prática e, se possível, peça a alguém com conhecimento de Libras para orientar você.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo bloco-empilhado">
+                    <span class="numero-secao">3</span>
+                    <div class="texto-secao">
+                        <h2>Pratique com nomes curtos</h2>
+                        <p>Comece com nomes de duas ou três letras e avance para nomes maiores quando estiver mais confortável.</p>
+                    </div>
+                    <div class="cartoes-elementos">
+                        <article class="cartao-elemento">
+                            <div class="elemento-ilustracao">${ilustracaoMaos}</div>
+                            <div><h3>ANA</h3><p>Observe a sequência A – N – A. Pratique cada letra na ordem em que aparece.</p></div>
+                        </article>
+                        <article class="cartao-elemento">
+                            <div class="elemento-ilustracao">${ilustracaoMaos}</div>
+                            <div><h3>LEO</h3><p>Identifique as três letras e tente manter a sequência clara e organizada.</p></div>
+                        </article>
+                        <article class="cartao-elemento">
+                            <div class="elemento-ilustracao">${ilustracaoLibras}</div>
+                            <div><h3>SEU NOME</h3><p>Depois de praticar os exemplos, tente soletrar seu próprio nome.</p></div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">4</span>
+                    <div class="texto-secao">
+                        <h2>Soletração e sinais pessoais</h2>
+                        <p>Em algumas situações, a soletração do nome pode ser usada para apresentar uma pessoa. Na comunidade surda, também existem sinais pessoais atribuídos a indivíduos em determinados contextos.</p>
+                        <p>Não invente nem atribua um sinal pessoal a alguém por conta própria. Respeite a forma como a pessoa se identifica e, quando necessário, pergunte como ela prefere ser apresentada.</p>
+                        <div class="destaque-aula"><strong>Respeito à comunidade surda:</strong> aprender Libras também envolve conhecer sua cultura e respeitar as pessoas surdas como participantes de uma comunidade linguística.</div>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo objetivos-aula">
+                    <span class="numero-secao">5</span>
+                    <div class="texto-secao">
+                        <h2>O que você deve aprender nesta aula?</h2>
+                        <ul class="lista-objetivos">
+                            <li>Entender por que usamos a datilologia para soletrar nomes.</li>
+                            <li>Representar as letras de um nome na ordem correta.</li>
+                            <li>Praticar com nomes curtos antes de avançar.</li>
+                            <li>Reconhecer a importância da configuração e da orientação das mãos.</li>
+                            <li>Respeitar os sinais pessoais e a cultura surda.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="atividade-aula" id="atividadeAula3">
+                    <div class="atividade-cabecalho">
+                        <span class="atividade-icone" aria-hidden="true">✓</span>
+                        <div><span class="etiqueta etiqueta-clara">DESAFIO FINAL</span><h2>Desafio da Aula 3</h2><p>Responda às cinco questões. Você precisa acertar todas para concluir a aula.</p></div>
+                    </div>
+                    <form id="quizAula3" class="quiz-aula" data-numero-aula="3" data-respostas='{"q1":"b","q2":"a","q3":"c","q4":"b","q5":"a"}'>
+                        <fieldset class="questao-quiz"><legend>1. Para que a datilologia pode ser utilizada?</legend><label><input type="radio" name="q1" value="a"><span>Para substituir todos os sinais da Libras.</span></label><label><input type="radio" name="q1" value="b"><span>Para representar letras, como as de nomes próprios.</span></label><label><input type="radio" name="q1" value="c"><span>Para transformar Libras em uma língua universal.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>2. Qual é uma boa forma de começar a praticar?</legend><label><input type="radio" name="q2" value="a"><span>Começar com nomes curtos e praticar uma letra de cada vez.</span></label><label><input type="radio" name="q2" value="b"><span>Fazer todas as letras o mais rápido possível.</span></label><label><input type="radio" name="q2" value="c"><span>Ignorar a configuração das mãos.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>3. Ao soletrar um nome, qual sequência devemos seguir?</legend><label><input type="radio" name="q3" value="a"><span>Uma ordem escolhida aleatoriamente.</span></label><label><input type="radio" name="q3" value="b"><span>A ordem inversa das letras.</span></label><label><input type="radio" name="q3" value="c"><span>A ordem correta das letras do nome.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>4. A comunicação em Libras consiste apenas em soletrar palavras?</legend><label><input type="radio" name="q4" value="a"><span>Sim, todas as palavras devem ser soletradas.</span></label><label><input type="radio" name="q4" value="b"><span>Não, a Libras também possui sinais e estrutura própria.</span></label><label><input type="radio" name="q4" value="c"><span>Sim, porque não existem sinais próprios.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>5. Como devemos agir em relação aos sinais pessoais?</legend><label><input type="radio" name="q5" value="a"><span>Respeitar a pessoa e não inventar um sinal para ela por conta própria.</span></label><label><input type="radio" name="q5" value="b"><span>Atribuir qualquer sinal sem perguntar.</span></label><label><input type="radio" name="q5" value="c"><span>Usar sempre a soletração como substituta de qualquer sinal pessoal.</span></label></fieldset>
+                        <button class="botao botao-quiz" type="submit">Verificar respostas <span aria-hidden="true">→</span></button>
+                        <p class="resultado-quiz" id="resultadoQuiz3" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </article>
+        `
     },
+
     4: {
-        titulo: "Cumprimentos e apresentações",
-        conteudo: `<article class="conteudo-aula aula-placeholder"><span class="etiqueta etiqueta-clara">AULA 4</span><h1>Cumprimentos e apresentações</h1><div class="ilustracao-destaque">${ilustracaoLibras}</div><h2>Começando uma conversa</h2><p>Cumprimentos e apresentações são um bom ponto de partida para iniciar uma conversa em Libras.</p><p>Ao se comunicar, mantenha atenção visual na outra pessoa e observe também as expressões faciais e corporais.</p><div class="destaque-aula"><strong>Hora de praticar:</strong> prepare uma apresentação simples com seu nome e pratique a soletração dele usando o alfabeto manual.</div><p>O conteúdo completo desta aula será desenvolvido na próxima etapa.</p></article>`
-    }
+       titulo: "Cumprimentos e apresentações",
+        conteudo: `
+            <article class="conteudo-aula">
+                <header class="aula-hero-conteudo">
+                    <div class="aula-hero-texto">
+                        <span class="etiqueta etiqueta-clara">AULA 4</span>
+                        <h1>Cumprimentos e apresentações</h1>
+                        <p>Conheça estratégias para iniciar uma conversa em Libras com atenção visual e respeito.</p>
+                    </div>
+                    <div class="aula-hero-ilustracao">${ilustracaoLibras}</div>
+                </header>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">1</span>
+                    <div class="texto-secao">
+                        <h2>Começando uma conversa</h2>
+                        <p>Assim como em outras línguas, cumprimentos e apresentações ajudam a iniciar uma interação. Em Libras, a comunicação é visual e envolve sinais, expressões faciais, movimentos corporais e atenção ao espaço.</p>
+                        <p>Ao encontrar uma pessoa surda, procure estabelecer contato visual de maneira natural antes de começar a sinalizar. Evite iniciar uma conversa enquanto a pessoa está olhando para outro lugar.</p>
+                        <div class="destaque-aula"><strong>Comunicação visual:</strong> manter atenção visual ajuda a acompanhar os sinais e as expressões da outra pessoa.</div>
+                    </div>
+                    <div class="ilustracao-lateral">${ilustracaoLibras}</div>
+                </section>
+
+                <section class="bloco-conteudo bloco-empilhado">
+                    <span class="numero-secao">2</span>
+                    <div class="texto-secao">
+                        <h2>Cuidados ao interagir</h2>
+                        <p>Algumas atitudes ajudam a tornar a conversa mais respeitosa e acessível.</p>
+                    </div>
+                    <div class="cartoes-elementos">
+                        <article class="cartao-elemento"><div class="elemento-ilustracao">${ilustracaoLibras}</div><div><h3>Chame a atenção com respeito</h3><p>Se necessário, use um gesto visual adequado ou um toque leve no ombro quando for apropriado. Evite assustar a pessoa.</p></div></article>
+                        <article class="cartao-elemento"><div class="elemento-ilustracao">${ilustracaoMaos}</div><div><h3>Mantenha o rosto visível</h3><p>Evite cobrir a boca ou desviar continuamente o olhar. As expressões faciais também fazem parte da comunicação em Libras.</p></div></article>
+                        <article class="cartao-elemento"><div class="elemento-ilustracao">${ilustracaoLibras}</div><div><h3>Respeite o ritmo da conversa</h3><p>Observe a outra pessoa, dê tempo para a resposta e não presuma que todas as pessoas surdas se comunicam da mesma maneira.</p></div></article>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">3</span>
+                    <div class="texto-secao">
+                        <h2>Apresente-se</h2>
+                        <p>Uma apresentação inicial pode incluir seu nome. Se você ainda está aprendendo Libras, pode praticar a soletração do nome com o alfabeto manual estudado na aula anterior.</p>
+                        <ol class="passos-pratica">
+                            <li>Estabeleça contato visual de maneira respeitosa.</li>
+                            <li>Use um cumprimento em Libras que você tenha aprendido corretamente.</li>
+                            <li>Apresente seu nome; se necessário, pratique a soletração.</li>
+                            <li>Observe a resposta da outra pessoa e dê espaço para ela se apresentar também.</li>
+                        </ol>
+                        <p>Para aprender a forma correta dos sinais de cumprimento, consulte materiais de ensino confiáveis ou pratique com um professor ou usuário fluente de Libras. As ilustrações desta página são decorativas e não demonstram sinais específicos.</p>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo">
+                    <span class="numero-secao">4</span>
+                    <div class="texto-secao">
+                        <h2>Respeito e acessibilidade</h2>
+                        <p>Não presuma que uma pessoa surda faça leitura labial ou prefira se comunicar em português. As preferências variam de pessoa para pessoa. Se você não souber como se comunicar, pergunte com respeito qual forma de comunicação é mais adequada.</p>
+                        <p>Aprender Libras é um processo contínuo. Errar faz parte do aprendizado; o importante é praticar, aceitar orientações e tratar a outra pessoa com respeito.</p>
+                        <div class="destaque-aula"><strong>Uma boa conversa é uma via de mão dupla:</strong> observe, respeite o tempo da outra pessoa e esteja aberto a aprender.</div>
+                    </div>
+                </section>
+
+                <section class="bloco-conteudo objetivos-aula">
+                    <span class="numero-secao">5</span>
+                    <div class="texto-secao">
+                        <h2>O que você deve aprender nesta aula?</h2>
+                        <ul class="lista-objetivos">
+                            <li>Entender a importância dos cumprimentos e das apresentações.</li>
+                            <li>Estabelecer atenção visual de maneira respeitosa.</li>
+                            <li>Reconhecer o papel das expressões faciais e corporais.</li>
+                            <li>Praticar a apresentação do próprio nome.</li>
+                            <li>Respeitar as diferentes preferências de comunicação das pessoas surdas.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="atividade-aula" id="atividadeAula4">
+                    <div class="atividade-cabecalho">
+                        <span class="atividade-icone" aria-hidden="true">✓</span>
+                        <div><span class="etiqueta etiqueta-clara">DESAFIO FINAL</span><h2>Desafio da Aula 4</h2><p>Responda às cinco questões. Você precisa acertar todas para concluir a aula.</p></div>
+                    </div>
+                    <form id="quizAula4" class="quiz-aula" data-numero-aula="4" data-respostas='{"q1":"b","q2":"a","q3":"c","q4":"b","q5":"a"}'>
+                        <fieldset class="questao-quiz"><legend>1. Por que a atenção visual é importante ao conversar em Libras?</legend><label><input type="radio" name="q1" value="a"><span>Porque substitui todos os sinais.</span></label><label><input type="radio" name="q1" value="b"><span>Porque ajuda a acompanhar os sinais e as expressões.</span></label><label><input type="radio" name="q1" value="c"><span>Porque elimina a necessidade de respeitar o turno de fala.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>2. Como você deve chamar a atenção de uma pessoa surda quando necessário?</legend><label><input type="radio" name="q2" value="a"><span>De maneira respeitosa, usando um recurso visual adequado.</span></label><label><input type="radio" name="q2" value="b"><span>Gritando sempre de longe.</span></label><label><input type="radio" name="q2" value="c"><span>Assustando a pessoa para que ela olhe.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>3. O que pode fazer parte de uma apresentação inicial?</legend><label><input type="radio" name="q3" value="a"><span>Evitar qualquer contato visual.</span></label><label><input type="radio" name="q3" value="b"><span>Presumir que a outra pessoa lê lábios.</span></label><label><input type="radio" name="q3" value="c"><span>Cumprimentar e apresentar seu nome.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>4. Todas as pessoas surdas preferem a mesma forma de comunicação?</legend><label><input type="radio" name="q4" value="a"><span>Sim, todas preferem leitura labial.</span></label><label><input type="radio" name="q4" value="b"><span>Não, as preferências podem variar de pessoa para pessoa.</span></label><label><input type="radio" name="q4" value="c"><span>Sim, todas usam apenas português escrito.</span></label></fieldset>
+                        <fieldset class="questao-quiz"><legend>5. O que fazer se você não souber qual forma de comunicação é mais adequada?</legend><label><input type="radio" name="q5" value="a"><span>Perguntar com respeito à própria pessoa.</span></label><label><input type="radio" name="q5" value="b"><span>Presumir que ela prefere não conversar.</span></label><label><input type="radio" name="q5" value="c"><span>Continuar falando sem verificar se a comunicação funciona.</span></label></fieldset>
+                        <button class="botao botao-quiz" type="submit">Verificar respostas <span aria-hidden="true">→</span></button>
+                        <p class="resultado-quiz" id="resultadoQuiz4" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </article>
+        `}
 };
 
 function atualizarProgressoModulo() {
@@ -707,7 +896,6 @@ function abrirAula(numeroAula) {
         aula = aulas[numeroAula];
     } else {
         const aulasDoModulo = window["aulasModulo" + numeroModulo];
-
         aula = aulasDoModulo
             ? aulasDoModulo[numeroAula]
             : aulas[numeroAula];
@@ -725,16 +913,7 @@ function abrirAula(numeroAula) {
         top: 0,
         behavior: "smooth"
     });
-
-    if (numeroAula === "1" || numeroAula === 1) {
-        const quiz = document.getElementById("quizAula1");
-
-        if (quiz) {
-            quiz.addEventListener("submit", verificarQuizAula1);
-        }
-    }
 }
-
 
 
 function atualizarCardsAulas() {
@@ -762,49 +941,63 @@ function atualizarCardsAulas() {
 }
 
 
-concluirAula(1);
 
-function verificarQuizAula1(evento) {
-    evento.preventDefault();
-    const formulario = evento.currentTarget;
-    const respostasCorretas = { q1: "b", q2: "c", q3: "a", q4: "b", q5: "a" };
-    const resultado = document.getElementById("resultadoQuiz");
+function verificarQuestionario(formulario) {
+    const respostasCorretas = JSON.parse(formulario.dataset.respostas || "{}");
+    const numeroAula = Number(formulario.dataset.numeroAula);
+    const resultado = formulario.querySelector(".resultado-quiz");
+    const perguntas = Object.keys(respostasCorretas);
     let acertos = 0;
     let respondidas = 0;
 
-    Object.entries(respostasCorretas).forEach(([pergunta, correta]) => {
-        const resposta = formulario.querySelector(`input[name="${pergunta}"]:checked`);
+    perguntas.forEach((pergunta) => {
+        const resposta = formulario.querySelector(
+            `input[name="${pergunta}"]:checked`
+        );
+
         if (resposta) {
             respondidas++;
-            if (resposta.value === correta) acertos++;
+            if (resposta.value === respostasCorretas[pergunta]) {
+                acertos++;
+            }
         }
     });
 
-    if (respondidas < 5) {
-        resultado.className = "resultado-quiz resultado-aviso";
-        resultado.textContent = `Você respondeu ${respondidas} de 5 questões. Complete todas antes de verificar.`;
+    if (!resultado || perguntas.length === 0) {
         return;
     }
 
+    if (respondidas < perguntas.length) {
+        resultado.className = "resultado-quiz resultado-aviso";
+        resultado.textContent =
+            `Você respondeu ${respondidas} de ${perguntas.length} questões. Complete todas antes de verificar.`;
+        return;
+    }
 
-    if (acertos === 5) {
-        localStorage.setItem(
-    chaveAulaConcluida(1),
-    "true"
-);
-
-        atualizarCardAula1();
-        atualizarProgressoModulo();
-
+    if (acertos === perguntas.length) {
+        concluirAula(numeroAula);
         resultado.className = "resultado-quiz resultado-sucesso";
         resultado.textContent =
-            `Excelente! Você acertou ${acertos} de 5 questões. Aula concluída!`;
+            `Excelente! Você acertou ${acertos} de ${perguntas.length} questões. Aula concluída!`;
     } else {
         resultado.className = "resultado-quiz resultado-erro";
         resultado.textContent =
-            `Você acertou ${acertos} de 5 questões. Revise o conteúdo e tente novamente.`;
+            `Você acertou ${acertos} de ${perguntas.length} questões. Revise o conteúdo e tente novamente.`;
     }
+}
 
+// Um único listener atende aos questionários inseridos dinamicamente em qualquer aula.
+if (conteudoAula) {
+    conteudoAula.addEventListener("submit", (evento) => {
+        const formulario = evento.target;
+
+        if (!formulario.matches("form.quiz-aula")) {
+            return;
+        }
+
+        evento.preventDefault();
+        verificarQuestionario(formulario);
+    });
 }
 
 document.querySelectorAll("[data-abrir-aula]").forEach((botao) => {

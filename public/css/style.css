@@ -498,6 +498,12 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
     text-align: left;
 }
 
+.pagina-home .content-info {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    gap: clamp(15px, 2vw, 25px);
+}
 
 .pagina-home .destaques {
     color: var(--vermelho-evel);
@@ -670,7 +676,7 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
    FOOTER
    ========================= */
 
-.pagina-home footer {
+footer {
     padding: 30px 20px;
 
     background: var(--branco);
@@ -1154,6 +1160,10 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
 
 /*---- Cursos ----*/
 
+.pagina-cursos main {
+    height: 100vh;
+}
+
 .pagina-cursos .modulos {
     padding: clamp(30px, 6vw, 90px) clamp(16px, 5vw, 60px);
 }
@@ -1300,24 +1310,6 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
     margin-top: 16px;
     gap: 8px 15px;
     font-size: clamp(0.8rem, 1.2vw, 0.95rem);
-}
-
-
-/* =========================
-   FOOTER
-   ========================= */
-
-.pagina-cursos footer {
-    padding: 30px 20px;
-
-    background: var(--branco);
-
-    border-top: 1px solid #eee;
-
-    text-align: center;
-
-    color: #777;
-    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
 }
 
 @media (max-width: 600px) {
