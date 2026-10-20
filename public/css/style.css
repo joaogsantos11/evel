@@ -1308,10 +1308,14 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
    ========================= */
 
 .pagina-cursos footer {
-    padding: clamp(20px, 3vw, 30px) 20px;
+    padding: 30px 20px;
+
     background: var(--branco);
+
     border-top: 1px solid #eee;
+
     text-align: center;
+
     color: #777;
     font-size: clamp(0.8rem, 1.2vw, 0.9rem);
 }

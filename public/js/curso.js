@@ -128,6 +128,8 @@ function abrirAula(numeroAula) {
     }
 }
 
+
+
 function verificarQuizAula1(evento) {
     evento.preventDefault();
     const formulario = evento.currentTarget;
@@ -151,8 +153,10 @@ function verificarQuizAula1(evento) {
     }
 
     if (acertos === 5) {
+        localStorage.setItem("aula1Concluida", "true");
+
         resultado.className = "resultado-quiz resultado-sucesso";
-        resultado.textContent = `Excelente! Você acertou ${acertos} de 5 questões. A atividade foi respondida; a conclusão da aula será conectada ao progresso em uma próxima etapa.`;
+        resultado.textContent = `Excelente! Você acertou ${acertos} de 5 questões. Aula concluída, continue aprendendo Libras!`;
     } else {
         resultado.className = "resultado-quiz resultado-erro";
         resultado.textContent = `Você acertou ${acertos} de 5 questões. Revise o conteúdo e tente novamente.`;
