@@ -466,14 +466,13 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
 }
 
 /* =========================
-   TELA DE BOAS-VINDAS
+TELA DE BOAS-VINDAS
    ========================= */
 
 
 .pagina-home .tela-welcome {
     width: 100%;
-    min-height: clamp(420px, 65vh, 760px);
-
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -584,15 +583,10 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
 
 .pagina-home .card {
     padding: clamp(20px, 3vw, 30px);
-
     background: var(--branco);
-
     border-radius: clamp(14px, 2vw, 18px);
-
     color: var(--texto);
-
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-
     transition: 0.3s ease;
 }
 
@@ -1311,6 +1305,154 @@ footer {
     gap: 8px 15px;
     font-size: clamp(0.8rem, 1.2vw, 0.95rem);
 }
+
+
+/* =========================
+   BOAS-VINDAS DOS CURSOS
+   ========================= */
+
+.pagina-cursos .cursos-boas-vindas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    min-height: 280px;
+    margin: 80px auto 50px;
+    padding: clamp(30px, 5vw, 55px);
+    overflow: hidden;
+    background: linear-gradient(120deg, #0303a0, #3737d9);
+    border-radius: 22px;
+    color: var(--branco);
+}
+
+.pagina-cursos .boas-vindas-conteudo {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+}
+
+.pagina-cursos .boas-vindas-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.pagina-cursos .boas-vindas-conteudo h1 {
+    margin: 0 0 15px;
+    color: var(--branco);
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.pagina-cursos .boas-vindas-conteudo h1 span {
+    color: var(--vermelho-evel);
+}
+
+.pagina-cursos .boas-vindas-conteudo p {
+    max-width: 550px;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.pagina-cursos .boas-vindas-botao {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 22px;
+    background: var(--branco);
+    border-radius: 10px;
+    color: var(--azul-evel);
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.pagina-cursos .boas-vindas-botao:hover {
+    background: #eeeeff;
+    transform: translateY(-3px);
+}
+
+/* ILUSTRAÇÃO */
+
+.pagina-cursos .boas-vindas-ilustracao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 220px;
+    height: 220px;
+    margin-right: 35px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.pagina-cursos .boas-vindas-ilustracao > i {
+    position: relative;
+    z-index: 2;
+    color: var(--branco);
+    font-size: 6rem;
+}
+
+.pagina-cursos .decoracao {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--vermelho-evel);
+}
+
+.pagina-cursos .decoracao-1 {
+    width: 25px;
+    height: 25px;
+    top: 15px;
+    right: 5px;
+}
+
+.pagina-cursos .decoracao-2 {
+    width: 15px;
+    height: 15px;
+    bottom: 25px;
+    left: 5px;
+    background: #ffffff;
+}
+
+.pagina-cursos .decoracao-3 {
+    width: 12px;
+    height: 12px;
+    top: 45px;
+    left: 15px;
+    background: #ff7777;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    .pagina-cursos .cursos-boas-vindas {
+        margin: 25px 15px 15px;
+        padding: 30px 24px;
+    }
+
+    .pagina-cursos .boas-vindas-ilustracao {
+        display: none;
+    }
+
+    .pagina-cursos .boas-vindas-conteudo h1 {
+        font-size: 2rem;
+    }
+
+}
+
 
 @media (max-width: 600px) {
     .pagina-cursos .modulos {
