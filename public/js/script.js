@@ -125,7 +125,7 @@ document.addEventListener("click", async (event) => {
 
         try {
             localStorage.removeItem("nomeUsuario");
-        } catch (e) {}
+        } catch (e) { }
 
         atualizarCabecalho();
 
@@ -392,7 +392,7 @@ onAuthStateChanged(auth, async (user) => {
 
         try {
             localStorage.removeItem("nomeUsuario");
-        } catch (e) {}
+        } catch (e) { }
 
         atualizarCabecalho();
         return;
@@ -438,7 +438,7 @@ onAuthStateChanged(auth, async (user) => {
 
     try {
         localStorage.setItem("nomeUsuario", nomeUsuario);
-    } catch (e) {}
+    } catch (e) { }
 
     atualizarCabecalho();
 });
@@ -578,30 +578,29 @@ if (typeof Swiper !== "undefined") {
     const elementoSwiper = document.querySelector(".swiper");
 
     if (elementoSwiper) {
-        const swiper = new Swiper(".swiper", {
-            direction: "horizontal",
-            loop: false,
+        const swiper = new Swiper('.swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
 
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
                 clickable: true
             },
 
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
             },
 
             breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20
+                600: {
+                    slidesPerView: 2
                 },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
+                900: {
+                    slidesPerView: 3
+                },
+                1400: {
+                    slidesPerView: 4
                 }
             }
         });
@@ -609,6 +608,21 @@ if (typeof Swiper !== "undefined") {
 } else {
     console.error("A biblioteca Swiper não foi carregada.");
 }
+
+const swiper = new Swiper('.swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+    },
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    }
+});
 
 // =============================================
 // CONFIGURAÇÕES E ACESSIBILIDADE DO EVEL

@@ -1,5 +1,347 @@
 
-<footer class="footer-geral">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVEL | Biblioteca de Sinais</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/Icon.png" type="image/x-icon">
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS da Biblioteca -->
+    <link rel="stylesheet" href="css/biblioteca.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body class="pagina-biblioteca">
+
+    <!-- CABEÇALHO -->
+    <div id="cabecalho"></div>
+
+
+    <main>
+
+        <!-- =========================
+             APRESENTAÇÃO DA BIBLIOTECA
+        ========================== -->
+
+        <section class="biblioteca-banner">
+
+            <div class="biblioteca-banner-conteudo">
+
+                <span class="biblioteca-etiqueta">
+                    <i class="bi bi-book"></i>
+                    BIBLIOTECA EVEL
+                </span>
+
+                <h1>
+                    Explore o universo da
+                    <span>Libras</span>
+                </h1>
+
+                <p>
+                    Descubra novos sinais, aprenda o alfabeto manual
+                    e amplie seu vocabulário em Língua Brasileira
+                    de Sinais.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PESQUISA E CATEGORIAS
+        ========================== -->
+
+        <section class="biblioteca-container">
+
+            <div class="biblioteca-introducao">
+
+                <div>
+                    <h2>O que você deseja aprender?</h2>
+
+                    <p>
+                        Encontre sinais e explore diferentes categorias
+                        para ampliar seu conhecimento.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- CAMPO DE PESQUISA -->
+
+            <div class="biblioteca-pesquisa">
+
+                <i class="bi bi-search"></i>
+
+                <input
+                    type="search"
+                    id="pesquisaSinais"
+                    placeholder="Pesquise por uma palavra ou sinal..."
+                    aria-label="Pesquisar sinais"
+                >
+
+            </div>
+
+
+            <!-- CATEGORIAS -->
+
+            <div class="biblioteca-categorias">
+
+                <button
+                    class="categoria-btn ativo"
+                    data-categoria="todos"
+                    type="button">
+
+                    <i class="bi bi-grid"></i>
+                    Todos os sinais
+
+                </button>
+
+
+                <button
+                    class="categoria-btn"
+                    data-categoria="alfabeto"
+                    type="button">
+
+                    <i class="bi bi-alphabet-uppercase"></i>
+                    Alfabeto
+
+                </button>
+
+
+                <button
+                    class="categoria-btn"
+                    data-categoria="numeros"
+                    type="button">
+
+                    <i class="bi bi-123"></i>
+                    Números
+
+                </button>
+
+
+                <button
+                    class="categoria-btn"
+                    data-categoria="cotidiano"
+                    type="button">
+
+                    <i class="bi bi-chat-dots"></i>
+                    Cotidiano
+
+                </button>
+
+
+                <button
+                    class="categoria-btn"
+                    data-categoria="familia"
+                    type="button">
+
+                    <i class="bi bi-people"></i>
+                    Família
+
+                </button>
+
+
+                <button
+                    class="categoria-btn"
+                    data-categoria="cores"
+                    type="button">
+
+                    <i class="bi bi-palette"></i>
+                    Cores
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 CONTEÚDO DA BIBLIOTECA
+            ========================== -->
+
+            <section class="biblioteca-conteudo">
+
+                <div class="biblioteca-titulo-secao">
+
+                    <div>
+                        <h2>Explore os sinais</h2>
+
+                        <p>
+                            Escolha uma categoria e comece a aprender.
+                        </p>
+                    </div>
+
+                    <span class="quantidade-sinais" id="quantidadeSinais">
+                        Biblioteca
+                    </span>
+
+                </div>
+
+
+                <!-- DESTAQUES DAS CATEGORIAS -->
+
+                <div class="biblioteca-destaques">
+
+                    <!-- ALFABETO -->
+
+                    <article class="biblioteca-card destaque-alfabeto"
+                        data-categoria="alfabeto">
+
+                        <div class="biblioteca-card-icone">
+                            <i class="bi bi-alphabet-uppercase"></i>
+                        </div>
+
+                        <div class="biblioteca-card-info">
+
+                            <span class="card-etiqueta">
+                                COMECE POR AQUI
+                            </span>
+
+                            <h3>Alfabeto em Libras</h3>
+
+                            <p>
+                                Conheça as configurações de mão
+                                que representam as letras do alfabeto.
+                            </p>
+
+                            <button type="button" class="card-link">
+                                Explorar alfabeto
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- NÚMEROS -->
+
+                    <article class="biblioteca-card destaque-numeros"
+                        data-categoria="numeros">
+
+                        <div class="biblioteca-card-icone">
+                            <i class="bi bi-123"></i>
+                        </div>
+
+                        <div class="biblioteca-card-info">
+
+                            <span class="card-etiqueta">
+                                APRENDA OS NÚMEROS
+                            </span>
+
+                            <h3>Números em Libras</h3>
+
+                            <p>
+                                Aprenda a representar números
+                                e quantidades utilizando as mãos.
+                            </p>
+
+                            <button type="button" class="card-link">
+                                Explorar números
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SINAIS DO COTIDIANO -->
+
+                    <article class="biblioteca-card destaque-cotidiano"
+                        data-categoria="cotidiano">
+
+                        <div class="biblioteca-card-icone">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+
+                        <div class="biblioteca-card-info">
+
+                            <span class="card-etiqueta">
+                                COMUNICAÇÃO
+                            </span>
+
+                            <h3>Sinais do cotidiano</h3>
+
+                            <p>
+                                Aprenda sinais utilizados em conversas
+                                e situações do dia a dia.
+                            </p>
+
+                            <button type="button" class="card-link">
+                                Explorar sinais
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ÁREA DOS SINAIS -->
+
+                <div class="biblioteca-listagem">
+
+                    <div class="biblioteca-listagem-titulo">
+
+                        <h2>Todos os sinais</h2>
+
+                        <p>
+                            Em breve, você encontrará aqui
+                            os sinais disponíveis na biblioteca.
+                        </p>
+
+                    </div>
+
+
+                    <div class="sinais-grid" id="sinaisGrid">
+
+                        <!-- Os cards dos sinais serão inseridos aqui
+                             por meio do JavaScript. -->
+
+                        <div class="biblioteca-vazio">
+
+                            <i class="bi bi-book-half"></i>
+
+                            <h3>Sua biblioteca está sendo preparada!</h3>
+
+                            <p>
+                                Estamos organizando os sinais para
+                                proporcionar uma experiência completa
+                                de aprendizado.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer-geral">
         <div class="footer-conteudo">
             <p class="footer-copyright">
                 © 2026 Evel — Todos os direitos reservados.
@@ -7,3 +349,13 @@
 
         </div>
     </footer>
+
+
+    <!-- SCRIPT GLOBAL -->
+
+    <script type="module" src="/public/js/script.js"></script>
+
+</body>
+
+</html>
+
