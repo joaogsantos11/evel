@@ -451,57 +451,88 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
     }
 }
 
-/*=====Página Inicial====*/
+
+/*===== Página Inicial =====*/
 
 .pagina-home {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: var(--fundo);
 }
 
 .pagina-home main {
     flex: 1;
     width: 100%;
+    overflow: hidden;
     background: var(--fundo);
 }
 
-/* =========================
-TELA DE BOAS-VINDAS
-   ========================= */
+.pagina-home main > section {
+    width: 100%;
+}
 
+/* Boas-vindas */
 
 .pagina-home .tela-welcome {
-    width: 100%;
-    
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
-    padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px);
+    align-items: center;
+    min-height: clamp(390px, 55vh, 600px);
+    padding: clamp(50px, 7vw, 95px) clamp(24px, 7vw, 110px);
+    isolation: isolate;
 }
 
-.pagina-home .welcome {
-    margin: 0;
-    color: var(--azul-evel);
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    text-align: left;
-}
+.pagina-home .tela-welcome::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 10%;
+    right: -100px;
+    width: clamp(240px, 36vw, 480px);
+    aspect-ratio: 1;
 
-.pagina-home .tela-welcome p {
-    max-width: 650px;
-    margin-top: 20px;
-    color: var(--texto);
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    line-height: 1.7;
-    text-align: left;
+    border: 1px solid rgba(255, 0, 0, 0.18);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 35px rgba(255, 0, 0, 0.07),
+        0 0 0 75px rgba(255, 0, 0, 0.045);
 }
 
 .pagina-home .content-info {
     width: 100%;
     max-width: 1400px;
     margin-inline: auto;
-    gap: clamp(15px, 2vw, 25px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.pagina-home .welcome-etiqueta,
+.pagina-home .secao-etiqueta {
+    display: inline-block;
+    color: var(--azul-evel);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.pagina-home .welcome-etiqueta {
+    margin-bottom: 22px;
+}
+
+.pagina-home .welcome {
+    max-width: 100%;
+    margin: 0;
+    color: var(--azul-evel);
+    font-size: clamp(2.5rem, 5.2vw, 4.8rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+    text-align: left;
+    overflow-wrap: anywhere;
 }
 
 .pagina-home .destaques {
@@ -509,353 +540,723 @@ TELA DE BOAS-VINDAS
 }
 
 .pagina-home .tela-welcome p {
-    max-width: 650px;
-
-    margin-top: 20px;
-
+    max-width: 620px;
+    margin: 22px 0 0;
     color: var(--texto);
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    line-height: 1.7;
+    font-size: clamp(1rem, 1.35vw, 1.12rem);
+    line-height: 1.85;
+    text-align: left;
 }
 
-
-/* =========================
-   BOTÃO PRINCIPAL
-   ========================= */
+.pagina-home .welcome-acoes {
+    margin-top: 28px;
+}
 
 .pagina-home .btn-home {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-
-    margin-top: 25px;
-    padding: 14px 24px;
-
-    background-color: var(--vermelho-evel);
+    justify-content: center;
+    gap: 11px;
+    padding: 15px 23px;
+    background: var(--vermelho-evel);
     color: var(--branco);
-
+    border: 2px solid var(--vermelho-evel);
     border-radius: 12px;
-
     text-decoration: none;
-    font-weight: 600;
-
-    transition: 0.3s ease;
+    font-size: 0.96rem;
+    font-weight: 700;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+        background: 0.3s ease;
 }
 
 .pagina-home .btn-home:hover {
     transform: translateY(-3px);
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 9px 24px rgba(255, 0, 0, 0.16);
 }
 
-
-/* =========================
-   SEÇÃO DE AÇÕES
-   ========================= */
-.pagina-home .acoes {
-    width: 100%;
-    padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px);
+.pagina-home .btn-home:focus-visible,
+.pagina-home .btn-continuar:focus-visible,
+.pagina-home .card:focus-visible,
+.pagina-home .sobre-evel-link:focus-visible,
+.pagina-home .footer-links a:focus-visible {
+    outline: 3px solid var(--vermelho-evel);
+    outline-offset: 4px;
 }
-
-.pagina-home .acoes h2 {
-    max-width: 1400px;
-    margin: 0 auto 30px;
-
-    color: var(--azul-evel);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-}
-
-.pagina-home .cards {
-    width: 100%;
-    max-width: 1400px;
-    margin-inline: auto;
-
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: clamp(15px, 2vw, 25px);
-}
-
-
-/* =========================
-   CARD
-   ========================= */
-
-.pagina-home .card {
-    padding: clamp(20px, 3vw, 30px);
-    background: var(--branco);
-    border-radius: clamp(14px, 2vw, 18px);
-    color: var(--texto);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    transition: 0.3s ease;
-}
-
-.pagina-home .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
-}
-
-
-/* =========================
-   ÍCONE DO CARD
-   ========================= */
-
-.pagina-home .card i {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: clamp(45px, 5vw, 55px);
-    height: clamp(45px, 5vw, 55px);
-
-    margin-bottom: 18px;
-
-    border-radius: 14px;
-
-    background: #eeeeff;
-    color: var(--azul-evel);
-
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
-}
-
-
-/* =========================
-   TÍTULO DO CARD
-   ========================= */
-
-.pagina-home .card h3 {
-    margin: 0 0 10px;
-
-    color: var(--azul-evel);
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-}
-
-
-/* =========================
-   TEXTO DO CARD
-   ========================= */
-
-.pagina-home .card p {
-    margin: 0;
-
-    color: var(--texto);
-    font-size: clamp(0.9rem, 1.3vw, 1rem);
-    line-height: 1.6;
-}
-
-
-/* =========================
-   LINK DO CARD
-   ========================= */
-
-.pagina-home .card-link {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    color: var(--azul-evel);
-
-    text-decoration: none;
-    font-weight: 600;
-
-    transition: color 0.3s ease;
-}
-
+.pagina-home .sobre-evel-link:hover,
 .pagina-home .card-link:hover {
     color: var(--vermelho-evel);
 }
 
-
-/* =========================
-   FOOTER
-   ========================= */
-
-footer {
-    padding: 30px 20px;
-
-    background: var(--branco);
-
-    border-top: 1px solid #eee;
-
-    text-align: center;
-
-    color: #777;
-    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+.pagina-home .welcome-rodape {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 30px;
+    color: #686878;
+    font-size: 0.88rem;
 }
 
-/* =========================
-   CONTINUE APRENDENDO
-   ========================= */
+.pagina-home .welcome-rodape i {
+    color: var(--vermelho-evel);
+    font-size: 1.05rem;
+}
+
+/* Continue aprendendo */
 
 .pagina-home .continue-aprendendo {
     width: 100%;
-    padding: 0 clamp(24px, 5vw, 80px) clamp(40px, 6vw, 80px);
+    padding: 0 clamp(24px, 7vw, 110px) clamp(55px, 7vw, 90px);
 }
 
 .pagina-home .progresso-info {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(180px, 0.7fr);
+    align-items: center;
+    gap: 40px;
     width: 100%;
     max-width: 1400px;
     margin-inline: auto;
-
-    padding: clamp(25px, 4vw, 45px);
-
+    padding: clamp(28px, 4vw, 52px);
+    overflow: hidden;
     background: var(--azul-evel);
     color: var(--branco);
-
-    border-radius: clamp(16px, 2vw, 24px);
+    border-radius: clamp(18px, 2vw, 26px);
+    box-shadow: 0 12px 32px rgba(3, 3, 160, 0.12);
 }
 
-
-/* =========================
-   ETIQUETA
-   ========================= */
+.pagina-home .progresso-conteudo {
+    min-width: 0;
+}
 
 .pagina-home .etiqueta {
-    display: inline-block;
-
-    margin-bottom: 12px;
-
-    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 17px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 1.5px;
 }
 
-
-/* =========================
-   TÍTULO
-   ========================= */
-
 .pagina-home .progresso-info h2 {
+    max-width: 620px;
     margin: 0;
-
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.6px;
 }
 
+.pagina-home .progresso-descricao {
+    max-width: 540px;
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
 
-/* =========================
-   INFORMAÇÕES DO CURSO
-   ========================= */
+.pagina-home .curso-detalhes {
+    margin-top: 25px;
+}
 
 .pagina-home .curso-nome {
-    margin: 18px 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 9px;
+    font-size: 1rem;
+    font-weight: 700;
+}
 
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    font-weight: 600;
+.pagina-home .curso-nome i {
+    font-size: 1.15rem;
 }
 
 .pagina-home .aula-atual {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin: 0;
-
-    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
 
-
-/* =========================
-   BARRA DE PROGRESSO
-   ========================= */
+.pagina-home .aula-indicador {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--vermelho-evel);
+    border-radius: 50%;
+}
 
 .pagina-home .barra-progresso {
     width: 100%;
-    height: 12px;
-
+    height: 10px;
     margin-top: 28px;
-
-    background: rgba(255, 255, 255, 0.25);
-
-    border-radius: 20px;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.23);
+    border-radius: 20px;
 }
 
 .pagina-home .progresso {
     width: 67%;
     height: 100%;
-
     background: var(--vermelho-evel);
-
     border-radius: inherit;
 }
-
-
-/* =========================
-   DADOS DO PROGRESSO
-   ========================= */
 
 .pagina-home .progresso-dados {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-top: 10px;
-
     gap: 15px;
-
-    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.88rem;
 }
 
-
-/* =========================
-   BOTÃO CONTINUAR
-   ========================= */
+.pagina-home .progresso-dados strong {
+    color: var(--branco);
+    font-size: 1rem;
+}
 
 .pagina-home .btn-continuar {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-
-    margin-top: 28px;
-    padding: 13px 20px;
-
+    justify-content: center;
+    gap: 12px;
+    margin-top: 26px;
+    padding: 14px 20px;
     background: var(--branco);
     color: var(--azul-evel);
-
+    border: 2px solid var(--branco);
     border-radius: 10px;
-
     text-decoration: none;
-    font-weight: 600;
-
-    transition: 0.3s ease;
+    font-size: 0.93rem;
+    font-weight: 700;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 .pagina-home .btn-continuar:hover {
     transform: translateY(-3px);
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: #eeeeff;
 }
 
-
-/* =========================
-   RESPONSIVIDADE
-   ========================= */
-
-@media (max-width: 600px) {
-
-    .pagina-home .progresso-dados {
-        flex-direction: column;
-        align-items: flex-start
-    }
+.pagina-home .progresso-ilustracao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    min-height: 230px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.06);
 }
 
-/*RESPONSIVIDADE*/
+.pagina-home .progresso-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(100px, 12vw, 150px);
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+    color: var(--branco);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.pagina-home .progresso-frase {
+    max-width: 190px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.94rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Seção de ações */
+
+.pagina-home .acoes {
+    width: 100%;
+    padding: 0 clamp(24px, 7vw, 110px) clamp(65px, 8vw, 100px);
+}
+
+.pagina-home .acoes-cabecalho {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 30px;
+}
+
+.pagina-home .acoes h2 {
+    margin: 12px 0 0;
+    color: var(--azul-evel);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    line-height: 1.25;
+    letter-spacing: -0.7px;
+}
+
+.pagina-home .acoes-cabecalho p {
+    margin: 12px 0 0;
+    color: var(--texto);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.pagina-home .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: clamp(18px, 2.2vw, 28px);
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+}
+
+.pagina-home .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    min-height: 270px;
+    padding: clamp(23px, 3vw, 32px);
+    background: var(--branco);
+    color: var(--texto);
+    border: 1px solid rgba(3, 3, 160, 0.07);
+    border-radius: 18px;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.045);
+    text-decoration: none;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.pagina-home .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(3, 3, 160, 0.2);
+    box-shadow: 0 14px 32px rgba(3, 3, 160, 0.09);
+}
+
+.pagina-home .card-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 23px;
+    background: #eeeeff;
+    color: var(--azul-evel);
+    border-radius: 15px;
+    font-size: 1.5rem;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.pagina-home .card:hover .card-icone {
+    background: var(--azul-evel);
+    color: var(--branco);
+}
+
+.pagina-home .card h3 {
+    margin: 0 0 11px;
+    color: var(--azul-evel);
+    font-size: clamp(1.12rem, 1.6vw, 1.3rem);
+    line-height: 1.4;
+}
+
+.pagina-home .card p {
+    flex: 1;
+    margin: 0;
+    color: #626270;
+    font-size: 0.94rem;
+    line-height: 1.8;
+}
+
+.pagina-home .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 24px;
+    color: var(--azul-evel);
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition: 0.2s ease
+}
+
+.pagina-home .card-link i {
+    transition: transform 0.25s ease;
+}
+
+.pagina-home .card:hover .card-link i {
+    transform: translateX(4px);
+}
+
+/* Sobre o Evel */
+
+.pagina-home .sobre-evel {
+    display: flex;
+    align-items: center;
+    gap: clamp(25px, 5vw, 65px);
+    width: calc(100% - clamp(48px, 14vw, 220px));
+    max-width: 1400px;
+    margin: 0 auto clamp(65px, 8vw, 100px);
+    padding: clamp(30px, 5vw, 60px);
+    background: #eeeeff;
+    border: 1px solid rgba(3, 3, 160, 0.07);
+    border-radius: 22px;
+}
+
+.pagina-home .sobre-evel-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: clamp(85px, 12vw, 135px);
+    aspect-ratio: 1;
+    background: var(--branco);
+    color: var(--azul-evel);
+    border-radius: 28px;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pagina-home .sobre-evel-conteudo {
+    max-width: 760px;
+}
+
+.pagina-home .sobre-evel h2 {
+    margin: 12px 0;
+    color: var(--azul-evel);
+    font-size: clamp(1.6rem, 3vw, 2.35rem);
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.pagina-home .sobre-evel p {
+    margin: 0;
+    color: #51516b;
+    font-size: 0.97rem;
+    line-height: 1.85;
+}
+
+.pagina-home .sobre-evel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 20px;
+    color: var(--azul-evel);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.pagina-home .sobre-evel-link i {
+    transition: transform 0.25s ease;
+}
+
+.pagina-home .sobre-evel-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Rodapé da home */
+
+.pagina-home .home-footer {
+    width: 100%;
+    padding: 38px clamp(24px, 7vw, 110px) 24px;
+    background: var(--branco);
+    border-top: 1px solid #e9e9f0;
+}
+
+.pagina-home .footer-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1400px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.pagina-home .footer-logo {
+    color: var(--azul-evel);
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.pagina-home .footer-logo span {
+    color: var(--vermelho-evel);
+}
+
+.pagina-home .footer-conteudo > p {
+    margin: 8px 0 0;
+    color: #6d6d7a;
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+.pagina-home .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 25px;
+}
+
+.pagina-home .footer-links a {
+    color: var(--azul-evel);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.pagina-home .footer-links a:hover {
+    color: var(--vermelho-evel);
+}
+
+.pagina-home .footer-conteudo > .footer-copyright {
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeF2;
+    font-size: 0.82rem;
+}
+
+/* Responsividade */
 
 @media (max-width: 900px) {
+    .pagina-home .tela-welcome {
+        min-height: 400px;
+    }
+
+    .pagina-home .progresso-info {
+        grid-template-columns: minmax(0, 1fr) 190px;
+        gap: 25px;
+    }
+
+    .pagina-home .progresso-ilustracao {
+        min-height: 200px;
+    }
+
     .pagina-home .cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pagina-home .card:last-child {
+        grid-column: 1 / -1;
+        min-height: 230px;
     }
 }
 
-@media (max-width: 800px) {
-
-    .pagina-home .cards {
-        grid-template-columns: 1fr;
+@media (max-width: 650px) {
+    .pagina-home .tela-welcome {
+        min-height: auto;
+        padding: 65px 24px 55px;
     }
 
-}
+    .pagina-home .tela-welcome::before {
+        top: 20px;
+        right: -170px;
+        width: 280px;
+    }
 
-@media (max-width: 600px) {
+    .pagina-home .welcome-etiqueta {
+        margin-bottom: 18px;
+        font-size: 0.68rem;
+        letter-spacing: 1.3px;
+    }
+
+    .pagina-home .welcome {
+        font-size: clamp(2.35rem, 9vw, 3.5rem);
+        letter-spacing: -1px;
+    }
+
+    .pagina-home .tela-welcome p {
+        margin-top: 18px;
+        font-size: 0.98rem;
+        line-height: 1.8;
+    }
+
+    .pagina-home .welcome-acoes {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .pagina-home .btn-home {
+        max-width: 100%;
+        padding: 14px 17px;
+        font-size: 0.88rem;
+    }
+
+    .pagina-home .welcome-rodape {
+        align-items: flex-start;
+        margin-top: 24px;
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .pagina-home .continue-aprendendo {
+        padding: 0 20px 55px;
+    }
+
+    .pagina-home .progresso-info {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        padding: 27px 22px;
+        border-radius: 18px;
+    }
+
+    .pagina-home .progresso-info h2 {
+        font-size: 1.75rem;
+    }
+
+    .pagina-home .progresso-descricao {
+        font-size: 0.9rem;
+    }
+
+    .pagina-home .progresso-ilustracao {
+        flex-direction: row;
+        justify-content: flex-start;
+        min-height: auto;
+        padding: 17px;
+        gap: 17px;
+        border-radius: 15px;
+    }
+
+    .pagina-home .progresso-icone {
+        width: 65px;
+        flex-shrink: 0;
+        border-radius: 17px;
+        font-size: 2.2rem;
+    }
+
+    .pagina-home .progresso-frase {
+        max-width: 180px;
+        text-align: left;
+        font-size: 0.88rem;
+    }
+
+    .pagina-home .btn-continuar {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pagina-home .acoes {
+        padding: 0 20px 55px;
+    }
+
+    .pagina-home .acoes-cabecalho {
+        margin-bottom: 23px;
+    }
+
+    .pagina-home .acoes h2 {
+        font-size: 1.8rem;
+    }
+
+    .pagina-home .acoes-cabecalho p {
+        font-size: 0.92rem;
+    }
+
     .pagina-home .cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .pagina-home .card,
+    .pagina-home .card:last-child {
+        grid-column: auto;
+        min-height: 235px;
+        padding: 24px;
+    }
+
+    .pagina-home .card-icone {
+        margin-bottom: 18px;
+    }
+
+    .pagina-home .sobre-evel {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        width: calc(100% - 40px);
+        margin-bottom: 55px;
+        padding: 27px 23px;
+        border-radius: 18px;
+    }
+
+    .pagina-home .sobre-evel-icone {
+        width: 72px;
+        border-radius: 20px;
+        font-size: 2.3rem;
+    }
+
+    .pagina-home .sobre-evel h2 {
+        font-size: 1.7rem;
+    }
+
+    .pagina-home .sobre-evel p {
+        font-size: 0.92rem;
+    }
+
+    .pagina-home .home-footer {
+        padding: 32px 20px 22px;
+    }
+
+    .pagina-home .footer-links {
+        gap: 16px 20px;
     }
 }
+
+@media (max-width: 360px) {
+    .pagina-home .tela-welcome {
+        padding-inline: 18px;
+    }
+
+    .pagina-home .welcome {
+        font-size: 2.15rem;
+    }
+
+    .pagina-home .btn-home {
+        gap: 7px;
+        padding-inline: 12px;
+        font-size: 0.82rem;
+    }
+
+    .pagina-home .progresso-dados {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .pagina-home .continue-aprendendo,
+    .pagina-home .acoes {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .pagina-home .sobre-evel {
+        width: calc(100% - 32px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pagina-home *,
+    .pagina-home *::before,
+    .pagina-home *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
 
 
 
