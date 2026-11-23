@@ -1,3 +1,7 @@
+import { auth, db } from "./firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const secaoAulas = document.getElementById("secaoAulas");
 const telaAprendizagem = document.getElementById("telaAprendizagem");
 const conteudoAula = document.getElementById("conteudoAula");
@@ -15,15 +19,77 @@ function chaveAulaConcluida(numeroAula) {
     return `modulo${numeroModulo}_aula${numeroAula}Concluida`;
 }
 
-function concluirAula(numeroAula) {
-    localStorage.setItem(
-        chaveAulaConcluida(numeroAula),
-        "true"
-    );
+let usuarioCurso = null;
+let progressoAulas = {};
+let liberarAuthInicializada;
+const authInicializada = new Promise((resolve) => {
+    liberarAuthInicializada = resolve;
+});
+
+function aulaConcluida(numeroAula) {
+    const chave = chaveAulaConcluida(numeroAula);
+
+    if (usuarioCurso) {
+        return progressoAulas[chave] === true;
+    }
+
+    try {
+        return localStorage.getItem(chave) === "true";
+    } catch (erro) {
+        console.error("Não foi possível ler o progresso local:", erro);
+        return false;
+    }
+}
+
+async function concluirAula(numeroAula) {
+    // Aguarda a identificação do usuário antes de escolher onde salvar.
+    await authInicializada;
+    const chave = chaveAulaConcluida(numeroAula);
+
+    if (usuarioCurso) {
+        try {
+            const referencia = doc(db, "usuarios", usuarioCurso.uid, "progresso", "aulas");
+            await setDoc(referencia, { [chave]: true }, { merge: true });
+            progressoAulas[chave] = true;
+        } catch (erro) {
+            console.error("Erro ao salvar progresso no Firestore:", erro);
+            alert("Não foi possível salvar seu progresso na nuvem. Verifique sua conexão e tente novamente.");
+            return false;
+        }
+    } else {
+        try {
+            localStorage.setItem(chave, "true");
+        } catch (erro) {
+            console.error("Não foi possível salvar o progresso local:", erro);
+            alert("Não foi possível salvar seu progresso neste navegador.");
+            return false;
+        }
+    }
 
     atualizarCardsAulas();
     atualizarProgressoModulo();
+    return true;
 }
+
+onAuthStateChanged(auth, async (user) => {
+    usuarioCurso = user;
+    progressoAulas = {};
+
+    if (user) {
+        try {
+            const referencia = doc(db, "usuarios", user.uid, "progresso", "aulas");
+            const snapshot = await getDoc(referencia);
+            progressoAulas = snapshot.exists() ? snapshot.data() : {};
+        } catch (erro) {
+            console.error("Erro ao carregar progresso do usuário:", erro);
+            alert("Não foi possível carregar seu progresso salvo. Verifique sua conexão.");
+        }
+    }
+
+    liberarAuthInicializada();
+    atualizarCardsAulas();
+    atualizarProgressoModulo();
+});
 
 
 const ilustracaoLibras = `
@@ -856,8 +922,7 @@ function atualizarProgressoModulo() {
     let aulasConcluidas = 0;
 
     for (let numero = 1; numero <= totalAulas; numero++) {
-        const concluida =
-            localStorage.getItem(chaveAulaConcluida(numero)) === "true";
+        const concluida = aulaConcluida(numero);
 
         if (concluida) {
             aulasConcluidas++;
@@ -920,10 +985,7 @@ function atualizarCardsAulas() {
     document.querySelectorAll("[data-abrir-aula]").forEach((card) => {
         const numeroAula = Number(card.dataset.abrirAula);
 
-        const concluida =
-            localStorage.getItem(
-                chaveAulaConcluida(numeroAula)
-            ) === "true";
+        const concluida = aulaConcluida(numeroAula);
 
         const status = card.querySelector(".aula-status");
 
@@ -942,7 +1004,7 @@ function atualizarCardsAulas() {
 
 
 
-function verificarQuestionario(formulario) {
+async function verificarQuestionario(formulario) {
     const respostasCorretas = JSON.parse(formulario.dataset.respostas || "{}");
     const numeroAula = Number(formulario.dataset.numeroAula);
     const resultado = formulario.querySelector(".resultado-quiz");
@@ -975,7 +1037,12 @@ function verificarQuestionario(formulario) {
     }
 
     if (acertos === perguntas.length) {
-        concluirAula(numeroAula);
+        const salvou = await concluirAula(numeroAula);
+        if (!salvou) {
+            resultado.className = "resultado-quiz resultado-erro";
+            resultado.textContent = "Não foi possível registrar a conclusão da aula. Tente novamente.";
+            return;
+        }
         resultado.className = "resultado-quiz resultado-sucesso";
         resultado.textContent =
             `Excelente! Você acertou ${acertos} de ${perguntas.length} questões. Aula concluída!`;
@@ -1012,5 +1079,4 @@ if (botaoVoltar) {
     });
 }
 
-atualizarCardsAulas();
-atualizarProgressoModulo();
+// A primeira renderização acontece após o Firebase confirmar o usuário e carregar os dados.

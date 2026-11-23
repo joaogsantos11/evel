@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { auth, db } from "./firebase-config.js";
 
 import {
     getAuth,
@@ -20,19 +20,7 @@ import {
 // FIREBASE
 // ====================
 
-const firebaseConfig = {
-    apiKey: "AIzaSyB39l3pFhkpItMJkG90uh5ZhE-fs2JomZU",
-    authDomain: "evel-14960.firebaseapp.com",
-    projectId: "evel-14960",
-    storageBucket: "evel-14960.firebasestorage.app",
-    messagingSenderId: "596964040271",
-    appId: "1:596964040271:web:ee4d70cbb28d648072d43a",
-    measurementId: "G-VKENYR2DYD"
-};
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
 
 function traduzirErro(code) {
     const erros = {
@@ -141,7 +129,7 @@ document.addEventListener("click", async (event) => {
 
         atualizarCabecalho();
 
-        window.location.href = "/public/index.html";
+        window.location.href = "/";
 
     } catch (erro) {
         console.error("Erro ao sair da conta:", erro);
@@ -339,11 +327,56 @@ window.entrar = entrar;
 window.mostrarSenha = mostrarSenha;
 
 // ====================
+// PROGRESSO SINCRONIZADO COM O FIRESTORE
+// Documento: usuarios/{uid}/progresso/aulas
+// ====================
+
+let progressoAulasFirestore = {};
+
+function aulaEstaConcluida(numeroModulo, numeroAula) {
+    const chave = numeroModulo === 1
+        ? `aula${numeroAula}Concluida`
+        : `modulo${numeroModulo}_aula${numeroAula}Concluida`;
+
+    if (usuarioAtual) {
+        return progressoAulasFirestore[chave] === true;
+    }
+
+    try {
+        return localStorage.getItem(chave) === "true";
+    } catch (erro) {
+        console.error("Não foi possível ler o progresso local:", erro);
+        return false;
+    }
+}
+
+async function carregarProgressoFirestore(user) {
+    if (!user) {
+        progressoAulasFirestore = {};
+        atualizarProgressoCardsCursos();
+        atualizarProgressoInicio();
+        return;
+    }
+
+    try {
+        const referencia = doc(db, "usuarios", user.uid, "progresso", "aulas");
+        const snapshot = await getDoc(referencia);
+        progressoAulasFirestore = snapshot.exists() ? snapshot.data() : {};
+        atualizarProgressoCardsCursos();
+        atualizarProgressoInicio();
+    } catch (erro) {
+        console.error("Erro ao carregar progresso do Firestore:", erro);
+        progressoAulasFirestore = {};
+    }
+}
+
+// ====================
 // USUÁRIO LOGADO
 // ====================
 
 onAuthStateChanged(auth, async (user) => {
     usuarioAtual = user;
+    await carregarProgressoFirestore(user);
 
     // Protege a página de perfil.
     if (
@@ -870,6 +903,48 @@ window.addEventListener("storage", evento => {
 // Adicione este bloco ao FINAL de public/js/script.js
 // =============================================
 
+function atualizarProgressoInicio() {
+    const secao = document.querySelector(".continue-aprendendo");
+    if (!secao) return;
+
+    // A seção atual da página inicial representa o módulo 1 (4 aulas).
+    const totalAulas = 4;
+    let concluidas = 0;
+
+    for (let numero = 1; numero <= totalAulas; numero++) {
+        if (aulaEstaConcluida(1, numero)) concluidas++;
+    }
+
+    const percentual = Math.round((concluidas / totalAulas) * 100);
+    const barra = secao.querySelector(".barra-progresso .progresso");
+    const dados = secao.querySelector(".progresso-dados");
+    const texto = dados?.querySelector("span");
+    const porcentagem = dados?.querySelector("strong");
+
+    if (barra) {
+        barra.style.width = `${percentual}%`;
+        barra.setAttribute("aria-valuenow", String(percentual));
+    }
+    if (texto) texto.textContent = `${concluidas} de ${totalAulas} aulas concluídas`;
+    if (porcentagem) porcentagem.textContent = `${percentual}%`;
+
+    const proximaAula = secao.querySelector(".aula-atual");
+    if (proximaAula) {
+        const indicador = proximaAula.querySelector(".aula-indicador");
+        const nomes = [
+            "Introdução à Libras",
+            "Alfabeto em Libras",
+            "Soletração e sinais pessoais",
+            "Cumprimentos e apresentações"
+        ];
+        const proxima = concluidas < totalAulas ? nomes[concluidas] : null;
+        proximaAula.textContent = proxima
+            ? `Próxima aula: ${proxima}`
+            : "Módulo concluído! Continue aprendendo.";
+        if (indicador) proximaAula.prepend(indicador);
+    }
+}
+
 function atualizarProgressoCardsCursos() {
     const cards = document.querySelectorAll(".pagina-cursos .card");
 
@@ -898,13 +973,8 @@ function atualizarProgressoCardsCursos() {
                 ? `aula${numeroAula}Concluida`
                 : `modulo${numeroModulo}_aula${numeroAula}Concluida`;
 
-            try {
-                if (localStorage.getItem(chave) === "true") {
-                    aulasConcluidas++;
-                }
-            } catch (erro) {
-                console.error("Não foi possível ler o progresso das aulas:", erro);
-                return;
+            if (aulaEstaConcluida(numeroModulo, numeroAula)) {
+                aulasConcluidas++;
             }
         }
 
@@ -939,3 +1009,13 @@ window.addEventListener("storage", (evento) => {
         atualizarProgressoCardsCursos();
     }
 });
+// Renderização inicial do progresso (será atualizada novamente após a resposta do Firebase).
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        atualizarProgressoInicio();
+        atualizarProgressoCardsCursos();
+    });
+} else {
+    atualizarProgressoInicio();
+    atualizarProgressoCardsCursos();
+}

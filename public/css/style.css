@@ -27,6 +27,24 @@ body {
     min-height: 100vh;
 }
 
+ /* Rodapé Geral */
+
+ .footer-geral {
+    width: 100%;
+    padding: 30px clamp(24px, 7vw, 110px) 24px;
+    background: var(--branco);
+    border-top: 1px solid #e9e9f0;
+}
+
+  .footer-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    margin-inline: auto;
+    text-align: center;
+}
+
 /* ====================
    CABEÇALHO
 ==================== */
@@ -967,70 +985,7 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
     transform: translateX(4px);
 }
 
-/* Rodapé da home */
 
-.pagina-home .home-footer {
-    width: 100%;
-    padding: 38px clamp(24px, 7vw, 110px) 24px;
-    background: var(--branco);
-    border-top: 1px solid #e9e9f0;
-}
-
-.pagina-home .footer-conteudo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1400px;
-    margin-inline: auto;
-    text-align: center;
-}
-
-.pagina-home .footer-logo {
-    color: var(--azul-evel);
-    font-size: 1.7rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-decoration: none;
-}
-
-.pagina-home .footer-logo span {
-    color: var(--vermelho-evel);
-}
-
-.pagina-home .footer-conteudo > p {
-    margin: 8px 0 0;
-    color: #6d6d7a;
-    font-size: 0.88rem;
-    line-height: 1.7;
-}
-
-.pagina-home .footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px 28px;
-    margin-top: 25px;
-}
-
-.pagina-home .footer-links a {
-    color: var(--azul-evel);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.pagina-home .footer-links a:hover {
-    color: var(--vermelho-evel);
-}
-
-.pagina-home .footer-conteudo > .footer-copyright {
-    width: 100%;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #eeeeF2;
-    font-size: 0.82rem;
-}
 
 /* Responsividade */
 
@@ -1207,13 +1162,10 @@ LOGIN DO CABEÇALHO DA LANDING PAGE
         font-size: 0.92rem;
     }
 
-    .pagina-home .home-footer {
+     .footer-geral {
         padding: 32px 20px 22px;
     }
-
-    .pagina-home .footer-links {
-        gap: 16px 20px;
-    }
+    
 }
 
 @media (max-width: 360px) {
